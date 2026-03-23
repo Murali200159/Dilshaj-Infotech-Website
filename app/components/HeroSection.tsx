@@ -156,13 +156,15 @@ export default function HeroSection() {
             {/* Floating Side Icons */}
             <div className="fixed right-0 lg:right-1 top-[44%] lg:top-1/2 -translate-y-1/2 z-50 flex flex-col gap-0 lg:gap-5">
                 <a
-                    href="tel:+91"
+                    href="tel:+918977272783"
                     className="hero-side-icon w-[44px] h-[44px] bg-[#00A3FF] flex items-center justify-center text-white shadow-md hover:scale-110 transition-transform"
                 >
                     <FaPhone className="w-4 h-4" />
                 </a>
                 <a
-                    href="https://wa.me/"
+                    href="https://wa.me/918977272783?text=Hello%20Dilshaj%20Infotech%20Team"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="hero-side-icon w-[44px] h-[44px] bg-[#3BCF52] flex items-center justify-center text-white shadow-md hover:scale-110 transition-transform"
                 >
                     <FaWhatsapp className="w-6 h-6" />

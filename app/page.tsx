@@ -2038,19 +2038,19 @@ export default function Home() {
 
                     <div className="w-full space-y-3 md:space-y-4">
                       {/* Call Button */}
-                      <button suppressHydrationWarning className="w-full py-3.5 md:py-4 rounded-xl flex items-center justify-center gap-3 text-white font-bold transition-transform hover:scale-[1.02] shadow-lg"
+                      <a href="tel:+918977272783" className="w-full py-3.5 md:py-4 rounded-xl flex items-center justify-center gap-3 text-white font-bold transition-transform hover:scale-[1.02] shadow-lg"
                         style={{
                           background: 'linear-gradient(to right, #3799FA, #9961FB)'
                         }}>
                         <FaPhone className="w-4 h-4 md:w-5 md:h-5" />
                         Call Us Now
-                      </button>
+                      </a>
 
                       {/* WhatsApp Button */}
-                      <button suppressHydrationWarning className="w-full py-3.5 md:py-4 rounded-xl flex items-center justify-center gap-3 bg-white text-black font-bold transition-transform hover:scale-[1.02] shadow-lg">
+                      <a href="https://wa.me/918977272783?text=Hello%20Dilshaj%20Infotech%20Team" target="_blank" rel="noopener noreferrer" className="w-full py-3.5 md:py-4 rounded-xl flex items-center justify-center gap-3 bg-white text-black font-bold transition-transform hover:scale-[1.02] shadow-lg">
                         <FaWhatsapp className="w-5 h-5 md:w-6 md:h-6 text-[#25D366]" />
                         Connect on WhatsApp
-                      </button>
+                      </a>
                     </div>
                   </div>
                 </div>
