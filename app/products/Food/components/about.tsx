@@ -50,7 +50,7 @@ export default function About() {
 
                 {/* Left side Image */}
                 <div className="w-full lg:w-[45%] max-md:order-2 max-md:mt-6 about-image-reveal">
-                    <div className="rounded-[24px] overflow-hidden shadow-2xl relative w-full aspect-[4/3] lg:aspect-[4/3.5] bg-gray-100">
+                    <div className="rounded-[24px] overflow-hidden shadow-2xl relative w-full aspect-4/3 lg:aspect-4/3.5 bg-gray-100">
                         <img
                             src={foodImg1}
                             alt="Cooking Food"
@@ -62,7 +62,7 @@ export default function About() {
                 {/* Right side Content */}
                 <div className="w-full lg:w-[55%] flex flex-col justify-center max-md:items-start max-md:text-left max-md:order-1 about-content-reveal">
                     <div className="mb-4">
-                        <span className="bg-gradient-to-r from-[#4DA5FF] to-[#9458F6] text-transparent bg-clip-text font-bold text-[13px] md:text-[14px] tracking-wide uppercase">
+                        <span className="bg-linear-to-r from-[#4DA5FF] to-[#9458F6] text-transparent bg-clip-text font-bold text-[13px] md:text-[14px] tracking-wide uppercase">
                             ABOUT THE UPCOMING APP
                         </span>
                     </div>
@@ -85,8 +85,16 @@ export default function About() {
                     </p>
 
                     <div>
-                        <button suppressHydrationWarning className="bg-black text-white px-10 py-3.5 rounded-[12px] font-bold text-[15px] hover:bg-[#111] transition-all shadow-xl">
-                            Stay Tuned
+                        <button
+                            suppressHydrationWarning
+                            className="flex items-center group relative h-12 w-fit cursor-pointer overflow-hidden transition-all duration-700 rounded-[34px_34px_0px_34px] hover:rounded-[34px_34px_34px_0px]"
+                        >
+                            <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-all duration-700 ease-in-out group-hover:left-[calc(100%-48px)] group-hover:bg-linear-to-r group-hover:from-[#3799FA] group-hover:to-[#9961FB] group-hover:scale-105">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#3799FA" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 ml-0.5 transition-all duration-700 ease-in-out group-hover:text-white"><polyline points="9 18 15 12 9 6" /></svg>
+                            </div>
+                            <div className="pl-14 pr-8 h-full flex items-center text-white font-bold text-[15px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all duration-700 ease-in-out bg-linear-to-r from-[#3799FA] to-[#9961FB] group-hover:from-white group-hover:to-white group-hover:text-black group-hover:pl-6 group-hover:pr-14 rounded-[34px_34px_0px_34px] group-hover:rounded-[34px_34px_34px_0px]">
+                                Stay Tuned
+                            </div>
                         </button>
                     </div>
 

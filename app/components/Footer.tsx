@@ -81,26 +81,26 @@ export default function Footer() {
                                 </li>
                             ))}
                         </ul>
-                    </div>
+                    </div>  
 
                     {/* Column 4: Contact */}
                     <div className="flex flex-col gap-6 md:gap-8 items-center md:items-start text-center md:text-left">
                         <h4 className="text-black text-[20px] md:text-[24px] font-bold">Contact</h4>
                         <ul className="flex flex-col gap-5 md:gap-6">
                             <li className="flex items-center gap-4 group justify-center md:justify-start">
-                                <FaPhone className="w-5 h-5 text-gray-800" />
-                                <span className="text-gray-700 group-hover:text-black transition-colors text-[16px] md:text-[18px] font-medium">+91 8977272783</span>
+                                <FaPhone className="w-4 h-4 md:w-5 md:h-5 text-gray-800" />
+                                <span className="text-gray-700 group-hover:text-black transition-colors text-[15px] md:text-[18px] font-medium">+91 8977272783</span>
                             </li>
                             <li className="flex items-start gap-4 group justify-center md:justify-start">
-                                <FaEnvelope className="w-5 h-5 text-gray-800 shrink-0 mt-1" />
+                                <FaEnvelope className="w-4 h-4 md:w-5 md:h-5 text-gray-800 shrink-0 mt-1" />
                                 <div className="flex flex-col gap-1 text-left">
-                                    <span className="text-gray-700 group-hover:text-black transition-colors text-[16px] md:text-[18px] font-medium break-all">info@dilshajinfotech.tech</span>
-                                    <span className="text-gray-700 group-hover:text-black transition-colors text-[16px] md:text-[18px] font-medium break-all">careers@dilshajinfotech.tech</span>
+                                    <span className="text-gray-700 group-hover:text-black transition-colors text-[14px] md:text-[18px] font-medium break-all">info@dilshajinfotech.tech</span>
+                                    <span className="text-gray-700 group-hover:text-black transition-colors text-[14px] md:text-[18px] font-medium break-all">careers@dilshajinfotech.tech</span>
                                 </div>
                             </li>
-                            <li className="flex items-start gap-4 group justify-center md:justify-start text-center md:text-left">
-                                <FaLocationDot className="w-5 h-5 text-gray-800 mt-1 flex-shrink-0" />
-                                <span className="text-gray-700 group-hover:text-black transition-colors text-[16px] md:text-[18px] leading-relaxed font-medium">
+                            <li className="flex items-center gap-4 group justify-center md:justify-start text-center md:text-left">
+                                <FaLocationDot className="w-4 h-4 md:w-5 md:h-5 text-gray-800 shrink-0" />
+                                <span className="text-gray-700 group-hover:text-black transition-colors text-[15px] md:text-[18px] leading-relaxed font-medium">
                                     Visakhapatnam, India.
                                 </span>
                             </li>
@@ -155,7 +155,7 @@ export default function Footer() {
 
                     {/* Right: WhatsApp Updates Box */}
                     <div className="w-full lg:w-auto max-w-full">
-                        <div className="bg-white/[0.05] backdrop-blur-xl border border-white/10 rounded-[24px] md:rounded-[32px] p-6 lg:p-8 flex flex-col sm:flex-row items-center gap-6 lg:min-w-[500px] xl:min-w-[600px] w-full">
+                        <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[24px] md:rounded-[32px] p-6 lg:p-8 flex flex-col sm:flex-row items-center gap-6 lg:min-w-[500px] xl:min-w-[600px] w-full">
                             <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto justify-center sm:justify-start">
                                 <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-green-500/20 flex items-center justify-center shrink-0">
                                     <FaWhatsapp className="w-6 h-6 md:w-7 md:h-7 text-green-500" />
@@ -183,15 +183,15 @@ export default function Footer() {
                                     </div>
                                 </div>
                                 <div className="w-full sm:w-fit">
-                                    <button suppressHydrationWarning className="flex items-center group relative h-12 w-full sm:w-[140px] cursor-pointer">
-                                        <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-transform group-hover:scale-105">
-                                            <FaChevronRight className="w-4 h-4 text-[#3799FA]" />
+                                    <button
+                                        suppressHydrationWarning
+                                        className="flex items-center group relative h-12 w-full sm:w-[140px] cursor-pointer overflow-hidden transition-all duration-700 rounded-[34px_34px_0px_34px] hover:rounded-[34px_34px_34px_0px]"
+                                    >
+                                        <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-all duration-700 ease-in-out group-hover:left-[calc(100%-48px)] group-hover:bg-linear-to-r group-hover:from-[#3799FA] group-hover:to-[#9961FB] group-hover:scale-105">
+                                            <FaChevronRight className="w-4 h-4 text-[#3799FA] transition-all duration-700 ease-in-out group-hover:text-white" />
                                         </div>
 
-                                        {/* MAIN BUTTON BODY */}
-                                        <div
-                                            className="pl-14 pr-6 h-full flex items-center justify-center text-white font-bold text-[15px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all bg-gradient-to-r from-[#3799FA] to-[#9961FB] w-full rounded-[34px_34px_0px_34px]"
-                                        >
+                                        <div className="pl-14 pr-6 h-full flex items-center justify-center text-white font-bold text-[15px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all duration-700 ease-in-out bg-linear-to-r from-[#3799FA] to-[#9961FB] group-hover:from-white group-hover:to-white group-hover:text-black group-hover:pl-6 group-hover:pr-14 rounded-[34px_34px_0px_34px] group-hover:rounded-[34px_34px_34px_0px] w-full">
                                             Submit
                                         </div>
                                     </button>
@@ -204,7 +204,7 @@ export default function Footer() {
                 {/* Copyright */}
                 <div className="absolute bottom-4 md:bottom-6 inset-x-0 text-center px-4">
                     <p className="text-white/40 text-[14px] md:text-[16px] font-medium">
-                        @ Copyright 2025, All Rights Reserved by Dilshaj Infotech
+                        @ Copyright 2026, All Rights Reserved by Dilshaj Infotech
                     </p>
                 </div>
             </div>

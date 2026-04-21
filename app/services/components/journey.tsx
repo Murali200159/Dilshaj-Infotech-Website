@@ -45,12 +45,12 @@ export default function Journey() {
                 >
                     {/* Background layers wrapper */}
                     <div className="absolute inset-0 pointer-events-none bg-center bg-cover bg-no-repeat z-0 opacity-60"
-                        style={{ backgroundImage: "url('/about/innovation.png')" }}>
+                        style={{ backgroundImage: "url('/services/technology.png')" }}>
                     </div>
 
                     {/* Content Component */}
                     <div className="relative z-10 w-full md:w-[60%] lg:w-[50%] p-5 sm:p-12 lg:p-16 flex flex-col items-center text-center md:items-start md:text-left gap-3 md:gap-5 lg:gap-6 mt-auto md:mt-0 pb-10 md:pb-0 pt-8 sm:pt-12">
-                        <h2 className="gsap-journey-content text-white text-[24px] sm:text-[40px] lg:text-[44px] xl:text-[48px] font-bold leading-[1.3] md:leading-[1.15] tracking-wide md:pr-4 mx-auto md:mx-0 w-[100%] sm:w-full">
+                        <h2 className="gsap-journey-content text-white text-[24px] sm:text-[40px] lg:text-[44px] xl:text-[48px] font-bold leading-[1.3] md:leading-[1.15] tracking-wide md:pr-4 mx-auto md:mx-0 w-full sm:w-full">
                             Start your journey toward<br className="md:hidden" />
                             smarter technology today
                         </h2>
@@ -59,7 +59,7 @@ export default function Journey() {
                             Our team is ready to guide you with<br className="md:hidden" /> innovative solutions tailored to your<br className="md:hidden" /> business needs.
                         </p>
 
-                        <button suppressHydrationWarning className="gsap-journey-content flex items-center bg-gradient-to-r from-[#6b8bf5] to-[#a06dfa]
+                        <button suppressHydrationWarning className="gsap-journey-content flex items-center bg-linear-to-r from-[#6b8bf5] to-[#a06dfa]
                                            rounded-full p-[3.5px] pr-5 hover:shadow-[0_4px_18px_rgba(140,82,234,0.35)]
                                            active:scale-95 transition-all duration-300 w-fit mx-auto md:mx-0 mt-2 md:mt-0">
                             <div className="bg-white rounded-full w-[34px] h-[34px] md:w-[40px] md:h-[40px] mr-3

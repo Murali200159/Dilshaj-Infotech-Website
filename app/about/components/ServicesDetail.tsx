@@ -25,7 +25,7 @@ const services = [
         id: 1,
         title: "Web Application Development",
         description: "Build secure, scalable web platforms that drive results.",
-        icon: Layout,
+        img: "/about/innovation/web.png",
         tag: "#WebDevelopment",
         cardTitle: "Build powerful digital systems that scale, perform, and deliver measurable impact.",
         bullets: [
@@ -44,7 +44,7 @@ const services = [
         id: 2,
         title: "Mobile App Development",
         description: "Create high-performance Android & iOS applications.",
-        icon: Smartphone,
+        img: "/about/innovation/mobile.png",
         tag: "#MobileDevelopment",
         cardTitle: "Create seamless mobile experiences that engage, retain, and drive business growth.",
         bullets: [
@@ -63,7 +63,7 @@ const services = [
         id: 3,
         title: "UI/UX Design & Strategy",
         description: "Design intuitive experiences that users love.",
-        icon: Palette,
+        img: "/about/innovation/ux.png",
         tag: "#UIUXDesign",
         cardTitle: "Craft intuitive digital experiences that engage users, convert, and drive loyalty.",
         bullets: [
@@ -82,7 +82,7 @@ const services = [
         id: 4,
         title: "Software Integration & Support",
         description: "Seamlessly connect systems and optimize workflows.",
-        icon: RefreshCcw,
+        img: "/about/innovation/software.png",
         tag: "#SystemIntegration",
         cardTitle: "Connect fragmented digital systems to streamline operations, enhance efficiency, and scale.",
         bullets: [
@@ -101,7 +101,7 @@ const services = [
         id: 5,
         title: "Custom Software Solutions",
         description: "Develop tailored systems built around your business needs.",
-        icon: Code2,
+        img: "/about/innovation/solution.png",
         tag: "#CustomSoftware",
         cardTitle: "Develop tailored digital solutions that solve complex challenges and accelerate growth.",
         bullets: [
@@ -220,11 +220,15 @@ export default function ServicesDetail() {
                                     }`}
                             >
                                 <div
-                                    className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 ${activeId === service.id ? "bg-white/10" : "bg-gray-100"
+                                    className={`w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 ${activeId === service.id ? "bg-white/10" : "bg-gray-100"
                                         }`}
                                 >
-                                    <service.icon
-                                        className={`w-5 h-5 ${activeId === service.id ? "text-white" : "text-gray-700"
+                                    <Image
+                                        src={service.img}
+                                        alt={service.title}
+                                        width={32}
+                                        height={32}
+                                        className={`object-contain ${activeId === service.id ? "brightness-0 invert" : "opacity-80"
                                             }`}
                                     />
                                 </div>
@@ -264,8 +268,10 @@ export default function ServicesDetail() {
                                 <div className="space-y-4 sm:space-y-6 lg:mt-16 w-full lg:w-auto">
                                     {active.bullets.map((item, i) => (
                                         <div key={i} className="flex items-center gap-4 text-sm text-gray-200">
-                                            <div className="w-6 h-6 rounded-full bg-white flex items-center justify-center shrink-0">
-                                                <CheckCircle2 className="w-4 h-4 text-[#1a1c2e]" />
+                                            <div className="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center shrink-0">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+                                                    <path d="M5 13l4 4L19 7" />
+                                                </svg>
                                             </div>
                                             <span className="font-medium">{item}</span>
                                         </div>
@@ -277,19 +283,19 @@ export default function ServicesDetail() {
                             <div className="relative z-10 mt-12 md:mt-0 mb-2">
                                 <button
                                     suppressHydrationWarning
-                                    className="flex items-center group relative h-12 w-fit cursor-pointer transition-transform hover:scale-105"
+                                    className="flex items-center group relative h-12 w-fit cursor-pointer overflow-hidden transition-all duration-700 rounded-[34px_34px_0px_34px] hover:rounded-[34px_34px_34px_0px]"
                                 >
-                                    <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-transform group-hover:scale-105">
-                                        <FaChevronRight className="w-4 h-4 text-[#3799FA]" />
+                                    <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-all duration-700 ease-in-out group-hover:left-[calc(100%-48px)] group-hover:bg-linear-to-r group-hover:from-[#3799FA] group-hover:to-[#9961FB] group-hover:scale-105">
+                                        <FaChevronRight className="w-4 h-4 text-[#3799FA] transition-all duration-700 ease-in-out group-hover:text-white" />
                                     </div>
-                                    <div className="pl-14 pr-8 h-full flex items-center text-white font-bold text-[15px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all bg-gradient-to-r from-[#3799FA] to-[#9961FB] rounded-[34px_34px_0px_34px]">
+                                    <div className="pl-14 pr-8 h-full flex items-center text-white font-bold text-[15px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all duration-700 ease-in-out bg-linear-to-r from-[#3799FA] to-[#9961FB] group-hover:from-white group-hover:to-white group-hover:text-black group-hover:pl-6 group-hover:pr-14 rounded-[34px_34px_0px_34px] group-hover:rounded-[34px_34px_34px_0px]">
                                         Start Your Project
                                     </div>
                                 </button>
                             </div>
 
                             {/* Mesh Overlays */}
-                            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(90,103,251,0.15)_0%,_transparent_50%),radial-gradient(circle_at_bottom_left,_rgba(155,110,253,0.15)_0%,_transparent_50%)] pointer-events-none opacity-50" />
+                            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(90,103,251,0.15)_0%,transparent_50%),radial-gradient(circle_at_bottom_left,rgba(155,110,253,0.15)_0%,transparent_50%)] pointer-events-none opacity-50" />
                             <div className="absolute top-0 right-0 w-full h-full bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.03)_50%,transparent_75%)] pointer-events-none" />
                         </div>
 
@@ -299,7 +305,13 @@ export default function ServicesDetail() {
                                 {active.features.map((feature, i) => (
                                     <div key={i} className="flex flex-col items-center sm:items-start text-center sm:text-left">
                                         <div className="w-10 h-10 bg-black rounded-full flex items-center justify-center mb-5 shrink-0">
-                                            <CheckCircle2 className="w-5 h-5 text-white" />
+                                            <Image 
+                                                src={i === 3 ? "/about/innovation/software.png" : `/about/stack/image${i + 1}.png`} 
+                                                alt="feature icon" 
+                                                width={24} 
+                                                height={24} 
+                                                className="object-contain brightness-0 invert" 
+                                            />
                                         </div>
                                         <h4 className="text-gray-900 font-bold text-lg leading-tight">
                                             {feature}
@@ -317,33 +329,23 @@ export default function ServicesDetail() {
             <div className="service-growth-banner mt-20 md:mt-24 w-full flex justify-center">
                 <div className="relative overflow-hidden rounded-[27px] bg-[#1a1c2e] px-8 sm:px-10 lg:px-14 py-12 lg:py-0 text-white shadow-2xl w-full max-w-[1379px] h-auto lg:h-[249px] flex flex-col lg:flex-row items-center justify-between gap-10">
 
-                    {/* Innovation background image */}
-                    <div className="absolute inset-0 pointer-events-none">
-                        <Image
-                            src="/about/innovation.png"
-                            alt="AI Innovation"
-                            fill
-                            className="object-cover opacity-40"
-                        />
-                    </div>
-
                     <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold max-w-2xl relative z-10 leading-tight text-center lg:text-left">
                         Turn Your Business Into an AI-Powered <br className="hidden sm:block lg:hidden" /> Growth Engine
                     </h3>
                     <div className="relative z-10 w-full lg:w-auto">
                         <button
                             suppressHydrationWarning
-                            className="flex items-center group relative h-12 w-fit cursor-pointer mx-auto lg:mx-0 transition-transform hover:scale-105"
+                            className="flex items-center group relative h-12 w-fit cursor-pointer mx-auto lg:mx-0 overflow-hidden transition-all duration-700 rounded-[34px_34px_0px_34px] hover:rounded-[34px_34px_34px_0px]"
                         >
-                            <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-transform group-hover:scale-105">
-                                <FaChevronRight className="w-4 h-4 text-[#3799FA]" />
+                            <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-all duration-700 ease-in-out group-hover:left-[calc(100%-48px)] group-hover:bg-linear-to-r group-hover:from-[#3799FA] group-hover:to-[#9961FB] group-hover:scale-105">
+                                <FaChevronRight className="w-4 h-4 text-[#3799FA] transition-all duration-700 ease-in-out group-hover:text-white" />
                             </div>
-                            <div className="pl-14 pr-8 h-full flex items-center text-white font-bold text-[15px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all bg-gradient-to-r from-[#3799FA] to-[#9961FB] rounded-[34px_34px_0px_34px]">
+                            <div className="pl-14 pr-8 h-full flex items-center whitespace-nowrap text-white font-bold text-[15px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all duration-700 ease-in-out bg-linear-to-r from-[#3799FA] to-[#9961FB] group-hover:from-white group-hover:to-white group-hover:text-black group-hover:pl-6 group-hover:pr-14 rounded-[34px_34px_0px_34px] group-hover:rounded-[34px_34px_34px_0px]">
                                 Unlock AI Potential
                             </div>
                         </button>
                     </div>
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(90,103,251,0.15)_0%,_transparent_50%),radial-gradient(circle_at_bottom_left,_rgba(155,110,253,0.15)_0%,_transparent_50%)] pointer-events-none opacity-50" />
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(90,103,251,0.15)_0%,transparent_50%),radial-gradient(circle_at_bottom_left,rgba(155,110,253,0.15)_0%,transparent_50%)] pointer-events-none opacity-50" />
                     <div className="absolute inset-0 bg-[#1a1c2e]/60 pointer-events-none" />
                 </div>
             </div>

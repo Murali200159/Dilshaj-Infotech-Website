@@ -41,7 +41,7 @@ export default function Hero() {
 
                 {/* Badge */}
                 <div className="mb-6 rounded-full px-5 py-1.5 border border-[#3b82f6]/50 md:border-[#3b82f6]/30 flex items-center justify-center bg-[#050505]/40 backdrop-blur-sm">
-                    <span className="text-[14px] md:text-[14px] font-medium bg-gradient-to-r from-[#4DA5FF] to-[#9458F6] text-transparent bg-clip-text tracking-wide">
+                    <span className="text-[14px] md:text-[14px] font-medium bg-linear-to-r from-[#4DA5FF] to-[#9458F6] text-transparent bg-clip-text tracking-wide">
                         #upcoming
                     </span>
                 </div>
@@ -49,7 +49,7 @@ export default function Hero() {
                 {/* Heading */}
                 <h1 className={`${poppins.className} max-md:text-[38px] text-[36px] md:text-[52px] lg:text-[60px] font-bold md:font-semibold text-white leading-[1.1] md:leading-[1.15] mb-4 md:mb-6 tracking-tight`}>
                     Fresh Food. Fast Delivery. <br className="hidden md:block" />
-                    <span className="bg-gradient-to-r from-[#4DA5FF] to-[#9458F6] text-transparent bg-clip-text">One Tap Away.</span>
+                    <span className="bg-linear-to-r from-[#4DA5FF] to-[#9458F6] text-transparent bg-clip-text">One Tap Away.</span>
                 </h1>
 
                 {/* Subheading */}
@@ -58,16 +58,19 @@ export default function Hero() {
                 </p>
 
                 {/* Description */}
-                <p className="max-md:text-[15px] text-[13px] md:text-[15px] lg:text-[16px] text-[#A0A0A0] max-w-[750px] leading-[1.5] md:leading-[1.7] mb-10 md:mb-12">
+                <p className="max-md:text-[15px] text-[13px] md:text-[15px] lg:text-[16px] text-[#A0A0A0] max-w-[750px] leading-normal md:leading-[1.7] mb-10 md:mb-12">
                     Our upcoming food delivery application connects customers with nearby restaurants through a seamless, fast, and reliable ordering experience. From browsing menus to real-time delivery tracking, everything is designed for convenience.
                 </p>
 
                 {/* Button */}
-                <button suppressHydrationWarning className="flex items-center group relative h-12 w-fit cursor-pointer overflow-hidden transition-all duration-700 rounded-[34px_34px_0px_34px] hover:rounded-[34px_34px_34px_0px]">
-                    <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-all duration-700 ease-in-out group-hover:left-[calc(100%-48px)] group-hover:bg-gradient-to-r group-hover:from-[#3799FA] group-hover:to-[#9961FB] group-hover:scale-105">
-                        <FaChevronRight className="w-4 h-4 text-[#3799FA] transition-all duration-700 ease-in-out group-hover:text-white" />
+                <button
+                    suppressHydrationWarning
+                    className="flex items-center group relative h-12 w-fit cursor-pointer overflow-hidden transition-all duration-700 rounded-[34px_34px_0px_34px] hover:rounded-[34px_34px_34px_0px]"
+                >
+                    <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-all duration-700 ease-in-out group-hover:left-[calc(100%-48px)] group-hover:bg-linear-to-r group-hover:from-[#3799FA] group-hover:to-[#9961FB] group-hover:scale-105">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#3799FA" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 ml-0.5 transition-all duration-700 ease-in-out group-hover:text-white"><polyline points="9 18 15 12 9 6" /></svg>
                     </div>
-                    <div className="pl-14 pr-8 h-full flex items-center text-white font-bold text-[15px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all duration-700 ease-in-out bg-gradient-to-r from-[#3799FA] to-[#9961FB] group-hover:from-white group-hover:to-white group-hover:text-black group-hover:pl-6 group-hover:pr-14 rounded-[34px_34px_0px_34px] group-hover:rounded-[34px_34px_34px_0px]">
+                    <div className="pl-14 pr-8 h-full flex items-center text-white font-bold text-[15px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all duration-700 ease-in-out bg-linear-to-r from-[#3799FA] to-[#9961FB] group-hover:from-white group-hover:to-white group-hover:text-black group-hover:pl-6 group-hover:pr-14 rounded-[34px_34px_0px_34px] group-hover:rounded-[34px_34px_34px_0px]">
                         Notify Me at Launch
                     </div>
                 </button>

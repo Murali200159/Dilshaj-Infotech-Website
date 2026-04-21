@@ -46,7 +46,7 @@ export default function Hero() {
              * Desktop (lg+): cap at 460px max-height
              * ────────────────────────────────────────────────────────
              */}
-            <div className="relative w-full aspect-[16/7] max-h-[500px] lg:max-h-[650px]">
+            <div className="relative w-full aspect-16/7 max-h-[500px] lg:max-h-[650px]">
 
                 {/* ── Background image ── */}
                 <div className="hero-bg-reveal absolute inset-0">
@@ -65,9 +65,9 @@ export default function Hero() {
 
                 {/* ── Overlays ── */}
                 {/* Left-to-transparent gradient so text is readable on all sizes */}
-                <div className="absolute inset-0 bg-gradient-to-r from-[#060d1f]/90 via-[#060d1f]/55 to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-r from-[#060d1f]/90 via-[#060d1f]/55 to-transparent" />
                 {/* Bottom fade into next section */}
-                <div className="absolute inset-x-0 bottom-0 h-[40px] bg-gradient-to-t from-[#060d1f] to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 h-[40px] bg-linear-to-t from-[#060d1f] to-transparent" />
 
 
 
@@ -84,24 +84,24 @@ export default function Hero() {
                 >
                     {/* ── Heading ── */}
                     <h1 className="
-                        font-[800] leading-[1.15] tracking-tight
+                        font-extrabold leading-[1.15] tracking-tight
                         mb-1.5 text-[clamp(11px,2.8vw,16px)]
                         lg:w-[682px] lg:h-[120px]
                         lg:mb-[clamp(12px,1.6vw,22px)] lg:text-[clamp(26px,2.4vw,36px)]
                     ">
                         <span className="text-white">Secure Every Move. </span>
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#60a5fa] to-[#a855f7]">
+                        <span className="text-transparent bg-clip-text bg-linear-to-r from-[#60a5fa] to-[#a855f7]">
                             Navigate with{" "}
                         </span>
                         <br className="hidden lg:block" />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#60a5fa] to-[#a855f7]">
+                        <span className="text-transparent bg-clip-text bg-linear-to-r from-[#60a5fa] to-[#a855f7]">
                             Confidence.
                         </span>
                     </h1>
 
                     {/* ── Description ── */}
                     <p className="
-                        text-white/75 leading-[1.6] font-[400]
+                        text-white/75 leading-[1.6] font-normal
                         mb-2 text-[clamp(7px,1.5vw,10px)] max-w-[clamp(120px,36vw,300px)]
                         lg:mb-[clamp(16px,2.2vw,32px)] lg:text-[clamp(14px,1.2vw,18px)] lg:max-w-[clamp(220px,38vw,500px)]
                     ">
@@ -111,11 +111,14 @@ export default function Hero() {
                     </p>
 
                     {/* ── CTA Button ── */}
-                    <button suppressHydrationWarning className="flex items-center group relative h-12 w-fit cursor-pointer mt-4">
-                        <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-transform group-hover:scale-105">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 text-[#3799FA]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
+                    <button
+                        suppressHydrationWarning
+                        className="flex items-center group relative h-12 w-fit cursor-pointer overflow-hidden transition-all duration-700 rounded-[34px_34px_0px_34px] hover:rounded-[34px_34px_34px_0px] mt-4"
+                    >
+                        <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-all duration-700 ease-in-out group-hover:left-[calc(100%-48px)] group-hover:bg-linear-to-r group-hover:from-[#3799FA] group-hover:to-[#9961FB] group-hover:scale-105">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#3799FA" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 ml-0.5 transition-all duration-700 ease-in-out group-hover:text-white"><polyline points="9 18 15 12 9 6" /></svg>
                         </div>
-                        <div className="pl-14 pr-8 h-full flex items-center text-white font-bold text-[15px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all bg-gradient-to-r from-[#3799FA] to-[#9961FB] rounded-[34px_34px_0px_34px]">
+                        <div className="pl-14 pr-8 h-full flex items-center text-white font-bold text-[15px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all duration-700 ease-in-out bg-linear-to-r from-[#3799FA] to-[#9961FB] group-hover:from-white group-hover:to-white group-hover:text-black group-hover:pl-6 group-hover:pr-14 rounded-[34px_34px_0px_34px] group-hover:rounded-[34px_34px_34px_0px]">
                             Coming Soon
                         </div>
                     </button>

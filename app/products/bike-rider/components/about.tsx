@@ -67,7 +67,7 @@ export default function About() {
 
                     {/* Left Column (Image) */}
                     <div className="w-full md:w-1/2 flex justify-center max-md:-mt-4 md:mt-0 relative z-10 about-image-reveal">
-                        <div className="relative w-full aspect-[16/11] rounded-tr-[40px] md:rounded-tr-[60px] overflow-hidden shadow-none bg-[#f1f1f1]">
+                        <div className="relative w-full aspect-16/11 rounded-tr-[40px] md:rounded-tr-[60px] overflow-hidden shadow-none bg-[#f1f1f1]">
                             <img
                                 src="/products/bike-rider-images/bike-rider-images/bikecar.png"
                                 alt="Bike and Car App"
@@ -112,11 +112,14 @@ export default function About() {
 
                         {/* CTA Button */}
                         <div className="mt-8 flex justify-center md:justify-start w-full">
-                            <button suppressHydrationWarning className="flex items-center group relative h-12 w-fit cursor-pointer overflow-hidden transition-all duration-700 rounded-[34px_34px_0px_34px] hover:rounded-[34px_34px_34px_0px]">
-                                <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-all duration-700 ease-in-out group-hover:left-[calc(100%-48px)] group-hover:bg-gradient-to-r group-hover:from-[#3799FA] group-hover:to-[#9961FB] group-hover:scale-105">
-                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3799FA" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="transition-all duration-700 ease-in-out group-hover:stroke-white"><path d="m9 18 6-6-6-6" /></svg>
+                            <button
+                                suppressHydrationWarning
+                                className="flex items-center group relative h-12 w-fit cursor-pointer overflow-hidden transition-all duration-700 rounded-[34px_34px_0px_34px] hover:rounded-[34px_34px_34px_0px]"
+                            >
+                                <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-all duration-700 ease-in-out group-hover:left-[calc(100%-48px)] group-hover:bg-linear-to-r group-hover:from-[#3799FA] group-hover:to-[#9961FB] group-hover:scale-105">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#3799FA" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 ml-0.5 transition-all duration-700 ease-in-out group-hover:text-white"><polyline points="9 18 15 12 9 6" /></svg>
                                 </div>
-                                <div className="pl-14 pr-8 h-full flex items-center text-white font-bold text-[15px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all duration-700 ease-in-out bg-gradient-to-r from-[#3799FA] to-[#9961FB] group-hover:from-white group-hover:to-white group-hover:text-black group-hover:pl-6 group-hover:pr-14 rounded-[34px_34px_0px_34px] group-hover:rounded-[34px_34px_34px_0px]">
+                                <div className="pl-14 pr-8 h-full flex items-center text-white font-bold text-[15px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all duration-700 ease-in-out bg-linear-to-r from-[#3799FA] to-[#9961FB] group-hover:from-white group-hover:to-white group-hover:text-black group-hover:pl-6 group-hover:pr-14 rounded-[34px_34px_0px_34px] group-hover:rounded-[34px_34px_34px_0px]">
                                     Get Early Access
                                 </div>
                             </button>

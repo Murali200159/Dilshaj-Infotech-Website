@@ -54,7 +54,7 @@ export default function CountryCodeSelector({ selectedCountry, onSelect }: Count
 
             {/* Dropdown Menu */}
             {isOpen && (
-                <div className="absolute top-full left-0 mt-2 w-[280px] max-h-[400px] overflow-hidden bg-[#1A1F2C]/95 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl z-50 flex flex-col">
+                <div className="absolute bottom-full left-0 mb-2 w-[280px] max-h-[400px] overflow-hidden bg-[#1A1F2C]/95 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl z-50 flex flex-col">
                     {/* Search Input */}
                     <div className="p-3 border-b border-white/10 relative">
                         <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40" />

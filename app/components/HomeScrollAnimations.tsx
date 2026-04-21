@@ -68,6 +68,37 @@ export default function HomeScrollAnimations() {
                         scrollTrigger: { trigger: statsSection, start: isMobile ? "top 88%" : "top 78%", toggleActions: "play none none none" }
                     });
                 }
+
+                // Count-up animation for stat values
+                const statValues = statsSection.querySelectorAll(".stat-value");
+                statValues.forEach((el) => {
+                    const targetValue = parseInt(el.getAttribute("data-value") || "0");
+                    const originalText = el.textContent || "";
+                    const hasPlus = originalText.includes("+");
+                    const hasPercent = originalText.includes("%");
+                    const hasSlash = originalText.includes("/");
+
+                    if (targetValue > 0) {
+                        const counter = { val: 0 };
+                        gsap.to(counter, {
+                            val: targetValue,
+                            duration: 2,
+                            ease: "power2.out",
+                            scrollTrigger: {
+                                trigger: el,
+                                start: "top 95%",
+                                toggleActions: "play none none none"
+                            },
+                            onUpdate: () => {
+                                let formattedValue = Math.floor(counter.val).toString();
+                                if (hasPercent) formattedValue += "%";
+                                if (hasPlus) formattedValue += "+";
+                                if (hasSlash && targetValue === 24) formattedValue += "/7";
+                                el.textContent = formattedValue;
+                            }
+                        });
+                    }
+                });
             }
 
             // ─── 2. SERVICES SECTION ──────────────────────────────────────

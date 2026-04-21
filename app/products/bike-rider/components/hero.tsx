@@ -46,7 +46,7 @@ export default function Hero() {
             </div>
 
             {/* Subtle overlay focused on the left to ensure text readability but keep the bikes and cars clear */}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#06102B]/95 via-[#06102B]/40 to-transparent z-10"></div>
+            <div className="absolute inset-0 bg-linear-to-r from-[#06102B]/95 via-[#06102B]/40 to-transparent z-10"></div>
 
             <div className="relative z-20 w-full max-w-[1440px] mx-auto px-6 sm:px-8 md:px-12 lg:px-16 flex flex-col md:flex-row items-center justify-between">
 
@@ -55,7 +55,7 @@ export default function Hero() {
                     <div className="max-md:mt-10">
                         <h1 className={`${poppins.className} text-[30px] xs:text-[34px] sm:text-[38px] md:text-[42px] lg:text-[52px] xl:text-[60px] font-bold text-white leading-[1.1] md:leading-[1.1] tracking-tight mb-6 md:mb-8`}>
                             A next-generation <br className="hidden lg:block" />
-                            <span className="bg-gradient-to-r from-[#A26DFF] to-[#3A8EFE] text-transparent bg-clip-text italic">Bike &amp; Car booking</span><br />
+                            <span className="bg-linear-to-r from-[#A26DFF] to-[#3A8EFE] text-transparent bg-clip-text italic">Bike &amp; Car booking</span><br />
                             platform designed for speed.
                         </h1>
 
@@ -65,11 +65,14 @@ export default function Hero() {
                     </div>
 
                     <div>
-                        <button suppressHydrationWarning className="flex items-center group relative h-12 w-fit cursor-pointer md:mt-4">
-                            <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-transform group-hover:scale-105">
-                                <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 text-[#3799FA]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
+                        <button
+                            suppressHydrationWarning
+                            className="flex items-center group relative h-12 w-fit cursor-pointer overflow-hidden transition-all duration-700 rounded-[34px_34px_0px_34px] hover:rounded-[34px_34px_34px_0px] md:mt-4"
+                        >
+                            <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-all duration-700 ease-in-out group-hover:left-[calc(100%-48px)] group-hover:bg-linear-to-r group-hover:from-[#3799FA] group-hover:to-[#9961FB] group-hover:scale-105">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#3799FA" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 ml-0.5 transition-all duration-700 ease-in-out group-hover:text-white"><polyline points="9 18 15 12 9 6" /></svg>
                             </div>
-                            <div className="pl-14 pr-8 h-full flex items-center text-white font-bold text-[15px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all bg-gradient-to-r from-[#3799FA] to-[#9961FB] rounded-[34px_34px_0px_34px]">
+                            <div className="pl-14 pr-8 h-full flex items-center text-white font-bold text-[15px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all duration-700 ease-in-out bg-linear-to-r from-[#3799FA] to-[#9961FB] group-hover:from-white group-hover:to-white group-hover:text-black group-hover:pl-6 group-hover:pr-14 rounded-[34px_34px_0px_34px] group-hover:rounded-[34px_34px_34px_0px]">
                                 Coming Soon
                             </div>
                         </button>

@@ -48,7 +48,7 @@ export default function Navbar() {
 
     return (
         <>
-            <nav className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${hasScrolled ? "bg-white/20 backdrop-blur-md saturate-[180%] border-b border-white/30 shadow-lg py-3" : "bg-transparent border-b-transparent shadow-none py-5"}`}>
+            <nav className={`fixed top-0 left-0 right-0 z-100 transition-all duration-300 ${pathname === "/" && !hasScrolled ? "bg-transparent py-5" : "bg-linear-to-r from-[#CAD0FF]/90 to-[#E3E3E3]/90 backdrop-blur-md border-b border-white/30 shadow-lg py-3"}`}>
                 <div className="max-w-[1700px] mx-auto px-6 md:px-12 lg:px-20 flex items-center justify-between">
                     {/* LEFT: Logo */}
                     <Link href="/" className="flex items-center group">
@@ -68,9 +68,7 @@ export default function Navbar() {
                                     href={link.href}
                                     className={`flex items-center gap-1.5 text-[16px] font-semibold transition-colors duration-300 ${pathname === link.href
                                         ? "text-blue-600"
-                                        : hasScrolled
-                                            ? "text-gray-700 hover:text-blue-600"
-                                            : (pathname === "/" ? "text-[#1F2933] hover:text-blue-600" : "text-white hover:text-blue-400")
+                                        : "text-[#1F2933] hover:text-blue-600"
                                         }`}
                                 >
                                     {link.name}
@@ -86,10 +84,10 @@ export default function Navbar() {
                             onClick={() => setIsGetInTouchOpen(true)}
                             className="hidden lg:flex items-center group relative h-12 w-fit cursor-pointer overflow-hidden transition-all duration-700 rounded-[34px_34px_0px_34px] hover:rounded-[34px_34px_34px_0px]"
                         >
-                            <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-all duration-700 ease-in-out group-hover:left-[calc(100%-48px)] group-hover:bg-gradient-to-r group-hover:from-[#3799FA] group-hover:to-[#9961FB] group-hover:scale-105">
+                            <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-all duration-700 ease-in-out group-hover:left-[calc(100%-48px)] group-hover:bg-linear-to-r group-hover:from-[#3799FA] group-hover:to-[#9961FB] group-hover:scale-105">
                                 <FaChevronRight className="w-4 h-4 text-[#3799FA] transition-all duration-700 ease-in-out group-hover:text-white" />
                             </div>
-                            <div className="pl-14 pr-8 h-full flex items-center text-white font-bold text-[15px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all duration-700 ease-in-out bg-gradient-to-r from-[#3799FA] to-[#9961FB] group-hover:from-white group-hover:to-white group-hover:text-black group-hover:pl-6 group-hover:pr-14 rounded-[34px_34px_0px_34px] group-hover:rounded-[34px_34px_34px_0px]">
+                            <div className="pl-14 pr-8 h-full flex items-center text-white font-bold text-[15px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all duration-700 ease-in-out bg-linear-to-r from-[#3799FA] to-[#9961FB] group-hover:from-white group-hover:to-white group-hover:text-black group-hover:pl-6 group-hover:pr-14 rounded-[34px_34px_0px_34px] group-hover:rounded-[34px_34px_34px_0px]">
                                 Get in Touch
                             </div>
                         </button>
@@ -97,10 +95,7 @@ export default function Navbar() {
                         {/* Hamburger Button */}
                         <button
                             onClick={() => setIsMenuOpen(true)}
-                            className={`lg:hidden p-2 transition-colors ${hasScrolled
-                                ? "text-gray-800"
-                                : (pathname === "/" ? "text-gray-800" : "text-white")
-                                }`}
+                            className="lg:hidden p-2 transition-colors text-gray-800"
                             aria-label="Open Menu"
                         >
                             <FaBars className="w-7 h-7" />
@@ -119,7 +114,7 @@ export default function Navbar() {
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
                             onClick={() => setIsMenuOpen(false)}
-                            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[200]"
+                            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-200"
                         />
 
                         {/* Drawer */}
@@ -128,7 +123,7 @@ export default function Navbar() {
                             animate={{ x: 0 }}
                             exit={{ x: "-100%" }}
                             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-                            className="fixed top-0 left-0 h-full w-[80%] max-w-[400px] bg-[#F8F9FA] z-[210] shadow-2xl flex flex-col"
+                            className="fixed top-0 left-0 h-full w-[80%] max-w-[400px] bg-[#F8F9FA] z-210 shadow-2xl flex flex-col"
                         >
                             {/* Drawer Header */}
                             <div className="p-6 flex items-center justify-between border-b border-gray-200">
@@ -159,7 +154,7 @@ export default function Navbar() {
                                 ))}
                             </div>
 
-                            {/* Drawer Footer CTA */}
+                            {/* Drawer Footer CTA */};
                             <div className="p-6">
                                 <button
                                     suppressHydrationWarning
@@ -172,7 +167,7 @@ export default function Navbar() {
                                     <div className="absolute left-0 w-14 h-14 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-all duration-700 ease-in-out">
                                         <FaChevronRight className="w-4 h-4 text-[#3799FA]" />
                                     </div>
-                                    <div className="pl-16 pr-8 h-full flex items-center justify-center text-white font-bold text-[17px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all duration-700 ease-in-out bg-gradient-to-r from-[#3799FA] to-[#9961FB] rounded-[34px_34px_0px_34px]">
+                                    <div className="pl-16 pr-8 h-full flex items-center justify-center text-white font-bold text-[17px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all duration-700 ease-in-out bg-linear-to-r from-[#3799FA] to-[#9961FB] rounded-[34px_34px_0px_34px]">
                                         Get in Touch
                                     </div>
                                 </button>

@@ -46,7 +46,7 @@ export default function HeroSection() {
             {/* --- Mobile View Top Content --- */}
             <div
                 style={{ willChange: "transform, opacity" }}
-                className="flex-1 flex flex-col items-center justify-center px-4 py-16 md:hidden z-10 w-full relative bg-gradient-to-b from-black to-[#050505] hero-mobile-content"
+                className="flex-1 flex flex-col items-center justify-center px-4 py-16 md:hidden z-10 w-full relative bg-linear-to-b from-black to-[#050505] hero-mobile-content"
             >
                 <h1
                     className="text-white text-center font-bold"
@@ -73,11 +73,14 @@ export default function HeroSection() {
                     project management in one unified ecosystem.
                 </p>
 
-                <button suppressHydrationWarning className="mt-10 flex items-center group relative h-12 w-fit cursor-pointer">
-                    <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-transform group-hover:scale-105">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#3799FA" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 ml-0.5"><polyline points="9 18 15 12 9 6" /></svg>
+                <button
+                    suppressHydrationWarning
+                    className="mt-10 flex items-center group relative h-12 w-fit cursor-pointer overflow-hidden transition-all duration-700 rounded-[34px_34px_0px_34px] hover:rounded-[34px_34px_34px_0px]"
+                >
+                    <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-all duration-700 ease-in-out group-hover:left-[calc(100%-48px)] group-hover:bg-linear-to-r group-hover:from-[#3799FA] group-hover:to-[#9961FB] group-hover:scale-105">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#3799FA" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 ml-0.5 transition-all duration-700 ease-in-out group-hover:text-white"><polyline points="9 18 15 12 9 6" /></svg>
                     </div>
-                    <div className="pl-14 pr-8 h-full flex items-center text-white font-bold text-[15px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all bg-gradient-to-r from-[#3799FA] to-[#9961FB] rounded-[34px_34px_0px_34px]">
+                    <div className="pl-14 pr-8 h-full flex items-center text-white font-bold text-[15px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all duration-700 ease-in-out bg-linear-to-r from-[#3799FA] to-[#9961FB] group-hover:from-white group-hover:to-white group-hover:text-black group-hover:pl-6 group-hover:pr-14 rounded-[34px_34px_0px_34px] group-hover:rounded-[34px_34px_34px_0px]">
                         Coming Soon
                     </div>
                 </button>
@@ -85,7 +88,7 @@ export default function HeroSection() {
 
             {/* --- Mobile Image (Bottom) & Desktop Background --- */}
             <div className="relative w-full h-[45vh] sm:h-[55vh] md:h-screen shrink-0 md:absolute md:inset-0 md:z-0 overflow-hidden hero-image-reveal">
-                <div className="hidden md:block absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent z-10 pointer-events-none"></div>
+                <div className="hidden md:block absolute inset-0 bg-linear-to-t from-black/90 via-black/20 to-transparent z-10 pointer-events-none"></div>
                 <div className="absolute inset-0 w-full h-full">
                     <Image
                         src="/products-images/architechture.png"
@@ -129,11 +132,14 @@ export default function HeroSection() {
                     </p>
                 </div>
 
-                <button suppressHydrationWarning className="flex items-center group relative h-12 w-fit cursor-pointer shrink-0 mb-4 ml-8">
-                    <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-transform group-hover:scale-105">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#3799FA" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 ml-0.5"><polyline points="9 18 15 12 9 6" /></svg>
+                <button
+                    suppressHydrationWarning
+                    className="flex items-center group relative h-12 w-fit cursor-pointer shrink-0 mb-4 ml-8 overflow-hidden transition-all duration-700 rounded-[34px_34px_0px_34px] hover:rounded-[34px_34px_34px_0px]"
+                >
+                    <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-all duration-700 ease-in-out group-hover:left-[calc(100%-48px)] group-hover:bg-linear-to-r group-hover:from-[#3799FA] group-hover:to-[#9961FB] group-hover:scale-105">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#3799FA" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 ml-0.5 transition-all duration-700 ease-in-out group-hover:text-white"><polyline points="9 18 15 12 9 6" /></svg>
                     </div>
-                    <div className="pl-14 pr-8 h-full flex items-center text-white font-bold text-[15px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all bg-gradient-to-r from-[#3799FA] to-[#9961FB] rounded-[34px_34px_0px_34px]">
+                    <div className="pl-14 pr-8 h-full flex items-center text-white font-bold text-[15px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all duration-700 ease-in-out bg-linear-to-r from-[#3799FA] to-[#9961FB] group-hover:from-white group-hover:to-white group-hover:text-black group-hover:pl-6 group-hover:pr-14 rounded-[34px_34px_0px_34px] group-hover:rounded-[34px_34px_34px_0px]">
                         Coming Soon
                     </div>
                 </button>

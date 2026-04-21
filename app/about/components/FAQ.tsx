@@ -135,12 +135,12 @@ export default function FAQ() {
                                             {faq.question}
                                         </span>
                                     </div>
-                                    <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${activeFaqIdx === idx ? 'bg-blue-600 text-white rotate-180' : 'bg-black/5 text-black/60'}`}>
+                                    <div className={`w-8 h-8 shrink-0 rounded-full flex items-center justify-center transition-all ${activeFaqIdx === idx ? 'bg-blue-600 text-white rotate-180' : 'bg-black/5 text-black/60'}`}>
                                         {activeFaqIdx === idx ? <FaMinus className="w-4 h-4" /> : <FaPlus className="w-4 h-4" />}
                                     </div>
                                 </button>
                                 <div
-                                    className={`overflow-hidden transition-all duration-300 ${activeFaqIdx === idx ? 'max-h-[300px] opacity-100' : 'max-h-0 opacity-0'}`}
+                                    className={`overflow-hidden transition-all duration-300 ${activeFaqIdx === idx ? 'max-h-[800px] md:max-h-[300px] opacity-100' : 'max-h-0 opacity-0'}`}
                                 >
                                     <div className="px-8 pb-8 pl-[84px] text-black/60 text-[16px] leading-relaxed">
                                         {faq.answer}
@@ -151,7 +151,7 @@ export default function FAQ() {
                     </div>
 
                     {/* Contact Card Column */}
-                    <div className="faq-contact-card w-full lg:w-[399px] flex-shrink-0 sticky top-24">
+                    <div className="faq-contact-card w-full lg:w-[399px] shrink-0 sticky top-24">
                         <div
                             className="rounded-[32px] p-8 relative overflow-hidden flex flex-col items-center justify-center text-center shadow-2xl h-full"
                             style={{
@@ -160,7 +160,7 @@ export default function FAQ() {
                         >
                             {/* Floating Asset */}
                             <div
-                                className="absolute -top-16 -right-16 opacity-40 pointer-events-none rotate-[15deg]"
+                                className="absolute -top-16 -right-16 opacity-40 pointer-events-none rotate-15"
                                 style={{
                                     width: '364.52px',
                                     height: '420.6px'

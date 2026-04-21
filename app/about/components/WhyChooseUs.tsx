@@ -22,32 +22,32 @@ const features = [
     {
         title: "Strong Engineering Foundation",
         description: "Modern and secure app & web development solutions built to help businesses grow with confidence.",
-        icon: ShieldCheck,
+        img: "/about/growing/engineering.png",
     },
     {
         title: "Agile & Adaptive Execution",
         description: "We move fast without compromising quality — delivering efficient solutions tailored to evolving business needs.",
-        icon: Zap,
+        img: "/about/growing/alige.png",
     },
     {
         title: "End-to-End Development Approach",
         description: "From strategy and design to deployment and support, we manage the complete digital journey.",
-        icon: Layers,
+        img: "/about/growing/approach.png",
     },
     {
         title: "Solutions Built to Scale",
         description: "Our systems are designed to grow with your business — adaptable, flexible, and future-ready.",
-        icon: TrendingUp,
+        img: "/about/growing/scale-up.png",
     },
     {
         title: "Seamless System Integration",
         description: "We ensure smooth integration with your existing tools, platforms, and workflows.",
-        icon: Link,
+        img: "/about/growing/integration.png",
     },
     {
         title: "Results That Matter",
         description: "Every solution is built with measurable performance, user experience, and business impact in mind.",
-        icon: BarChart3,
+        img: "/about/growing/result.png",
     },
 ];
 
@@ -122,7 +122,7 @@ export default function WhyChooseUs() {
                         </div>
 
                         {/* Visual Asset Section */}
-                        <div className="why-choose-image relative group rounded-[27px] overflow-hidden border border-zinc-800/50 aspect-[4/3]">
+                        <div className="why-choose-image relative group rounded-[27px] overflow-hidden border border-zinc-800/50 aspect-4/3">
                             <Image
                                 src="/about/innovation.png"
                                 alt="AI Innovation"
@@ -141,7 +141,13 @@ export default function WhyChooseUs() {
                                 className="feature-list-item flex items-start gap-6 group transition-all duration-300"
                             >
                                 <div className="w-12 h-12 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center shrink-0 group-hover:bg-zinc-800 group-hover:border-zinc-700 transition-colors">
-                                    <feature.icon className="w-6 h-6 text-white" />
+                                    <Image
+                                        src={feature.img}
+                                        alt={feature.title}
+                                        width={24}
+                                        height={24}
+                                        className="object-contain brightness-0 invert"
+                                    />
                                 </div>
                                 <div>
                                     <h3 className="text-xl font-semibold text-white group-hover:text-blue-400 transition-colors">

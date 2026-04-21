@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { Poppins } from "next/font/google";
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { FaPhone, FaWhatsapp, FaChevronRight } from "react-icons/fa6";
 import ContactSection from "../components/ContactSection";
 import Footer from "../components/Footer";
@@ -139,7 +140,7 @@ export default function Home() {
         </div>
 
         {/* Hero Content */}
-        <div className="relative z-20 w-full max-w-[1200px] px-6 mx-auto flex flex-col items-center text-center text-white mt-8">
+        <div className="relative z-20 w-full max-w-[1200px] px-6 mx-auto flex flex-col items-center text-center text-white mt-24 md:mt-8">
           <div className="flex flex-col items-center w-full">
             {/* Desktop Headline */}
             <div className="hidden md:flex flex-col items-center w-full">
@@ -256,21 +257,41 @@ export default function Home() {
                 suppressHydrationWarning
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`w-[307px] h-[62px] rounded-[10px] flex items-center justify-center gap-[10px] py-[14px] px-[75px] text-[16px] font-semibold transition-all duration-300 ${activeTab === tab
-                  ? "bg-gradient-to-r from-[#20B5F9] to-[#A851ED] text-white shadow-xl shadow-purple-500/20"
+                className={`relative w-[307px] h-[62px] rounded-[10px] flex items-center justify-center gap-[10px] py-[14px] px-[75px] text-[16px] font-semibold transition-colors duration-300 ${activeTab === tab
+                  ? "text-white"
                   : "bg-transparent text-black hover:bg-gray-200/50"
                   }`}
               >
-                {icons[tab as keyof typeof icons]} {tab}
+                {activeTab === tab && (
+                  <motion.div
+                    layoutId="activeTabBackground"
+                    className="absolute inset-0 bg-linear-to-r from-[#20B5F9] to-[#A851ED] rounded-[10px] shadow-xl shadow-purple-500/20"
+                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                  />
+                )}
+                <span className="relative z-10 flex items-center gap-[10px]">
+                  {icons[tab as keyof typeof icons]} {tab}
+                </span>
               </button>
             ))}
           </div>
 
           {/* Flow Content Area */}
           <div className="flex-1 flex flex-col gap-12">
-            {jobsData[activeTab].map((job, idx) => (
-              <JobCard key={idx} job={job} isDesktop={true} />
-            ))}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeTab}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.3 }}
+                className="flex flex-col gap-12"
+              >
+                {jobsData[activeTab].map((job, idx) => (
+                  <JobCard key={idx} job={job} isDesktop={true} />
+                ))}
+              </motion.div>
+            </AnimatePresence>
           </div>
         </div>
 
@@ -281,22 +302,39 @@ export default function Home() {
               <button
                 suppressHydrationWarning
                 onClick={() => setActiveTab(tab)}
-                className={`w-full max-w-[307px] mx-auto min-h-[62px] rounded-[10px] flex items-center justify-center gap-3 py-3 px-6 text-[16px] font-semibold transition-all duration-300 mb-2 ${activeTab === tab
-                  ? "bg-gradient-to-r from-[#20B5F9] to-[#A851ED] text-white shadow-md shadow-purple-500/20"
+                className={`relative w-full max-w-[307px] mx-auto min-h-[62px] rounded-[10px] flex items-center justify-center gap-3 py-3 px-6 text-[16px] font-semibold transition-colors duration-300 mb-2 ${activeTab === tab
+                  ? "text-white"
                   : "bg-transparent text-black"
                   }`}
               >
-                {icons[tab as keyof typeof icons]} {tab}
+                {activeTab === tab && (
+                  <motion.div
+                    layoutId="activeTabBackgroundMobile"
+                    className="absolute inset-0 bg-linear-to-r from-[#20B5F9] to-[#A851ED] rounded-[10px] shadow-md shadow-purple-500/20"
+                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                  />
+                )}
+                <span className="relative z-10 flex items-center gap-3">
+                  {icons[tab as keyof typeof icons]} {tab}
+                </span>
               </button>
 
               {/* Render local content only if this tab is active */}
-              {activeTab === tab && (
-                <div className="flex flex-col gap-10 px-1 py-8 max-w-[500px] w-full mx-auto md:max-w-2xl">
-                  {jobsData[activeTab].map((job, idx) => (
-                    <JobCard key={idx} job={job} isDesktop={false} />
-                  ))}
-                </div>
-              )}
+              <AnimatePresence>
+                {activeTab === tab && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, height: "auto", scale: 1 }}
+                    exit={{ opacity: 0, height: 0, scale: 0.95 }}
+                    transition={{ duration: 0.3 }}
+                    className="flex flex-col gap-10 px-1 py-8 max-w-[500px] w-full mx-auto md:max-w-2xl overflow-hidden"
+                  >
+                    {jobsData[activeTab].map((job, idx) => (
+                      <JobCard key={idx} job={job} isDesktop={false} />
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           ))}
         </div>
@@ -351,7 +389,7 @@ function JobCard({ job, isDesktop }: { job: any; isDesktop: boolean }) {
 
       {/* Dynamic Title depending on screen */}
       <h3 className={`text-[17px] md:text-[20px] font-bold uppercase tracking-wide leading-tight ${!isDesktop
-        ? "text-transparent bg-clip-text bg-gradient-to-r from-[#C36FF9] to-[#9154F7]"
+        ? "text-transparent bg-clip-text bg-linear-to-r from-[#C36FF9] to-[#9154F7]"
         : "text-[#1B1B1B]"
         }`}>
         {job.title}
@@ -389,11 +427,11 @@ function JobCard({ job, isDesktop }: { job: any; isDesktop: boolean }) {
           className="group relative h-11 w-full sm:w-fit cursor-pointer overflow-hidden transition-all duration-700 rounded-[28px_28px_0px_28px] hover:rounded-[28px_28px_28px_0px] shadow-lg flex items-center"
         >
           {/* Animated circle toggle */}
-          <div className="absolute left-0 w-11 h-11 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-all duration-700 ease-in-out group-hover:left-[calc(100%-44px)] group-hover:bg-gradient-to-r group-hover:from-[#3799FA] group-hover:to-[#9961FB] group-hover:scale-105">
+          <div className="absolute left-0 w-11 h-11 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-all duration-700 ease-in-out group-hover:left-[calc(100%-44px)] group-hover:bg-linear-to-r group-hover:from-[#3799FA] group-hover:to-[#9961FB] group-hover:scale-105">
             <FaChevronRight className="w-3.5 h-3.5 text-[#3799FA] transition-all duration-700 ease-in-out group-hover:text-white" />
           </div>
           {/* Button text body */}
-          <div className="pl-13 pr-7 h-full flex items-center text-white font-bold text-[14px] transition-all duration-700 ease-in-out bg-gradient-to-r from-[#3799FA] to-[#9961FB] group-hover:from-white group-hover:to-white group-hover:text-black group-hover:pl-6 group-hover:pr-13 rounded-[28px_28px_0px_28px] group-hover:rounded-[28px_28px_28px_0px] min-h-[44px]">
+          <div className="pl-13 pr-7 h-full flex items-center text-white font-bold text-[14px] transition-all duration-700 ease-in-out bg-linear-to-r from-[#3799FA] to-[#9961FB] group-hover:from-white group-hover:to-white group-hover:text-black group-hover:pl-6 group-hover:pr-13 rounded-[28px_28px_0px_28px] group-hover:rounded-[28px_28px_28px_0px] min-h-[44px]">
             Apply Today
           </div>
         </button>

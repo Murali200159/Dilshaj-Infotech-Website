@@ -29,7 +29,7 @@ export default function GetInTouchModal({ isOpen, onClose }: GetInTouchModalProp
     return (
         <AnimatePresence>
             {isOpen && (
-                <div className="fixed inset-0 z-[200] flex items-center justify-center p-4 sm:p-6">
+                <div className="fixed inset-0 z-200 flex items-center justify-center p-4 sm:p-6">
 
                     {/* Backdrop overlay */}
                     <motion.div
@@ -135,16 +135,13 @@ export default function GetInTouchModal({ isOpen, onClose }: GetInTouchModalProp
                                     <button
                                         suppressHydrationWarning
                                         type="submit"
-                                        className="blog-cta flex items-center relative group h-12 w-fit"
+                                        className="flex items-center group relative h-12 w-fit cursor-pointer overflow-hidden transition-all duration-700 rounded-[34px_34px_0px_34px] hover:rounded-[34px_34px_34px_0px]"
                                     >
-                                        <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-transform group-hover:scale-105">
-                                            <FaChevronRight className="w-4 h-4 text-[#3799FA]" />
+                                        <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-all duration-700 ease-in-out group-hover:left-[calc(100%-48px)] group-hover:bg-linear-to-r group-hover:from-[#3799FA] group-hover:to-[#9961FB] group-hover:scale-105">
+                                            <FaChevronRight className="w-4 h-4 text-[#3799FA] transition-all duration-700 ease-in-out group-hover:text-white" />
                                         </div>
                                         <div
-                                            className="pl-14 pr-10 h-full flex items-center text-white font-bold text-[17px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all duration-300 rounded-[34px_34px_0_34px]"
-                                            style={{
-                                                background: 'linear-gradient(to right, #3799FA, #9961FB)',
-                                            }}
+                                            className="pl-14 pr-10 h-full flex items-center text-white font-bold text-[17px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all duration-700 ease-in-out bg-linear-to-r from-[#3799FA] to-[#9961FB] group-hover:from-white group-hover:to-white group-hover:text-black group-hover:pl-6 group-hover:pr-14 rounded-[34px_34px_0px_34px] group-hover:rounded-[34px_34px_34px_0px]"
                                         >
                                             Submit
                                         </div>

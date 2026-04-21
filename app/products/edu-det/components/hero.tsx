@@ -100,7 +100,7 @@ export default function Hero() {
 
                 {/* Light Black fade at bottom of EDUPROVA text */}
                 <div
-                    className="absolute bottom-[-20px] lg:bottom-[-40px] left-0 right-0 h-[100px] lg:h-[200px] z-[2]"
+                    className="absolute bottom-[-20px] lg:bottom-[-40px] left-0 right-0 h-[100px] lg:h-[200px] z-2"
                     style={{
                         background: "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.3) 40%, rgba(0,0,0,0.85) 75%, #000000 100%)",
                     }}
@@ -140,7 +140,7 @@ export default function Hero() {
 
             {/* ── Bottom content: text left + stats right ── */}
             <div
-                className="relative z-10 w-full lg:w-[1156px] max-w-full mx-auto flex flex-col lg:flex-row items-start lg:items-center justify-between px-10 sm:px-12 lg:px-0 lg:pr-5 pb-[60px] pt-4 lg:pt-0 lg:mt-5 mt-[25px] sm:mt-[0px] gap-6 lg:gap-10 hero-bottom-content"
+                className="relative z-10 w-full lg:w-[1156px] max-w-full mx-auto flex flex-col lg:flex-row items-start lg:items-center justify-between px-10 sm:px-12 lg:px-0 lg:pr-5 pb-[60px] pt-4 lg:pt-0 lg:mt-5 mt-[25px] sm:mt-0 gap-6 lg:gap-10 hero-bottom-content"
             >
                 {/* Left: Heading + description + button */}
                 <div className="flex-none w-full max-w-[582px] ml-0 lg:ml-[-250px] flex flex-col items-start lg:items-start text-left lg:text-left hero-text-block">
@@ -190,7 +190,7 @@ export default function Hero() {
 
                 {/* Right: Stats with green checkmarks */}
                 <div
-                    className="flex flex-col gap-5 flex-shrink-0 items-start lg:items-start mt-4 lg:mt-0 hero-stats-block"
+                    className="flex flex-col gap-5 shrink-0 items-start lg:items-start mt-4 lg:mt-0 hero-stats-block"
                 >
                     {stats.map((stat, idx) => (
                         <div key={idx} style={{ display: "flex", alignItems: "center", gap: "14px" }}>
@@ -229,11 +229,14 @@ export default function Hero() {
 
                     {/* Get Start Button */}
                     <div className="mt-4 lg:mt-3">
-                        <button suppressHydrationWarning className="flex items-center group relative h-12 w-fit cursor-pointer">
-                            <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-transform group-hover:scale-105">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#3799FA" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 ml-0.5"><polyline points="9 18 15 12 9 6" /></svg>
+                        <button
+                            suppressHydrationWarning
+                            className="flex items-center group relative h-12 w-fit cursor-pointer overflow-hidden transition-all duration-700 rounded-[34px_34px_0px_34px] hover:rounded-[34px_34px_34px_0px]"
+                        >
+                            <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-all duration-700 ease-in-out group-hover:left-[calc(100%-48px)] group-hover:bg-linear-to-r group-hover:from-[#3799FA] group-hover:to-[#9961FB] group-hover:scale-105">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#3799FA" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 ml-0.5 transition-all duration-700 ease-in-out group-hover:text-white"><polyline points="9 18 15 12 9 6" /></svg>
                             </div>
-                            <div className="pl-14 pr-8 h-full flex items-center text-white font-bold text-[15px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all bg-gradient-to-r from-[#3799FA] to-[#9961FB] rounded-[34px_34px_0px_34px]">
+                            <div className="pl-14 pr-8 h-full flex items-center text-white font-bold text-[15px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all duration-700 ease-in-out bg-linear-to-r from-[#3799FA] to-[#9961FB] group-hover:from-white group-hover:to-white group-hover:text-black group-hover:pl-6 group-hover:pr-14 rounded-[34px_34px_0px_34px] group-hover:rounded-[34px_34px_34px_0px]">
                                 Get Start
                             </div>
                         </button>

@@ -92,7 +92,7 @@ function CustomDropdown({ options, value, onChange, placeholder, isDark = false 
             {/* Dropdown panel */}
             {open && (
                 <div className={`
-                    absolute top-[calc(100%+8px)] left-0 z-[9999] w-full
+                    absolute top-[calc(100%+8px)] left-0 z-9999 w-full
                     rounded-[16px] shadow-[0_16px_40px_rgba(0,0,0,0.22)]
                     border backdrop-blur-xl
                     overflow-y-auto filter-dropdown-scroll
@@ -114,7 +114,7 @@ function CustomDropdown({ options, value, onChange, placeholder, isDark = false 
                                     ${isSelected
                                         ? isDark
                                             ? "bg-[#6366f1]/20 text-white"
-                                            : "bg-gradient-to-r from-[#6366f1]/10 to-[#a855f7]/10 text-[#6366f1]"
+                                            : "bg-linear-to-r from-[#6366f1]/10 to-[#a855f7]/10 text-[#6366f1]"
                                         : isDark
                                             ? "text-white/70 hover:bg-white/5 hover:text-white"
                                             : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
@@ -141,7 +141,7 @@ export default function HeroSection() {
     const { industry, solution, setIndustry, setSolution } = useFilter();
 
     return (
-        <section className={`relative z-50 w-full bg-[#020617] flex flex-col [overflow-x:clip] overflow-y-visible ${poppins.className}`}>
+        <section className={`relative z-50 w-full bg-[#020617] flex flex-col overflow-x-clip overflow-y-visible ${poppins.className}`}>
             {/* Background Image */}
             <div className="absolute inset-0 z-0">
                 <Image
@@ -151,17 +151,17 @@ export default function HeroSection() {
                     className="object-cover opacity-90"
                     priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#020617]/50 mix-blend-multiply pointer-events-none" />
+                <div className="absolute inset-0 bg-linear-to-b from-transparent to-[#020617]/50 mix-blend-multiply pointer-events-none" />
             </div>
 
             {/* ─── Main Hero Content ─────────────────────────────────────────── */}
-            <main className="relative z-10 flex-grow flex flex-col justify-start items-center pt-[60px] sm:pt-[80px] lg:pt-[160px] pb-[30px] lg:pb-[40px] px-5 sm:px-6 text-center">
+            <main className="relative z-10 grow flex flex-col justify-start items-center pt-[120px] sm:pt-[140px] lg:pt-[160px] pb-[30px] lg:pb-[40px] px-5 sm:px-6 text-center">
 
                 <div className="flex flex-col items-center justify-start w-full max-w-[1281px] mx-auto">
 
                     {/* Badge */}
                     <div className="flex items-center justify-center gap-3 mb-6 sm:mb-8">
-                        <div className="flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 border border-white/20 rounded-md bg-white/[0.04] backdrop-blur-sm">
+                        <div className="flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 border border-white/20 rounded-md bg-white/4 backdrop-blur-sm">
                             <Briefcase size={15} className="text-[#E2E8F0]" />
                         </div>
                         <span className="text-[#E2E8F0] text-[14px] sm:text-[16px] lg:text-[18px] tracking-[0.14em] font-medium uppercase">

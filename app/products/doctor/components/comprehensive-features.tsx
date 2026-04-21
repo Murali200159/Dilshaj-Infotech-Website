@@ -129,7 +129,7 @@ export default function ComprehensiveFeatures() {
             {/* Top Left Features Badge */}
             <div className="absolute top-10 left-0 z-20" style={{ filter: 'drop-shadow(3px 4px 5px rgba(0,0,0,0.25))' }}>
                 <div
-                    className="bg-gradient-to-r from-[#0057A8] to-[#0089F5] text-white py-3 pl-8 pr-10 flex items-center gap-3 border-l-4 border-[#009BFF]"
+                    className="bg-linear-to-r from-[#0057A8] to-[#0089F5] text-white py-3 pl-8 pr-10 flex items-center gap-3 border-l-4 border-[#009BFF]"
                     style={{ clipPath: 'polygon(0% 0%, 100% 0%, 85% 50%, 100% 100%, 0% 100%)', width: '230px' }}
                 >
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -158,7 +158,7 @@ export default function ComprehensiveFeatures() {
                         </div>
 
                         {/* Image Section */}
-                        <div className="w-full flex-grow min-h-[400px] md:min-h-[500px] rounded-[32px] overflow-hidden shadow-lg relative max-lg:order-3 max-lg:mt-4 comprehensive-image-block">
+                        <div className="w-full grow min-h-[400px] md:min-h-[500px] rounded-[32px] overflow-hidden shadow-lg relative max-lg:order-3 max-lg:mt-4 comprehensive-image-block">
                             <img
                                 src={hospitalImg.src}
                                 alt="Hospital Reception"
@@ -174,7 +174,7 @@ export default function ComprehensiveFeatures() {
                                 key={index}
                                 className={`flex items-start gap-5 p-6 transition-colors border-l ${index === 0 ? 'bg-[#F9F9F9] border-gray-200' : 'border-[#F2F2F4]'} hover:bg-[#F9F9F9] border-b last:border-b-0 feature-list-item`}
                             >
-                                <div className="mt-1 w-12 h-12 flex-shrink-0 border border-gray-200 rounded-lg flex items-center justify-center bg-white shadow-sm">
+                                <div className="mt-1 w-12 h-12 shrink-0 border border-gray-200 rounded-lg flex items-center justify-center bg-white shadow-sm">
                                     {feature.icon}
                                 </div>
                                 <div className="flex flex-col">
@@ -195,8 +195,8 @@ export default function ComprehensiveFeatures() {
                 <div className="max-md:mt-8 md:mt-20 mt-20 w-full max-w-[1200px] mx-auto rounded-3xl overflow-hidden relative shadow-2xl cta-banner-reveal">
                     {/* Gradient Background matches image EXACTLY */}
                     <div className="absolute inset-0 bg-[#0F1023] z-0 flex">
-                        <div className="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-[#446CE4] to-transparent mix-blend-screen opacity-60"></div>
-                        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-[#221035] to-transparent mix-blend-screen opacity-80"></div>
+                        <div className="absolute inset-y-0 left-0 w-1/3 bg-linear-to-r from-[#446CE4] to-transparent mix-blend-screen opacity-60"></div>
+                        <div className="absolute top-0 right-0 w-1/2 h-full bg-linear-to-l from-[#221035] to-transparent mix-blend-screen opacity-80"></div>
                     </div>
 
                     <div className="relative z-10 flex flex-col items-center md:flex-row md:items-center justify-between gap-6 md:gap-8 max-md:py-8 max-md:px-6 p-12 md:p-14">
@@ -212,18 +212,17 @@ export default function ComprehensiveFeatures() {
                             </span>
                         </h2>
 
-                        <div className="relative inline-flex items-center cursor-pointer group hover:opacity-95 transition-opacity max-md:mt-2 mt-2">
-                            {/* Gradient Bar */}
-                            <div className="bg-gradient-to-r from-[#7B61FF] to-[#459CFF] text-white rounded-l-full rounded-tr-full rounded-br-none flex items-center max-md:py-[7px] max-md:pl-[42px] max-md:pr-5 py-[12px] pl-[64px] pr-[32px] shadow-[0_8px_24px_0_rgba(123,97,255,0.3)] border-[1px] border-white/10 max-md:ml-2">
-                                <span className="font-semibold max-md:text-[13px] text-[16px]">Get Updates</span>
+                        <button
+                            suppressHydrationWarning
+                            className="flex items-center group relative h-12 w-fit cursor-pointer overflow-hidden transition-all duration-700 rounded-[34px_34px_0px_34px] hover:rounded-[34px_34px_34px_0px] max-md:mt-2 mt-2"
+                        >
+                            <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-all duration-700 ease-in-out group-hover:left-[calc(100%-48px)] group-hover:bg-linear-to-r group-hover:from-[#3799FA] group-hover:to-[#9961FB] group-hover:scale-105">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#3799FA" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 ml-0.5 transition-all duration-700 ease-in-out group-hover:text-white"><polyline points="9 18 15 12 9 6" /></svg>
                             </div>
-                            {/* Overlapping White Circle */}
-                            <div className="absolute max-md:-left-[5px] left-0 max-md:w-[40px] max-md:h-[40px] w-[56px] h-[56px] bg-white rounded-full flex items-center justify-center shadow-[0_4px_12px_rgba(0,0,0,0.15)] z-10 transition-transform group-hover:scale-105">
-                                <svg className="max-md:w-[14px] max-md:h-[14px]" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#101010" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" style={{ marginLeft: '2px' }}>
-                                    <polyline points="9 18 15 12 9 6"></polyline>
-                                </svg>
+                            <div className="pl-14 pr-8 h-full flex items-center text-white font-bold text-[15px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all duration-700 ease-in-out bg-linear-to-r from-[#3799FA] to-[#9961FB] group-hover:from-white group-hover:to-white group-hover:text-black group-hover:pl-6 group-hover:pr-14 rounded-[34px_34px_0px_34px] group-hover:rounded-[34px_34px_34px_0px]">
+                                Get Updates
                             </div>
-                        </div>
+                        </button>
                     </div>
                 </div>
 

@@ -66,7 +66,7 @@ export default function Hero() {
                 {desktopImages.map((src, idx) => (
                     <div
                         key={src}
-                        className={`absolute inset-0 transition-all duration-[2000ms] ease-in-out ${idx === currentIdx ? "opacity-100 scale-100" : "opacity-0 scale-105"
+                        className={`absolute inset-0 transition-all duration-2000 ease-in-out ${idx === currentIdx ? "opacity-100 scale-100" : "opacity-0 scale-105"
                             }`}
                     >
                         <Image
@@ -81,7 +81,7 @@ export default function Hero() {
                     </div>
                 ))}
                 {/* Dark Overlay - Standardized Z-Index to stay below content but above images */}
-                <div className="absolute inset-0 bg-black/50 z-[1]" />
+                <div className="absolute inset-0 bg-black/50 z-1" />
             </div>
 
             {/* Content Container */}
@@ -102,13 +102,13 @@ export default function Hero() {
                         className="flex items-center group relative h-12 w-fit overflow-hidden transition-all duration-700 rounded-[34px_34px_0px_34px] hover:rounded-[34px_34px_34px_0px]"
                     >
                         {/* LEFT ICON CIRCLE */}
-                        <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-lg z-20 transition-all duration-700 ease-in-out group-hover:left-[calc(100%-48px)] group-hover:bg-gradient-to-r group-hover:from-[#3799FA] group-hover:to-[#9961FB] group-hover:scale-105">
+                        <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-lg z-20 transition-all duration-700 ease-in-out group-hover:left-[calc(100%-48px)] group-hover:bg-linear-to-r group-hover:from-[#3799FA] group-hover:to-[#9961FB] group-hover:scale-105">
                             <FaChevronRight className="w-4 h-4 text-[#3799FA] transition-all duration-700 ease-in-out group-hover:text-white" />
                         </div>
 
                         {/* MAIN BUTTON BODY */}
                         <div
-                            className="pl-14 pr-8 h-full flex items-center text-white font-bold text-[15px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all duration-700 ease-in-out bg-gradient-to-r from-[#3799FA] to-[#9961FB] group-hover:from-white group-hover:to-white group-hover:text-black group-hover:pl-6 group-hover:pr-14 rounded-[34px_34px_0px_34px] group-hover:rounded-[34px_34px_34px_0px]"
+                            className="pl-14 pr-8 h-full flex items-center text-white font-bold text-[15px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all duration-700 ease-in-out bg-linear-to-r from-[#3799FA] to-[#9961FB] group-hover:from-white group-hover:to-white group-hover:text-black group-hover:pl-6 group-hover:pr-14 rounded-[34px_34px_0px_34px] group-hover:rounded-[34px_34px_34px_0px]"
                         >
                             Connect With Us
                         </div>

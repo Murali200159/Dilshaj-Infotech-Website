@@ -47,8 +47,8 @@ export default function Features() {
 
                     {/* Headline (Order 1) */}
                     <div className="order-1 lg:col-start-1 lg:row-start-1 flex flex-col justify-start lg:pt-4">
-                        <h2 className="text-[28px] sm:text-[36px] lg:text-[42px] font-[700] text-[#000000] leading-[1.2] tracking-tight">
-                            Everything You Need to Build, Manage, <span className="text-[#888888] font-[600]">and Scale Your Online Store</span>
+                        <h2 className="text-[28px] sm:text-[36px] lg:text-[42px] font-bold text-[#000000] leading-[1.2] tracking-tight">
+                            Everything You Need to Build, Manage, <span className="text-[#888888] font-semibold">and Scale Your Online Store</span>
                         </h2>
                     </div>
 
@@ -61,8 +61,8 @@ export default function Features() {
                                         <item.icon size={20} className="text-[#374151]" strokeWidth={1.5} />
                                     </div>
                                     <div className="flex flex-col flex-1 pl-1">
-                                        <h4 className="text-[16px] sm:text-[18px] font-[700] text-[#111827] mb-[4px]">{item.title}</h4>
-                                        <p className="text-[#4b5563] text-[13px] sm:text-[15px] font-[500] leading-[1.6] max-w-[480px]">
+                                        <h4 className="text-[16px] sm:text-[18px] font-bold text-[#111827] mb-[4px]">{item.title}</h4>
+                                        <p className="text-[#4b5563] text-[13px] sm:text-[15px] font-medium leading-[1.6] max-w-[480px]">
                                             {item.desc}
                                         </p>
                                     </div>
@@ -76,24 +76,27 @@ export default function Features() {
                         <div className="relative w-full aspect-[0.84] sm:aspect-[0.95] lg:aspect-[0.88] xl:aspect-[1.05] rounded-[20px] overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.2)] flex flex-col justify-between p-6 sm:p-8">
                             <div className="absolute inset-0 z-0">
                                 <Image src="/products-images/e-card4.png" alt="Card Background" fill className="object-cover object-center" />
-                                <div className="absolute inset-0 bg-gradient-to-t from-[#0e172a] via-[#0e172a]/70 to-[#0e172a]/20"></div>
+                                <div className="absolute inset-0 bg-linear-to-t from-[#0e172a] via-[#0e172a]/70 to-[#0e172a]/20"></div>
                             </div>
 
                             <div className="relative z-10 w-full flex flex-col items-start h-full justify-between">
                                 <div className="border border-white/40 px-[16px] py-[6px] rounded-[6px] backdrop-blur-md bg-white/10">
-                                    <span className="text-white font-[600] text-[13px] sm:text-[14px] tracking-wide">Ready to launch your online store?</span>
+                                    <span className="text-white font-semibold text-[13px] sm:text-[14px] tracking-wide">Ready to launch your online store?</span>
                                 </div>
 
                                 <div className="flex flex-col items-start gap-4 w-full">
-                                    <h3 className="text-white text-[26px] sm:text-[32px] lg:text-[36px] font-[700] leading-[1.2] tracking-tight max-w-[360px]">
+                                    <h3 className="text-white text-[26px] sm:text-[32px] lg:text-[36px] font-bold leading-[1.2] tracking-tight max-w-[360px]">
                                         Scale Your Business <br className="hidden sm:block" /> with Our Smart <br className="hidden sm:block" /> Commerce Platform.
                                     </h3>
 
-                                    <button className="flex items-center group relative h-12 w-fit cursor-pointer">
-                                        <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-transform group-hover:scale-105">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#3799FA" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 ml-0.5"><polyline points="9 18 15 12 9 6" /></svg>
+                                    <button
+                                        suppressHydrationWarning
+                                        className="flex items-center group relative h-12 w-fit cursor-pointer overflow-hidden transition-all duration-700 rounded-[34px_34px_0px_34px] hover:rounded-[34px_34px_34px_0px]"
+                                    >
+                                        <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-all duration-700 ease-in-out group-hover:left-[calc(100%-48px)] group-hover:bg-linear-to-r group-hover:from-[#3799FA] group-hover:to-[#9961FB] group-hover:scale-105">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#3799FA" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 ml-0.5 transition-all duration-700 ease-in-out group-hover:text-white"><polyline points="9 18 15 12 9 6" /></svg>
                                         </div>
-                                        <div className="pl-14 pr-8 h-full flex items-center text-white font-bold text-[15px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all bg-gradient-to-r from-[#3799FA] to-[#9961FB] rounded-[34px_34px_0px_34px]">
+                                        <div className="pl-14 pr-8 h-full flex items-center text-white font-bold text-[15px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all duration-700 ease-in-out bg-linear-to-r from-[#3799FA] to-[#9961FB] group-hover:from-white group-hover:to-white group-hover:text-black group-hover:pl-6 group-hover:pr-14 rounded-[34px_34px_0px_34px] group-hover:rounded-[34px_34px_34px_0px]">
                                             Lets Build Together
                                         </div>
                                     </button>
@@ -105,17 +108,20 @@ export default function Features() {
                 </div>
 
                 {/* Bottom Banner */}
-                <div className="mt-10 lg:mt-16 w-full bg-gradient-to-r from-[#3b82f6] via-[#1e1b4b] to-[#0f172a] rounded-[18px] px-8 lg:px-12 py-8 lg:py-10 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8 shadow-[0_10px_30px_rgba(59,130,246,0.25)] relative overflow-hidden">
+                <div className="mt-10 lg:mt-16 w-full bg-linear-to-r from-[#3b82f6] via-[#1e1b4b] to-[#0f172a] rounded-[18px] px-8 lg:px-12 py-8 lg:py-10 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8 shadow-[0_10px_30px_rgba(59,130,246,0.25)] relative overflow-hidden">
                     <div className="absolute inset-0 bg-black/10 pointer-events-none"></div>
                     <div className="relative z-10 w-full flex flex-col md:flex-row items-center justify-between gap-6 md:gap-12">
-                        <h3 className="text-white text-[20px] sm:text-[24px] lg:text-[32px] font-[700] max-w-[650px] leading-[1.3] text-center md:text-left tracking-tight">
+                        <h3 className="text-white text-[20px] sm:text-[24px] lg:text-[32px] font-bold max-w-[650px] leading-[1.3] text-center md:text-left tracking-tight">
                             Build the Future of E-Commerce with Us for a Smarter Shopping Experience.
                         </h3>
-                        <button className="shrink-0 flex items-center group relative h-12 w-fit cursor-pointer">
-                            <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-transform group-hover:scale-105">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#3799FA" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 ml-0.5"><polyline points="9 18 15 12 9 6" /></svg>
+                        <button
+                            suppressHydrationWarning
+                            className="shrink-0 flex items-center group relative h-12 w-fit cursor-pointer overflow-hidden transition-all duration-700 rounded-[34px_34px_0px_34px] hover:rounded-[34px_34px_34px_0px]"
+                        >
+                            <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-all duration-700 ease-in-out group-hover:left-[calc(100%-48px)] group-hover:bg-linear-to-r group-hover:from-[#3799FA] group-hover:to-[#9961FB] group-hover:scale-105">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#3799FA" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 ml-0.5 transition-all duration-700 ease-in-out group-hover:text-white"><polyline points="9 18 15 12 9 6" /></svg>
                             </div>
-                            <div className="pl-14 pr-8 h-full flex items-center text-white font-bold text-[15px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all bg-gradient-to-r from-[#3799FA] to-[#9961FB] rounded-[34px_34px_0px_34px]">
+                            <div className="pl-14 pr-8 h-full flex items-center text-white font-bold text-[15px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all duration-700 ease-in-out bg-linear-to-r from-[#3799FA] to-[#9961FB] group-hover:from-white group-hover:to-white group-hover:text-black group-hover:pl-6 group-hover:pr-14 rounded-[34px_34px_0px_34px] group-hover:rounded-[34px_34px_34px_0px]">
                                 Get Updates
                             </div>
                         </button>

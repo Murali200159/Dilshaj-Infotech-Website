@@ -118,17 +118,19 @@ function CarouselCard({ card, index, scrollX }: { card: any, index: number, scro
             <Image src={card.image} fill className="object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" alt={card.title} />
 
             {/* Dark gradient overlay matching standard modern aesthetics */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10 transition-opacity duration-500" />
+            <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-black/10 transition-opacity duration-500" />
 
             {/* Glow on hover */}
-            <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#3799FA]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-2xl" />
+            <div className="absolute inset-x-0 bottom-0 h-1/2 bg-linear-to-t from-[#3799FA]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-2xl" />
 
             {/* Text block */}
             <div className="absolute bottom-8 left-8 right-8 z-20">
                 <h3 className="text-white text-[22px] font-bold leading-tight mb-2 group-hover:text-[#3799FA] transition-colors">{card.title}</h3>
-                <p className="text-gray-300 text-sm opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-300 line-clamp-2">
-                    Discover cutting-edge strategies and innovations optimized perfectly for maximum scalable growth.
-                </p>
+                <div className="max-h-[120px] overflow-y-auto md:max-h-none md:overflow-visible pr-1">
+                    <p className="text-gray-300 text-sm opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-300 line-clamp-none md:line-clamp-2">
+                        Discover cutting-edge strategies and innovations optimized perfectly for maximum scalable growth.
+                    </p>
+                </div>
             </div>
 
             {/* Frame boundary glow for glassmorphism */}

@@ -482,7 +482,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen selection:bg-blue-100 relative overflow-x-clip font-sans bg-gradient-to-br from-[#CAD0FF] to-[#E3E3E3]">
+    <div className="min-h-screen selection:bg-blue-100 relative overflow-x-clip font-sans bg-linear-to-r from-[#CAD0FF] to-[#E3E3E3]">
 
       <HeroSection />
 
@@ -520,7 +520,7 @@ export default function Home() {
                         { name: "Figma", icon: <FaFigma className="w-[20px] h-[28px] text-white" /> }
                       ].map((tech, j) => (
                         <div key={j} className="flex items-center justify-center gap-[6px] w-[122px] h-[52px] mr-4">
-                          <div className="flex items-center justify-center flex-shrink-0">{tech.icon}</div>
+                          <div className="flex items-center justify-center shrink-0">{tech.icon}</div>
                           <span className="text-white text-[15px] sm:text-[18px] font-medium tracking-wide whitespace-nowrap">{tech.name}</span>
                         </div>
                       ))}
@@ -543,7 +543,7 @@ export default function Home() {
                         { name: "CSS", icon: <FaCss3Alt className="w-[28px] h-[28px] text-white" /> }
                       ].map((tech, j) => (
                         <div key={j} className="flex items-center justify-center gap-[6px] w-[122px] h-[52px] mr-4">
-                          <div className="flex items-center justify-center flex-shrink-0">{tech.icon}</div>
+                          <div className="flex items-center justify-center shrink-0">{tech.icon}</div>
                           <span className="text-white text-[15px] sm:text-[18px] font-medium tracking-wide whitespace-nowrap">{tech.name}</span>
                         </div>
                       ))}
@@ -580,7 +580,7 @@ export default function Home() {
                     { name: "HTML", primary: "#E34F26" },
                     { name: "CSS", primary: "#1572B6" }
                   ].map((tech, idx) => (
-                    <div key={idx} className="flex items-center gap-4 group cursor-pointer inline-flex">
+                    <div key={idx} className="flex items-center gap-4 group cursor-pointer">
                       <div className="w-10 h-10 flex items-center justify-center group-hover:opacity-100 transition-opacity">
                         {tech.name === "React" && <FaReact className="w-10 h-10 text-white" />}
                         {tech.name === "Node.js" && <FaNodeJs className="w-10 h-10 text-white" />}
@@ -610,7 +610,7 @@ export default function Home() {
               {/* Top row with main headline and primary stat */}
               <div className="flex flex-col lg:flex-row justify-between items-start gap-8 lg:gap-12 px-4 lg:px-0">
                 <div className="w-full lg:w-auto flex flex-col items-start px-0 lg:px-0">
-                  <h2 className="section-label text-[30px] sm:text-[36px] lg:text-[52px] font-semibold text-[#63666A] leading-[1.15] lg:leading-[1.1] mb-6 font-poppins text-left max-w-[1000px]">
+                  <h2 className="section-label text-[30px] sm:text-[36px] lg:text-[42px] xl:text-[52px] font-semibold text-[#63666A] leading-[1.15] lg:leading-[1.1] mb-6 font-poppins text-left max-w-[full] lg:max-w-[850px] xl:max-w-[1000px]">
                     Building the Future of Technology<br />
                     <span className="text-slate-500">With </span>
                     <span className="text-[#31B5FE]">Vision, </span>
@@ -619,10 +619,10 @@ export default function Home() {
                 </div>
 
                 <div className="stat-number-item hidden lg:flex flex-col gap-4 max-w-[300px] lg:pl-16 lg:border-l border-gray-100 h-full">
-                  <span className="text-[72px] font-semibold text-black leading-none mb-2">15+</span>
+                  <span className="stat-value text-[50px] xl:text-[72px] font-semibold text-black leading-none mb-2" data-value="15">15+</span>
                   <div className="flex gap-3 items-start">
-                    <div className="w-10 h-10 rounded-full bg-[#31B5FE] flex items-center justify-center flex-shrink-0 animate-pulse-slow">
-                      <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                    <div className="w-10 h-10 rounded-full bg-[#0E4E8B] flex items-center justify-center shrink-0 animate-pulse-slow">
+                      <Image src="/Home/building/icon1.png" alt="icon1" width={24} height={24} className="object-contain brightness-0 invert" />
                     </div>
                     <p className="text-[17px] font-medium text-gray-600 leading-tight">
                       Innovative and Future-Ready <span className="font-bold text-black">Digital Product Ideas</span>
@@ -632,13 +632,13 @@ export default function Home() {
               </div>
 
               {/* DESKTOP Bottom Row - 4 columns separated by vertical bars */}
-              <div className="hidden lg:grid grid-cols-4 gap-12 pt-10 border-t border-gray-100">
+              <div className="hidden lg:grid grid-cols-4 gap-6 xl:gap-12 pt-10 border-t border-gray-100">
                 {/* 100% Stat */}
                 <div className="stat-number-item flex flex-col gap-4">
-                  <span className="text-[72px] font-semibold text-black leading-none mb-2">100%</span>
+                  <span className="stat-value text-[50px] xl:text-[72px] font-semibold text-black leading-none mb-2" data-value="100">100%</span>
                   <div className="flex gap-4 items-start">
-                    <div className="w-10 h-10 rounded-full bg-[#31B5FE] flex items-center justify-center flex-shrink-0">
-                      <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
+                    <div className="w-10 h-10 rounded-full bg-[#0E4E8B] flex items-center justify-center shrink-0">
+                      <Image src="/Home/building/icon2.png" alt="icon2" width={24} height={24} className="object-contain brightness-0 invert" />
                     </div>
                     <p className="text-[15px] text-gray-500 leading-snug">
                       <span className="font-bold text-black">Commitment to Quality,</span> Integrity, and Long-Term Value Creation
@@ -648,10 +648,10 @@ export default function Home() {
 
                 {/* 10+ Techs Stat */}
                 <div className="stat-number-item flex flex-col gap-4 lg:pl-8 lg:border-l border-gray-100">
-                  <span className="text-[72px] font-semibold text-black leading-none mb-2">10+</span>
+                  <span className="stat-value text-[50px] xl:text-[72px] font-semibold text-black leading-none mb-2" data-value="10">10+</span>
                   <div className="flex gap-4 items-start">
-                    <div className="w-10 h-10 rounded-full bg-[#31B5FE] flex items-center justify-center flex-shrink-0">
-                      <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
+                    <div className="w-10 h-10 rounded-full bg-[#0E4E8B] flex items-center justify-center shrink-0">
+                      <Image src="/Home/building/icon3.png" alt="icon3" width={24} height={24} className="object-contain brightness-0 invert" />
                     </div>
                     <p className="text-[15px] text-gray-500 leading-snug">
                       <span className="font-bold text-black">Advanced Technologies</span> Powering Modern Digital Solutions
@@ -661,10 +661,10 @@ export default function Home() {
 
                 {/* 5+ Industries Stat */}
                 <div className="stat-number-item flex flex-col gap-4 lg:pl-8 lg:border-l border-gray-100">
-                  <span className="text-[72px] font-semibold text-black leading-none mb-2">5+</span>
+                  <span className="stat-value text-[50px] xl:text-[72px] font-semibold text-black leading-none mb-2" data-value="5">5+</span>
                   <div className="flex gap-4 items-start">
-                    <div className="w-10 h-10 rounded-full bg-[#31B5FE] flex items-center justify-center flex-shrink-0">
-                      <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+                    <div className="w-10 h-10 rounded-full bg-[#0E4E8B] flex items-center justify-center shrink-0">
+                      <Image src="/Home/building/icon4.png" alt="icon4" width={24} height={24} className="object-contain brightness-0 invert" />
                     </div>
                     <p className="text-[15px] text-gray-500 leading-snug">
                       <span className="font-bold text-black">Industries Transformed</span> Through Smart and Scalable Innovations
@@ -674,10 +674,10 @@ export default function Home() {
 
                 {/* 24/7 Stat */}
                 <div className="stat-number-item flex flex-col gap-4 lg:pl-8 lg:border-l border-gray-100">
-                  <span className="text-[72px] font-semibold text-black leading-none mb-2">24/7</span>
+                  <span className="stat-value text-[50px] xl:text-[72px] font-semibold text-black leading-none mb-2" data-value="24">24/7</span>
                   <div className="flex gap-4 items-start">
-                    <div className="w-10 h-10 rounded-full bg-[#31B5FE] flex items-center justify-center flex-shrink-0">
-                      <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
+                    <div className="w-10 h-10 rounded-full bg-[#0E4E8B] flex items-center justify-center shrink-0">
+                      <Image src="/Home/building/icon5.png" alt="icon5" width={24} height={24} className="object-contain brightness-0 invert" />
                     </div>
                     <p className="text-[15px] text-gray-500 leading-snug">
                       <span className="font-bold text-black">Continuous Learning,</span> Support, and Innovation Ecosystem
@@ -690,49 +690,49 @@ export default function Home() {
               <div className="impact-card flex lg:hidden flex-col w-full mt-[-105px] sm:mt-[-115px] relative z-10">
                 {/* 2x2 Grid */}
                 <div className="grid grid-cols-2 border-t border-b border-gray-100">
-                  <div className="stat-number-item pl-4 pr-1 py-10 border-r border-gray-100 flex flex-col gap-5 bg-white">
-                    <span className="text-[52px] font-semibold text-black leading-none mb-1 font-poppins">15+</span>
+                  <div className="stat-number-item pl-4 pr-1 py-6 border-r border-gray-100 flex flex-col gap-3 bg-white">
+                    <span className="stat-value text-[38px] font-semibold text-black leading-none mb-1 font-poppins" data-value="15">15+</span>
                     <div className="flex flex-row items-center gap-2">
-                      <div className="w-[42px] h-[42px] rounded-full bg-[#31B5FE] flex items-center justify-center flex-shrink-0">
-                        <svg className="w-[20px] h-[20px] text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z" /><polyline points="3.27 6.96 12 12.01 20.73 6.96" /><line x1="12" y1="22.08" x2="12" y2="12" /></svg>
+                      <div className="w-[42px] h-[42px] rounded-full bg-[#0E4E8B] flex items-center justify-center shrink-0">
+                        <Image src="/Home/building/icon1.png" alt="icon1" width={24} height={24} className="object-contain brightness-0 invert" />
                       </div>
-                      <p className="font-poppins text-black font-[400] text-[10px] sm:text-[11px] leading-[1.3] m-0" style={{ width: '146px', height: '30px', display: 'flex', alignItems: 'center' }}>
+                      <p className="font-poppins text-black font-normal text-[10px] sm:text-[11px] leading-[1.3] m-0 flex items-center">
                         Innovative and Future-Ready Digital Product Ideas
                       </p>
                     </div>
                   </div>
 
-                  <div className="stat-number-item pl-4 pr-1 py-10 flex flex-col gap-5 bg-white">
-                    <span className="text-[52px] font-semibold text-black leading-none mb-1 font-poppins tracking-[-1px]">100%</span>
+                  <div className="stat-number-item pl-4 pr-1 py-6 flex flex-col gap-3 bg-white">
+                    <span className="stat-value text-[38px] font-semibold text-black leading-none mb-1 font-poppins tracking-[-1px]" data-value="100">100%</span>
                     <div className="flex flex-row items-center gap-2">
-                      <div className="w-[42px] h-[42px] rounded-full bg-[#31B5FE] flex items-center justify-center flex-shrink-0">
-                        <svg className="w-[20px] h-[20px] text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
+                      <div className="w-[42px] h-[42px] rounded-full bg-[#0E4E8B] flex items-center justify-center shrink-0">
+                        <Image src="/Home/building/icon2.png" alt="icon2" width={24} height={24} className="object-contain brightness-0 invert" />
                       </div>
-                      <p className="font-poppins text-black font-[400] text-[10px] sm:text-[11px] leading-[1.3] m-0" style={{ width: '146px', height: '30px', display: 'flex', alignItems: 'center' }}>
+                      <p className="font-poppins text-black font-normal text-[10px] sm:text-[11px] leading-[1.3] m-0 flex items-center">
                         Commitment to Quality, Integrity, and Long-Term Value Creation
                       </p>
                     </div>
                   </div>
 
-                  <div className="stat-number-item pl-4 pr-1 py-10 border-r border-t border-gray-100 flex flex-col gap-5 bg-white">
-                    <span className="text-[52px] font-semibold text-black leading-none mb-1 font-poppins tracking-tight">10+</span>
+                  <div className="stat-number-item pl-4 pr-1 py-6 border-r border-t border-gray-100 flex flex-col gap-3 bg-white">
+                    <span className="stat-value text-[38px] font-semibold text-black leading-none mb-1 font-poppins tracking-tight" data-value="10">10+</span>
                     <div className="flex flex-row items-center gap-2">
-                      <div className="w-[42px] h-[42px] rounded-full bg-[#31B5FE] flex items-center justify-center flex-shrink-0">
-                        <svg className="w-[20px] h-[20px] text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9.6Q9.6 15.35 11.25 15.82Q12.9 16.3 12.9 17.5M9.6 17.5 12.9 17.5M11.25 5Q14.15 5 16.1 6.95Q18.05 8.9 18.05 11.8Q18.05 13.9 16.6 15.6M14.4 7.4 16.8 5M17.4 9.6 19.8 9.6M6.6 7.4 4.2 5M5.4 9.6 3 9.6M11.25 17.5 11.25 19.5" /></svg>
+                      <div className="w-[42px] h-[42px] rounded-full bg-[#0E4E8B] flex items-center justify-center shrink-0">
+                        <Image src="/Home/building/icon3.png" alt="icon3" width={24} height={24} className="object-contain brightness-0 invert" />
                       </div>
-                      <p className="font-poppins text-black font-[400] text-[10px] sm:text-[11px] leading-[1.3] m-0 pr-1" style={{ width: '146px', height: '30px', display: 'flex', alignItems: 'center' }}>
+                      <p className="font-poppins text-black font-normal text-[10px] sm:text-[11px] leading-[1.3] m-0 pr-1 flex items-center">
                         Advanced Technologies Powering Modern Digital Solutions
                       </p>
                     </div>
                   </div>
 
-                  <div className="stat-number-item pl-4 pr-1 py-10 border-t border-gray-100 flex flex-col gap-5 bg-white">
-                    <span className="text-[52px] font-semibold text-black leading-none mb-1 font-poppins tracking-tight">5+</span>
+                  <div className="stat-number-item pl-4 pr-1 py-6 border-t border-gray-100 flex flex-col gap-3 bg-white">
+                    <span className="stat-value text-[38px] font-semibold text-black leading-none mb-1 font-poppins tracking-tight" data-value="5">5+</span>
                     <div className="flex flex-row items-center gap-2">
-                      <div className="w-[42px] h-[42px] rounded-full bg-[#31B5FE] flex items-center justify-center flex-shrink-0">
-                        <svg className="w-[20px] h-[20px] text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+                      <div className="w-[42px] h-[42px] rounded-full bg-[#0E4E8B] flex items-center justify-center shrink-0">
+                        <Image src="/Home/building/icon4.png" alt="icon4" width={24} height={24} className="object-contain brightness-0 invert" />
                       </div>
-                      <p className="font-poppins text-black font-[400] text-[10px] sm:text-[11px] leading-[1.3] m-0 pr-2" style={{ width: '146px', height: '30px', display: 'flex', alignItems: 'center' }}>
+                      <p className="font-poppins text-black font-normal text-[10px] sm:text-[11px] leading-[1.4] m-0 pr-2 flex items-center">
                         Industries Transformed Through Smart and Scalable Innovations
                       </p>
                     </div>
@@ -741,22 +741,15 @@ export default function Home() {
 
                 {/* 24/7 Dark Block */}
                 <div
-                  className="stat-number-item bg-[#2D333A] flex flex-col justify-center items-start pl-8 mt-5 mx-4 sm:mx-6 mb-6 rounded-[12px]"
-                  style={{ height: '168px' }}
+                  className="stat-number-item bg-[#2D333A] flex flex-col justify-center items-start pl-6 mt-4 mx-4 sm:mx-6 mb-4 rounded-[12px]"
+                  style={{ height: '140px' }}
                 >
-                  <span className="text-[54px] font-[500] text-white leading-none tracking-tight font-poppins mb-4">24/7</span>
+                  <span className="stat-value text-[42px] font-medium text-white leading-none tracking-tight font-poppins mb-3" data-value="24">24/7</span>
                   <div className="flex gap-4 items-center pr-4">
-                    <div className="w-[42px] h-[42px] rounded-full bg-[#31B5FE] flex items-center justify-center flex-shrink-0 relative">
-                      {/* Outer arrows */}
-                      <svg className="w-[22px] h-[22px] text-white absolute" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-                      </svg>
-                      {/* Inner Cap */}
-                      <svg className="w-[12px] h-[12px] text-white absolute" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 4L4 8l8 4 8-4-8-4z M4 12v6a8 8 0 0016 0v-6" />
-                      </svg>
+                    <div className="w-[42px] h-[42px] rounded-full bg-[#0E4E8B] flex items-center justify-center shrink-0 relative">
+                      <Image src="/Home/building/icon5.png" alt="icon5" width={24} height={24} className="object-contain brightness-0 invert" />
                     </div>
-                    <p className="font-poppins text-white font-[400] text-[13px] leading-[1.4] m-0 max-w-[210px]">
+                    <p className="font-poppins text-white font-normal text-[13px] leading-[1.4] m-0 max-w-[210px]">
                       Continuous Learning, Support, and Innovation Ecosystem
                     </p>
                   </div>
@@ -779,18 +772,18 @@ export default function Home() {
               <div className="relative w-7 h-7 lg:w-12 lg:h-12 flex items-center justify-center">
                 <Image src="/Home/arrow.png" alt="Arrow" fill className="object-contain" />
               </div>
-              <span className="text-white font-[600] lg:font-bold text-[18px] lg:text-[24px] tracking-wider pr-2">Services</span>
+              <span className="text-white font-semibold lg:font-bold text-[18px] lg:text-[24px] tracking-wider pr-2">Services</span>
             </div>
           </div>
 
           <div className="w-full max-w-[1700px] lg:pl-[40px] lg:md:pl-[64px] px-0 lg:pr-0">
             {/* --- DESKTOP VIEW --- */}
-            <div className="hidden lg:flex flex-row gap-10 items-stretch lg:pr-[64px] relative services-desktop-wrapper min-h-[580px]">
-              <div className="flex flex-col gap-8 lg:w-[800px] shrink-0">
-                <h2 className="text-[22px] md:text-[28px] font-semibold text-[#1F2933] leading-[1.2] lg:mb-2">
-                  <span className="text-gray-500 font-semibold block whitespace-nowrap">We will bring the breathe of our</span>
+            <div className="hidden lg:flex flex-row gap-6 xl:gap-10 items-stretch lg:pr-[64px] relative services-desktop-wrapper min-h-[580px]">
+              <div className="flex flex-col gap-8 lg:w-[480px] xl:w-[800px] shrink-0">
+                <h2 className="text-[22px] md:text-[24px] xl:text-[28px] font-semibold text-[#1F2933] leading-[1.2] lg:mb-2">
+                  <span className="text-gray-500 font-semibold block xl:whitespace-nowrap">We will bring the breathe of our</span>
                   <span className="text-gray-500 font-semibold">experience</span> <span className="text-black font-semibold">and industry</span><br className="hidden md:block" />
-                  <span className="text-black font-semibold block whitespace-nowrap">knowledge to help you succeed</span>
+                  <span className="text-black font-semibold block xl:whitespace-nowrap">knowledge to help you succeed</span>
                 </h2>
 
                 <div className="services-image-card relative w-full h-full rounded-[32px] overflow-hidden group shadow-2xl">
@@ -800,8 +793,8 @@ export default function Home() {
                     fill
                     className="object-cover transition-transform duration-1000 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                  
+                  <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent" />
+
                   {/* Banner Tag */}
                   <div className="absolute top-8 left-8">
                     <div className="bg-black/30 backdrop-blur-md border border-white/20 px-5 py-2.5 rounded-xl">
@@ -820,14 +813,14 @@ export default function Home() {
 
                   {/* Updated Bottom Button Desktop */}
                   <div className="absolute bottom-10 left-8">
-                    <button 
+                    <button
                       suppressHydrationWarning
                       className="flex items-center group relative h-12 w-fit cursor-pointer overflow-hidden transition-all duration-700 rounded-[34px_34px_0px_34px] hover:rounded-[34px_34px_34px_0px] shadow-xl"
                     >
-                      <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-all duration-700 ease-in-out group-hover:left-[calc(100%-48px)] group-hover:bg-gradient-to-r group-hover:from-[#3799FA] group-hover:to-[#9961FB] group-hover:scale-105">
+                      <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-all duration-700 ease-in-out group-hover:left-[calc(100%-48px)] group-hover:bg-linear-to-r group-hover:from-[#3799FA] group-hover:to-[#9961FB] group-hover:scale-105">
                         <FaChevronRight className="w-4 h-4 text-[#3799FA] transition-all duration-700 ease-in-out group-hover:text-white" />
                       </div>
-                      <div className="pl-14 pr-8 h-full py-3 flex items-center text-white font-bold text-[15px] transition-all duration-700 ease-in-out bg-gradient-to-r from-[#3799FA] to-[#9961FB] group-hover:from-white group-hover:to-white group-hover:text-black group-hover:pl-6 group-hover:pr-14 rounded-[34px_34px_0px_34px] group-hover:rounded-[34px_34px_34px_0px]">
+                      <div className="pl-14 pr-8 h-full py-3 flex items-center text-white font-bold text-[15px] transition-all duration-700 ease-in-out bg-linear-to-r from-[#3799FA] to-[#9961FB] group-hover:from-white group-hover:to-white group-hover:text-black group-hover:pl-6 group-hover:pr-14 rounded-[34px_34px_0px_34px] group-hover:rounded-[34px_34px_34px_0px]">
                         Lets Build Together
                       </div>
                     </button>
@@ -838,15 +831,12 @@ export default function Home() {
               <div className="flex flex-col gap-3 flex-1 h-full py-1 min-w-[340px]">
                 {services.map((service, idx) => {
                   const getIcon = (i: number) => {
-                    switch (i) {
-                      case 0: return <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M4 5a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM14 5a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1V5zM4 15a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1v-4zM14 15a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z" /></svg>;
-                      case 1: return <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M12 18h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>;
-                      case 2: return <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>;
-                      case 3: return <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" /></svg>;
-                      case 4: return <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM10 10h.01M14 10h.01M10 14h.01" /></svg>;
-                      case 5: return <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>;
-                      default: return null;
-                    }
+                    const iconNum = i + 1;
+                    return (
+                      <div className="relative w-8 h-8">
+                        <Image src={`/Home/services/icon${iconNum}.png`} alt={`service icon ${iconNum}`} fill className="object-contain" />
+                      </div>
+                    );
                   };
 
                   return (
@@ -862,7 +852,7 @@ export default function Home() {
                     >
                       <div className="flex gap-5 items-start">
                         {/* Icon Square */}
-                        <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-colors duration-500 shrink-0 border ${activeServiceIdx === idx ? "bg-white border-gray-100 text-black shadow-sm" : "bg-white border-gray-200 text-gray-400"}`}>
+                        <div className={`w-14 h-14 rounded-xl flex items-center justify-center transition-colors duration-500 shrink-0 border p-2 ${activeServiceIdx === idx ? "bg-white border-gray-100 text-black shadow-sm" : "bg-white border-gray-200 text-gray-400"}`}>
                           {getIcon(idx)}
                         </div>
 
@@ -874,12 +864,11 @@ export default function Home() {
                             {service.desc}
                           </p>
                         </div>
-                        
-                        <div className={`absolute right-6 top-1/2 -translate-y-1/2 transition-all duration-500 ${
-                          (hoveredServiceIdx !== null && hoveredServiceIdx === idx) || (hoveredServiceIdx === null && activeServiceIdx === idx)
-                            ? "opacity-100 translate-x-0" 
+
+                        <div className={`absolute right-6 top-1/2 -translate-y-1/2 transition-all duration-500 ${(hoveredServiceIdx !== null && hoveredServiceIdx === idx) || (hoveredServiceIdx === null && activeServiceIdx === idx)
+                            ? "opacity-100 translate-x-0"
                             : "opacity-0 translate-x-4"
-                        }`}>
+                          }`}>
                           <div className="w-10 h-10 rounded-full flex items-center justify-center transition-all shadow-md shrink-0"
                             style={{ background: 'linear-gradient(135deg, #31B5FE 0%, #AC52F2 100%)' }}>
                             <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
@@ -896,22 +885,19 @@ export default function Home() {
 
             {/* --- MOBILE VIEW --- */}
             <div className="flex lg:hidden flex-col">
-              <h2 className="text-[32px] font-[600] text-gray-500 leading-[1.3] mb-8 font-poppins px-6 sm:px-8">
-                We will bring the breathe of our experience <span className="text-black font-[700]">and industry knowledge to help you succeed</span>
+              <h2 className="text-[32px] font-semibold text-gray-500 leading-[1.3] mb-8 font-poppins px-6 sm:px-8">
+                We will bring the breathe of our experience <span className="text-black font-bold">and industry knowledge to help you succeed</span>
               </h2>
 
               <div className="flex flex-col bg-white border-y border-gray-200">
                 {services.map((service, idx) => {
                   const getIcon = (i: number) => {
-                    switch (i) {
-                      case 0: return <svg className="w-4 h-4 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M4 5a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM14 5a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1V5zM4 15a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1v-4zM14 15a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z" /></svg>;
-                      case 1: return <svg className="w-4 h-4 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M12 18h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>;
-                      case 2: return <svg className="w-4 h-4 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>;
-                      case 3: return <svg className="w-4 h-4 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" /></svg>;
-                      case 4: return <svg className="w-4 h-4 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM10 10h.01M14 10h.01M10 14h.01" /></svg>;
-                      case 5: return <svg className="w-4 h-4 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>;
-                      default: return <svg className="w-4 h-4 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}></svg>;
-                    }
+                    const iconNum = i + 1;
+                    return (
+                      <div className="relative w-6 h-6">
+                        <Image src={`/Home/services/icon${iconNum}.png`} alt={`service icon ${iconNum}`} fill className="object-contain" />
+                      </div>
+                    );
                   };
 
                   return (
@@ -922,11 +908,11 @@ export default function Home() {
                     >
                       <div className="flex gap-4 items-start w-full">
                         {/* Left Icon Square */}
-                        <div className="w-[34px] h-[34px] mt-1 rounded-[4px] border border-gray-300 flex items-center justify-center shrink-0 bg-white">
+                        <div className="w-[44px] h-[44px] mt-1 rounded-[8px] border border-gray-300 flex items-center justify-center shrink-0 bg-white p-2">
                           {getIcon(idx)}
                         </div>
                         <div className="flex flex-col gap-1.5 flex-1 pr-6">
-                          <h4 className="text-[17px] font-[700] text-black font-poppins">{service.name}</h4>
+                          <h4 className="text-[17px] font-bold text-black font-poppins">{service.name}</h4>
                           <p className="text-[11.5px] text-[#4B5563] leading-[1.4] font-poppins">
                             {service.desc}
                           </p>
@@ -954,8 +940,8 @@ export default function Home() {
                     fill
                     className="object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                  
+                  <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent" />
+
                   {/* Banner Tag Mobile */}
                   <div className="absolute top-6 left-6">
                     <div className="bg-black/30 backdrop-blur-md border border-white/20 px-4 py-2 rounded-lg">
@@ -974,14 +960,14 @@ export default function Home() {
 
                   {/* Updated Bottom Button Mobile */}
                   <div className="absolute bottom-10 left-6">
-                    <button 
+                    <button
                       suppressHydrationWarning
                       className="flex items-center group relative h-10 w-fit cursor-pointer overflow-hidden rounded-[28px_28px_0px_28px] shadow-lg"
                     >
                       <div className="absolute left-0 w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-md z-20">
                         <FaChevronRight className="w-3.5 h-3.5 text-[#3799FA]" />
                       </div>
-                      <div className="pl-12 pr-6 h-full py-2.5 flex items-center text-white font-bold text-[13px] bg-gradient-to-r from-[#3799FA] to-[#9961FB] rounded-[28px_28px_0px_28px]">
+                      <div className="pl-12 pr-6 h-full py-2.5 flex items-center text-white font-bold text-[13px] bg-linear-to-r from-[#3799FA] to-[#9961FB] rounded-[28px_28px_0px_28px]">
                         Lets Build Together
                       </div>
                     </button>
@@ -1006,23 +992,23 @@ export default function Home() {
               <div className="relative w-7 h-7 lg:w-12 lg:h-12 flex items-center justify-center">
                 <Image src="/Home/arrow.png" alt="Arrow" fill className="object-contain" />
               </div>
-              <span className="text-white font-[600] lg:font-bold text-[18px] lg:text-[24px] tracking-wider pr-2">Products</span>
+              <span className="text-white font-semibold lg:font-bold text-[18px] lg:text-[24px] tracking-wider pr-2">Products</span>
             </div>
           </div>
 
           {/* --- DESKTOP HEADER --- */}
-          <div className="hidden lg:flex flex-col items-center text-center mb-20 px-10">
+          <div className="hidden lg:flex flex-col items-center text-center mb-12 xl:mb-20 px-4 md:px-10">
             <div className="products-badge-row flex items-center gap-6 mb-8">
-              <div className="relative w-14 h-7">
+              <div className="relative w-10 h-5 xl:w-14 xl:h-7">
                 <Image src="/Home/right_arrow.png" alt="Right Arrow" fill className="object-contain" />
               </div>
-              <span className="text-[32px] font-bold text-[#808080]">Products</span>
-              <div className="relative w-14 h-7">
+              <span className="text-[24px] xl:text-[32px] font-bold text-[#808080]">Products</span>
+              <div className="relative w-10 h-5 xl:w-14 xl:h-7">
                 <Image src="/Home/left_arrow.png" alt="Left Arrow" fill className="object-contain" />
               </div>
             </div>
-            <h2 className="text-[32px] md:text-[48px] font-semibold text-black leading-tight max-w-[1300px]">
-              <span className="block md:inline-block whitespace-nowrap">Dilshaj Infotech delivers innovative digital solutions</span><br className="hidden md:block" />
+            <h2 className="text-[30px] md:text-[36px] lg:text-[42px] xl:text-[48px] font-semibold text-black leading-tight max-w-full lg:max-w-[1300px]">
+              <span className="block md:inline-block xl:whitespace-nowrap">Dilshaj Infotech delivers innovative digital solutions</span><br className="hidden xl:block" />
               <span>that drive growth and create real impact.</span>
             </h2>
           </div>
@@ -1041,7 +1027,7 @@ export default function Home() {
                       const el = document.getElementById(`product-sidebar-${idx}`);
                       if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
                     }}
-                    className={`p-12 rounded-[32px] cursor-pointer transition-all duration-500 border ${activeProductIdx === idx
+                    className={`p-6 xl:p-12 rounded-[32px] cursor-pointer transition-all duration-500 border ${activeProductIdx === idx
                       ? "bg-white shadow-[0_20px_50px_rgba(0,0,0,0.1)] border-blue-500/20 scale-[1.05] z-10"
                       : "bg-[#F8F9FA] border-transparent opacity-60 hover:opacity-100"
                       }`}
@@ -1059,11 +1045,11 @@ export default function Home() {
                 <div className="mt-4 flex justify-start">
                   <Link href="/products" className="flex items-center group relative h-12 w-fit cursor-pointer overflow-hidden transition-all duration-700 rounded-[34px_34px_0px_34px] hover:rounded-[34px_34px_34px_0px]">
                     {/* LEFT ICON CIRCLE */}
-                    <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-all duration-700 ease-in-out group-hover:left-[calc(100%-48px)] group-hover:bg-gradient-to-r group-hover:from-[#3799FA] group-hover:to-[#9961FB] group-hover:scale-105">
+                    <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-all duration-700 ease-in-out group-hover:left-[calc(100%-48px)] group-hover:bg-linear-to-r group-hover:from-[#3799FA] group-hover:to-[#9961FB] group-hover:scale-105">
                       <FaChevronRight className="w-4 h-4 text-[#3799FA] transition-all duration-700 ease-in-out group-hover:text-white" />
                     </div>
                     {/* MAIN BUTTON BODY */}
-                    <div className="pl-14 pr-8 h-full flex items-center text-white font-bold text-[15px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all duration-700 ease-in-out bg-gradient-to-r from-[#3799FA] to-[#9961FB] group-hover:from-white group-hover:to-white group-hover:text-black group-hover:pl-6 group-hover:pr-14 rounded-[34px_34px_0px_34px] group-hover:rounded-[34px_34px_34px_0px]">
+                    <div className="pl-14 pr-8 h-full flex items-center text-white font-bold text-[15px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all duration-700 ease-in-out bg-linear-to-r from-[#3799FA] to-[#9961FB] group-hover:from-white group-hover:to-white group-hover:text-black group-hover:pl-6 group-hover:pr-14 rounded-[34px_34px_0px_34px] group-hover:rounded-[34px_34px_34px_0px]">
                       See All Products
                     </div>
                   </Link>
@@ -1071,14 +1057,14 @@ export default function Home() {
               </div>
 
               {/* Product Detail Card */}
-              <div className="product-detail-card bg-white rounded-[40px] shadow-[0_30px_100px_rgba(0,0,0,0.05)] border border-gray-100 relative overflow-hidden group min-h-[650px] sticky top-32 h-fit">
+              <div className="product-detail-card bg-white rounded-[40px] shadow-[0_30px_100px_rgba(0,0,0,0.05)] border border-gray-100 sticky top-32 overflow-hidden group min-h-[650px] h-fit">
                 {/* Slidable Content Wrapper */}
                 <div
                   className="absolute inset-0 transition-transform duration-700 ease-in-out"
                   style={{ transform: `translateY(${-activeProductIdx * 100}%)` }}
                 >
                   {products.map((product, pIdx) => (
-                    <div key={pIdx} className="w-full h-full flex-shrink-0 p-12 md:p-16 relative">
+                    <div key={pIdx} className="w-full h-full shrink-0 p-8 xl:p-16 relative">
                       {/* Top Right Arrow Icon - Each card has its own for consistent layout */}
                       <div className="absolute top-12 right-12 w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition-transform group-hover:rotate-12 group-hover:scale-110"
                         style={{ background: 'linear-gradient(135deg, #20B5F9 0%, #A851ED 100%)' }}>
@@ -1100,7 +1086,7 @@ export default function Home() {
                         <div className="flex flex-col md:flex-row gap-12 mb-16">
                           {product.highlights.map((item, i) => (
                             <div key={i} className="flex items-center gap-5">
-                              <div className="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center flex-shrink-0 shadow-sm border border-blue-100">
+                              <div className="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center shrink-0 shadow-sm border border-blue-100">
                                 {item.icon}
                               </div>
                               <span className="text-[17px] font-bold text-black leading-tight max-w-[150px]">
@@ -1111,7 +1097,7 @@ export default function Home() {
                         </div>
 
                         {/* Features Grid Footer */}
-                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 border-t border-gray-100 pt-12 gap-8 mt-auto">
+                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-5 border-t border-gray-100 pt-12 gap-8 mt-auto">
                           {product.features.map((feature, i) => (
                             <div key={i} className="flex flex-col items-center text-center px-4 border-r border-gray-100 last:border-0">
                               <div className="text-blue-500 mb-6 drop-shadow-sm p-3 bg-blue-50 rounded-2xl">
@@ -1138,12 +1124,12 @@ export default function Home() {
                   <div className="flex -space-x-[4px] opacity-40">
                     <svg className="w-4 h-4 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M13 5l7 7-7 7M5 5l7 7-7 7" /></svg>
                   </div>
-                  <span className="text-[18px] font-[600] text-gray-500 tracking-wide font-poppins">Products</span>
+                  <span className="text-[18px] font-semibold text-gray-500 tracking-wide font-poppins">Products</span>
                   <div className="flex -space-x-[4px] opacity-40 rotate-180">
                     <svg className="w-4 h-4 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M13 5l7 7-7 7M5 5l7 7-7 7" /></svg>
                   </div>
                 </div>
-                <h2 className="text-[22px] font-[700] text-black leading-[1.3] font-poppins px-1">
+                <h2 className="text-[22px] font-bold text-black leading-[1.3] font-poppins px-1">
                   Dilshaj Infotech delivers innovative digital solutions that drive growth and create real impact.
                 </h2>
               </div>
@@ -1155,8 +1141,8 @@ export default function Home() {
                     suppressHydrationWarning
                     key={idx}
                     onClick={() => setActiveProductIdx(idx)}
-                    className={`px-6 py-2.5 rounded-[20px] font-[600] font-poppins text-[14px] whitespace-nowrap transition-all flex-shrink-0 ${activeProductIdx === idx
-                      ? "bg-gradient-to-r from-[#31B5FE] to-[#AC52F2] text-white shadow-md"
+                    className={`px-6 py-2.5 rounded-[20px] font-semibold font-poppins text-[14px] whitespace-nowrap transition-all shrink-0 ${activeProductIdx === idx
+                      ? "bg-linear-to-r from-[#31B5FE] to-[#AC52F2] text-white shadow-md"
                       : "bg-[#EAECEF] text-black"
                       }`}
                   >
@@ -1169,17 +1155,17 @@ export default function Home() {
               <div className="w-full px-5">
                 <div className="w-full bg-white rounded-[16px] shadow-[0_5px_15px_rgba(0,0,0,0.05)] border border-gray-100 p-6 sm:p-8 relative flex flex-col">
                   {/* Top Right Background Icon */}
-                  <div className="absolute top-6 right-6 w-10 h-10 rounded-full flex items-center justify-center shadow-md bg-gradient-to-br from-[#31B5FE] to-[#AC52F2]">
+                  <div className="absolute top-6 right-6 w-10 h-10 rounded-full flex items-center justify-center shadow-md bg-linear-to-br from-[#31B5FE] to-[#AC52F2]">
                     <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M7 17L17 7M17 7H7M17 7v10" />
                     </svg>
                   </div>
 
-                  <h2 className="text-[24px] font-[700] text-black leading-[1.2] mb-4 font-poppins pr-12">
+                  <h2 className="text-[24px] font-bold text-black leading-[1.2] mb-4 font-poppins pr-12">
                     {products[activeProductIdx].title}
                   </h2>
 
-                  <p className="text-[13px] font-[500] text-[#4B5563] leading-[1.6] mb-6 font-poppins pr-2">
+                  <p className="text-[13px] font-medium text-[#4B5563] leading-[1.6] mb-6 font-poppins pr-2">
                     {products[activeProductIdx].subtitle}
                   </p>
 
@@ -1187,10 +1173,10 @@ export default function Home() {
                   <div className="flex flex-col gap-4 mb-8">
                     {products[activeProductIdx].highlights.map((item, i) => (
                       <div key={i} className="flex gap-4 items-center">
-                        <div className="w-[28px] h-[28px] rounded-full bg-[#31B5FE] flex items-center justify-center shrink-0 shadow-sm [&_svg]:!text-white [&_svg]:w-[14px] [&_svg]:h-[14px]">
+                        <div className="w-[28px] h-[28px] rounded-full bg-[#31B5FE] flex items-center justify-center shrink-0 shadow-sm [&_svg]:text-white! [&_svg]:w-[14px] [&_svg]:h-[14px]">
                           {item.icon}
                         </div>
-                        <span className="text-[12.5px] font-[600] text-black font-poppins leading-[1.3] flex-1">
+                        <span className="text-[12.5px] font-semibold text-black font-poppins leading-[1.3] flex-1">
                           {item.label}
                         </span>
                       </div>
@@ -1209,7 +1195,7 @@ export default function Home() {
                           <div className="text-[#31B5FE] [&_svg]:w-6 [&_svg]:h-6 flex items-center justify-center">
                             {feature.icon}
                           </div>
-                          <span className="text-[10px] sm:text-[10.5px] font-[600] text-black leading-[1.3] font-poppins px-0.5 mt-auto">
+                          <span className="text-[10px] sm:text-[10.5px] font-semibold text-black leading-[1.3] font-poppins px-0.5 mt-auto">
                             {feature.name}
                           </span>
                         </div>
@@ -1227,7 +1213,7 @@ export default function Home() {
                             <div className="text-[#31B5FE] [&_svg]:w-6 [&_svg]:h-6 flex items-center justify-center">
                               {feature.icon}
                             </div>
-                            <span className="text-[10px] sm:text-[10.5px] font-[600] text-black leading-[1.3] font-poppins px-0.5 mt-auto">
+                            <span className="text-[10px] sm:text-[10.5px] font-semibold text-black leading-[1.3] font-poppins px-0.5 mt-auto">
                               {feature.name}
                             </span>
                           </div>
@@ -1279,19 +1265,19 @@ export default function Home() {
               <div className="relative w-7 h-7 lg:w-12 lg:h-12 flex items-center justify-center">
                 <Image src="/Home/arrow.png" alt="Arrow" fill className="object-contain" />
               </div>
-              <span className="text-white font-[600] lg:font-bold text-[18px] lg:text-[24px] tracking-wider pr-2">Technologies</span>
+              <span className="text-white font-semibold lg:font-bold text-[18px] lg:text-[24px] tracking-wider pr-2">Technologies</span>
             </div>
           </div>
 
           <div className="w-full max-w-[1700px] px-5 md:px-20 relative z-20">
             <div className="mb-14 md:mb-20">
-              <h2 className="text-[28px] md:text-[56px] font-bold text-white leading-tight max-w-[1000px]">
+              <h2 className="text-[28px] md:text-[36px] lg:text-[42px] xl:text-[56px] font-bold text-white leading-tight max-w-[1000px]">
                 We build innovative, scalable solutions that drive growth and transform digital experiences.
               </h2>
             </div>
 
             {/* Desktop Layout */}
-            <div className="hidden lg:grid lg:grid-cols-[1fr_2.5fr] gap-12 items-start">
+            <div className="hidden lg:grid lg:grid-cols-[1fr_2fr] xl:grid-cols-[1fr_2.5fr] gap-8 xl:gap-12 items-start">
               {/* Sidebar Tabs */}
               <div className="flex flex-col gap-5">
                 {technologies.map((tech, idx) => (
@@ -1319,13 +1305,13 @@ export default function Home() {
               </div>
 
               {/* slidable Content Detail Card */}
-              <div className="tech-detail-card bg-white rounded-xl shadow-[0_30px_100px_rgba(0,0,0,0.3)] relative overflow-hidden min-h-[600px] sticky top-32 h-fit">
+              <div className="tech-detail-card bg-white rounded-xl shadow-[0_30px_100px_rgba(0,0,0,0.3)] sticky top-32 overflow-hidden min-h-[600px] h-fit">
                 <div
                   className="absolute inset-0 transition-transform duration-700 ease-in-out"
                   style={{ transform: `translateY(${-activeTechIdx * 100}%)` }}
                 >
                   {technologies.map((tech, tIdx) => (
-                    <div key={tIdx} className="w-full h-full flex-shrink-0 p-12 md:p-16 flex flex-col lg:flex-row gap-12 relative">
+                    <div key={tIdx} className="w-full h-full shrink-0 p-12 md:p-16 flex flex-col xl:flex-row gap-12 relative">
                       {/* Left: Content Area */}
                       <div className="flex-1 flex flex-col justify-center">
                         <h3 className="text-[32px] md:text-[40px] font-bold text-black mb-8 uppercase">
@@ -1338,8 +1324,22 @@ export default function Home() {
                         <div className="space-y-6 mb-12 flex-1">
                           {tech.features.map((feature, fIdx) => (
                             <div key={fIdx} className="flex items-center gap-5">
-                              <div className="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center flex-shrink-0 shadow-sm">
-                                <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={4}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                              <div className="w-10 h-10 rounded-full bg-[#0E4E8B] flex items-center justify-center shrink-0 shadow-sm">
+                                {tIdx === 0 ? (
+                                  <Image src={`/Home/mechine learning/ai${fIdx + 1}.png`} alt="ai icon" width={24} height={24} className="object-contain brightness-0 invert" />
+                                ) : tIdx === 1 ? (
+                                  <Image src={`/Home/cloud/icon${fIdx + 1}.png`} alt="cloud icon" width={24} height={24} className="object-contain brightness-0 invert" />
+                                ) : tIdx === 2 ? (
+                                  <Image src={`/Home/web technology/icon${fIdx + 1}.png`} alt="web icon" width={24} height={24} className="object-contain brightness-0 invert" />
+                                ) : tIdx === 3 ? (
+                                  <Image src={`/Home/mobile/icon${fIdx + 1}.png`} alt="mobile icon" width={24} height={24} className="object-contain brightness-0 invert" />
+                                ) : tIdx === 4 ? (
+                                  <Image src={`/Home/data and analytics/icon${fIdx + 1}.png`} alt="analytics icon" width={24} height={24} className="object-contain brightness-0 invert" />
+                                ) : tIdx === 5 ? (
+                                  <Image src={`/Home/UI/UX Design/icon${fIdx + 1}.png`} alt="ui/ux icon" width={24} height={24} className="object-contain brightness-0 invert" />
+                                ) : (
+                                  <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={4}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                                )}
                               </div>
                               <span className="text-[17px] font-bold text-black">{feature}</span>
                             </div>
@@ -1347,15 +1347,15 @@ export default function Home() {
                         </div>
 
                         {/* Action Button: Custom Asymmetrical Design */}
-                        <div className="mt-auto flex justify-start">
+                        <div className="mt-auto mb-6 flex justify-start">
                           <button suppressHydrationWarning className="flex items-center group relative h-12 w-fit overflow-hidden transition-all duration-700 rounded-[34px_34px_0px_34px] hover:rounded-[34px_34px_34px_0px]">
-                            <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-lg z-20 transition-all duration-700 ease-in-out group-hover:left-[calc(100%-48px)] group-hover:bg-gradient-to-r group-hover:from-[#3799FA] group-hover:to-[#9961FB] group-hover:scale-105">
+                            <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-lg z-20 transition-all duration-700 ease-in-out group-hover:left-[calc(100%-48px)] group-hover:bg-linear-to-r group-hover:from-[#3799FA] group-hover:to-[#9961FB] group-hover:scale-105">
                               <svg className="w-5 h-5 text-[#3799FA] transition-all duration-700 ease-in-out group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={4}>
-                                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                               </svg>
                             </div>
                             <div
-                              className="pl-14 pr-8 h-full flex items-center text-white font-bold text-[15px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all duration-700 ease-in-out bg-gradient-to-r from-[#3799FA] to-[#9961FB] group-hover:from-white group-hover:to-white group-hover:text-black group-hover:pl-6 group-hover:pr-14 rounded-[34px_34px_0px_34px] group-hover:rounded-[34px_34px_34px_0px]"
+                              className="pl-14 pr-8 h-full flex items-center text-white font-bold text-[15px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all duration-700 ease-in-out bg-linear-to-r from-[#3799FA] to-[#9961FB] group-hover:from-white group-hover:to-white group-hover:text-black group-hover:pl-6 group-hover:pr-14 rounded-[34px_34px_0px_34px] group-hover:rounded-[34px_34px_34px_0px]"
                             >
                               Learn More
                             </div>
@@ -1364,10 +1364,10 @@ export default function Home() {
                       </div>
 
                       {/* Right: Thematic Image */}
-                      <div className="flex-1 relative min-h-[400px] lg:min-h-0">
+                      <div className="w-full xl:flex-1 relative min-h-[400px] aspect-video xl:aspect-auto xl:min-h-0">
                         <div className="absolute inset-0 rounded-xl overflow-hidden">
                           <Image src={tech.image} alt={tech.title} fill className="object-cover" />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+                          <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent" />
                         </div>
                       </div>
                     </div>
@@ -1385,8 +1385,8 @@ export default function Home() {
                     suppressHydrationWarning
                     key={idx}
                     onClick={() => setActiveTechIdx(idx)}
-                    className={`px-5 py-2.5 rounded-[20px] font-semibold text-[13px] whitespace-nowrap transition-all flex-shrink-0 border ${activeTechIdx === idx
-                      ? "bg-gradient-to-r from-[#31B5FE] to-[#AC52F2] text-white shadow-md border-transparent"
+                    className={`px-5 py-2.5 rounded-[20px] font-semibold text-[13px] whitespace-nowrap transition-all shrink-0 border ${activeTechIdx === idx
+                      ? "bg-linear-to-r from-[#31B5FE] to-[#AC52F2] text-white shadow-md border-transparent"
                       : "bg-[#2A2A2A] text-gray-300 border-white/10"
                       }`}
                   >
@@ -1408,14 +1408,64 @@ export default function Home() {
                   <div className="flex flex-col gap-5 mb-8">
                     {technologies[activeTechIdx].features.map((feature, fIdx) => (
                       <div key={fIdx} className="flex items-center gap-4">
-                        <div className="w-[32px] h-[32px] rounded-full bg-[#519EFF] flex items-center justify-center shrink-0 shadow-sm [&_svg]:!text-white [&_svg]:w-[15px] [&_svg]:h-[15px]">
-                          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                            {fIdx === 0 ? <path strokeLinecap="round" strokeLinejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
-                              : fIdx === 1 ? <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-                                : <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />}
-                          </svg>
+                        <div className="w-[32px] h-[32px] rounded-full bg-[#0E4E8B] flex items-center justify-center shrink-0 shadow-sm [&_svg]:text-white! [&_svg]:w-[15px] [&_svg]:h-[15px]">
+                          {activeTechIdx === 0 ? (
+                            <Image
+                              src={`/Home/mechine learning/ai${fIdx + 1}.png`}
+                              alt="ai icon"
+                              width={20}
+                              height={20}
+                              className="object-contain brightness-0 invert"
+                            />
+                          ) : activeTechIdx === 1 ? (
+                            <Image
+                              src={`/Home/cloud/icon${fIdx + 1}.png`}
+                              alt="cloud icon"
+                              width={20}
+                              height={20}
+                              className="object-contain brightness-0 invert"
+                            />
+                          ) : activeTechIdx === 2 ? (
+                            <Image
+                              src={`/Home/web technology/icon${fIdx + 1}.png`}
+                              alt="web icon"
+                              width={20}
+                              height={20}
+                              className="object-contain brightness-0 invert"
+                            />
+                          ) : activeTechIdx === 3 ? (
+                            <Image
+                              src={`/Home/mobile/icon${fIdx + 1}.png`}
+                              alt="mobile icon"
+                              width={20}
+                              height={20}
+                              className="object-contain brightness-0 invert"
+                            />
+                          ) : activeTechIdx === 4 ? (
+                            <Image
+                              src={`/Home/data and analytics/icon${fIdx + 1}.png`}
+                              alt="analytics icon"
+                              width={20}
+                              height={20}
+                              className="object-contain brightness-0 invert"
+                            />
+                          ) : activeTechIdx === 5 ? (
+                            <Image
+                              src={`/Home/UI/UX Design/icon${fIdx + 1}.png`}
+                              alt="ui/ux icon"
+                              width={20}
+                              height={20}
+                              className="object-contain brightness-0 invert"
+                            />
+                          ) : (
+                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                              {fIdx === 0 ? <path strokeLinecap="round" strokeLinejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                                : fIdx === 1 ? <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                                  : <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />}
+                            </svg>
+                          )}
                         </div>
-                        <span className="text-[13px] font-[600] text-[#1F2933] leading-tight">
+                        <span className="text-[13px] font-semibold text-[#1F2933] leading-tight">
                           {feature}
                         </span>
                       </div>
@@ -1481,7 +1531,7 @@ export default function Home() {
                 style={{ background: accelerationFeatures[1].gradient }}
               >
                 {/* Mesh Gradient Effect Layer */}
-                <div className="absolute inset-0 opacity-40 bg-[radial-gradient(circle_at_50%_0%,_#ffffff22_0%,_transparent_50%)]" />
+                <div className="absolute inset-0 opacity-40 bg-[radial-gradient(circle_at_50%_0%,#ffffff22_0%,transparent_50%)]" />
 
                 {/* Subtle Dot Pattern Overlay */}
                 <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(rgba(255,255,255,0.3) 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
@@ -1510,7 +1560,7 @@ export default function Home() {
                 style={{ background: accelerationFeatures[2].gradient }}
               >
                 {/* Mesh Gradient Effect Layer */}
-                <div className="absolute inset-0 opacity-40 bg-[radial-gradient(circle_at_50%_100%,_#ffffff22_0%,_transparent_50%)]" />
+                <div className="absolute inset-0 opacity-40 bg-[radial-gradient(circle_at_50%_100%,#ffffff22_0%,transparent_50%)]" />
 
                 {/* Subtle Dot Pattern Overlay */}
                 <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(rgba(255,255,255,0.3) 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
@@ -1618,10 +1668,10 @@ export default function Home() {
               <div id="careers-scroll-area" className="w-full lg:max-w-[1320px] overflow-x-auto scrollbar-none pb-12 pt-4 relative scroll-smooth snap-x snap-mandatory flex">
                 <div className="flex gap-4 lg:gap-8 px-[calc(50%-145px)] lg:px-0 w-max mx-auto lg:mx-0">
                   {careerJobs.map((job, idx) => (
-                    <div key={idx} className="career-card bg-[#2B2D31] lg:bg-[#1a1c1e] bg-opacity-95 lg:bg-opacity-100 border border-white/10 lg:border-white/5 rounded-[16px] lg:rounded-[24px] p-6 lg:p-6 flex flex-col items-center lg:items-center group hover:bg-[#32353A] lg:hover:bg-[#222528] transition-all duration-500 lg:hover:-translate-y-2 shadow-[0_8px_30px_rgba(0,0,0,0.7)] lg:shadow-2xl w-[290px] lg:w-[306px] h-[420px] lg:h-[343px] flex-shrink-0 overflow-hidden snap-start lg:snap-start backdrop-blur-md">
+                    <div key={idx} className="career-card bg-[#2B2D31] lg:bg-[#1a1c1e] bg-opacity-95 lg:bg-opacity-100 border border-white/10 lg:border-white/5 rounded-[16px] lg:rounded-[24px] p-6 lg:p-6 flex flex-col items-center lg:items-center group hover:bg-[#32353A] lg:hover:bg-[#222528] transition-all duration-500 lg:hover:-translate-y-2 shadow-[0_8px_30px_rgba(0,0,0,0.7)] lg:shadow-2xl w-[290px] lg:w-[306px] h-[420px] lg:h-[343px] shrink-0 overflow-hidden snap-start lg:snap-start backdrop-blur-md">
 
                       {/* Icon */}
-                      <div className="relative mb-5 lg:mb-4 transform group-hover:scale-105 transition-transform duration-500 flex-shrink-0 mx-auto w-[85px] h-[85px] lg:w-auto lg:h-auto [&>div]:!border-0 lg:[&>div]:!border-[4px] [&>div]:!p-0 lg:[&>div]:!p-2 [&>div]:w-[85px] [&>div]:h-[85px] lg:[&>div]:w-20 lg:[&>div]:h-20 [&>div>img]:scale-[1.25] lg:[&>div>img]:scale-100 flex items-center justify-center mt-6 lg:mt-0">
+                      <div className="relative mb-5 lg:mb-4 transform group-hover:scale-105 transition-transform duration-500 shrink-0 mx-auto w-[85px] h-[85px] lg:w-auto lg:h-auto [&>div]:border-0! lg:[&>div]:border-4! [&>div]:p-0! lg:[&>div]:p-2! [&>div>img]:scale-[1.25] lg:[&>div>img]:scale-100 flex items-center justify-center mt-6 lg:mt-0">
                         {job.icon}
                       </div>
 
@@ -1632,7 +1682,7 @@ export default function Home() {
                         </h3>
 
                         {/* MODERN LINE SEPARATOR */}
-                        <div className="w-full h-[1px] bg-white/10 mb-4 hidden lg:block" />
+                        <div className="w-full h-px bg-white/10 mb-4 hidden lg:block" />
 
                         {/* Metadata */}
                         <div className="w-full flex flex-col gap-3 lg:gap-3 mb-6 lg:mb-5 text-[#D1D5DB] lg:text-white/70 font-medium text-[13.5px] lg:text-[14px]">
@@ -1706,27 +1756,28 @@ export default function Home() {
             {/* Section Header */}
             <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 md:mb-16 gap-8">
               <div className="flex flex-col">
-                <h2 className="text-[34px] md:text-[44px] font-bold md:font-semibold text-[#1F2933] leading-[1.2] tracking-tight">
-                  <span className="md:whitespace-nowrap">Insights, ideas, and <br className="block md:hidden" /> updates from the <br className="block md:hidden" /> world of  <br className="block md:hidden" /> <p className="font-semibold">technology and digital <br className="block md:hidden" /> innovation.</p></span>
+                <h2 className="text-[28px] md:text-[36px] lg:text-[40px] xl:text-[44px] font-bold md:font-semibold text-[#1F2933] leading-[1.2] tracking-tight">
+                  <span className="md:whitespace-nowrap">Insights, ideas, and <br className="block md:hidden" /> updates from the <br className="block md:hidden" /> world of  <br className="block md:hidden" /> <p className="font-semibold px-0">technology and digital <br className="block md:hidden" /> innovation.</p></span>
                 </h2>
               </div>
 
               {/* More Blogs Button */}
-              <div className="flex-shrink-0 mt-2 md:mt-0">
-                <button suppressHydrationWarning className="blog-cta flex items-center relative group h-[52px] md:h-12 w-fit">
+              <div className="shrink-0 mt-2 md:mt-0">
+                <button
+                  suppressHydrationWarning
+                  className="blog-cta flex items-center relative group h-[52px] md:h-12 w-fit cursor-pointer overflow-hidden transition-all duration-700 rounded-[34px_34px_0px_34px] hover:rounded-[34px_34px_34px_0px]"
+                >
                   {/* LEFT ICON CIRCLE */}
-                  <div className="absolute left-0 w-[52px] h-[52px] md:w-12 md:h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-transform group-hover:scale-105">
-                    <svg className="w-4 h-4 text-[#3799FA]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={4}>
+                  <div
+                    className="absolute left-0 w-[52px] h-[52px] md:w-12 md:h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-all duration-700 ease-in-out group-hover:left-[calc(100%-52px)] md:group-hover:left-[calc(100%-48px)] group-hover:bg-linear-to-r group-hover:from-[#3799FA] group-hover:to-[#9961FB] group-hover:scale-105"
+                  >
+                    <svg className="w-4 h-4 text-[#3799FA] transition-all duration-700 ease-in-out group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={4}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                     </svg>
                   </div>
-
                   {/* MAIN BUTTON BODY */}
                   <div
-                    className="pl-[68px] md:pl-14 pr-7 md:pr-8 h-full flex items-center text-white font-bold text-[15px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all duration-300 rounded-[34px_34px_0_34px]"
-                    style={{
-                      background: 'linear-gradient(to right, #3799FA, #9961FB)',
-                    }}
+                    className="pl-[68px] md:pl-14 pr-7 md:pr-8 h-full flex items-center text-white font-bold text-[15px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all duration-700 ease-in-out bg-linear-to-r from-[#3799FA] to-[#9961FB] group-hover:from-white group-hover:to-white group-hover:text-black group-hover:pl-6 group-hover:pr-[68px] md:group-hover:pr-14 rounded-[34px_34px_0px_34px] group-hover:rounded-[34px_34px_34px_0px]"
                   >
                     More Blogs
                   </div>
@@ -1764,7 +1815,7 @@ export default function Home() {
             {/* Mobile Blog Carousel */}
             <div className="flex md:hidden overflow-x-auto scrollbar-none gap-5 pb-8 pt-2 snap-x snap-mandatory -mx-5 px-5" style={{ width: 'calc(100% + 40px)' }}>
               {blogPosts.map((post, idx) => (
-                <div key={idx} className="blog-card group cursor-pointer flex-shrink-0 w-[290px] snap-start">
+                <div key={idx} className="blog-card group cursor-pointer shrink-0 w-[290px] snap-start">
                   <div className="relative w-full h-[190px] rounded-[24px] overflow-hidden mb-5 shadow-sm border border-black/5 bg-white">
                     <Image src={post.image} alt={post.title} fill className="object-cover" />
 
@@ -1800,7 +1851,7 @@ export default function Home() {
               className="object-cover opacity-60 mix-blend-overlay"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-transparent to-[#0a0a0a]" />
+            <div className="absolute inset-0 bg-linear-to-b from-[#0a0a0a] via-transparent to-[#0a0a0a]" />
           </div>
 
           <div className="w-full flex justify-start mb-6 md:mb-10 px-0 md:px-[104px] relative z-10">
@@ -1832,7 +1883,7 @@ export default function Home() {
           </div>
 
           <div className="w-full max-w-[1700px] px-6 md:px-[104px] flex flex-col relative z-20">
-            <h2 className="text-[32px] md:text-[44px] font-bold md:font-semibold text-white leading-[1.25] mb-12 md:mb-20 max-w-[90%] md:max-w-full lg:max-w-[1200px] tracking-tight">
+            <h2 className="text-[32px] md:text-[44px] font-bold md:font-semibold text-white leading-tight mb-12 md:mb-20 max-w-[90%] md:max-w-full lg:max-w-[1200px] tracking-tight">
               Real stories from <br className="block md:hidden" /> clients who trust <br className="block md:hidden" /> our technology and <br className="block md:hidden" /> expertise.
             </h2>
 
@@ -1870,13 +1921,13 @@ export default function Home() {
               >
                 {(testimonials || []).map((t, idx) => (
                   t.type === 'video' ? (
-                    <div key={idx} className="testimonial-card flex-shrink-0 w-[280px] md:w-[306px] h-[400px] md:h-[401px] relative rounded-[20px] md:rounded-[24px] overflow-hidden snap-start shadow-2xl border border-white/20 group/card">
+                    <div key={idx} className="testimonial-card shrink-0 w-[280px] md:w-[306px] h-[400px] md:h-[401px] relative rounded-[20px] md:rounded-[24px] overflow-hidden snap-start shadow-2xl border border-white/20 group/card">
                       <Image src={t.image} alt={t.name} fill className="object-cover transition-transform duration-700 group-hover/card:scale-105" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+                      <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/20 to-transparent" />
 
                       <div className="absolute bottom-5 md:bottom-6 left-4 right-4 md:left-5 md:right-5 flex flex-col gap-2">
                         <div className="bg-white/20 backdrop-blur-xl px-4 py-3 md:py-4 rounded-[16px] md:rounded-[20px] border border-white/30 w-full flex items-center justify-between shadow-xl">
-                          <div className="w-[42px] h-[32px] md:w-10 md:h-10 bg-white flex items-center justify-center text-[#3799FA] shadow-lg flex-shrink-0 rounded-[6px] md:rounded-xl">
+                          <div className="w-[42px] h-[32px] md:w-10 md:h-10 bg-white flex items-center justify-center text-[#3799FA] shadow-lg shrink-0 rounded-[6px] md:rounded-xl">
                             <FaCirclePlay className="w-[18px] h-[18px] md:w-5 md:h-5" />
                           </div>
                           <div className="flex flex-col overflow-hidden text-right">
@@ -1887,7 +1938,7 @@ export default function Home() {
                       </div>
                     </div>
                   ) : (
-                    <div key={idx} className="testimonial-card flex-shrink-0 w-[290px] md:w-[306px] h-[420px] md:h-[446px] bg-[#1a1c1e] md:bg-[#1a1c1e]/80 backdrop-blur-xl rounded-[20px] md:rounded-[24px] p-6 md:p-8 snap-start border-t md:border border-white/10 md:border-white/5 flex flex-col justify-between shadow-[0_10px_40px_rgba(0,0,0,0.8)] md:shadow-2xl">
+                    <div key={idx} className="testimonial-card shrink-0 w-[290px] md:w-[306px] h-[420px] md:h-[446px] bg-[#1a1c1e] md:bg-[#1a1c1e]/80 backdrop-blur-xl rounded-[20px] md:rounded-[24px] p-6 md:p-8 snap-start border-t md:border border-white/10 md:border-white/5 flex flex-col justify-between shadow-[0_10px_40px_rgba(0,0,0,0.8)] md:shadow-2xl">
                       <div>
                         <div className="flex gap-1.5 mb-6 md:mb-8">
                           {[...Array(t.stars || 5)].map((_, i) => (
@@ -1900,7 +1951,7 @@ export default function Home() {
                       </div>
 
                       <div className="bg-[#242629] md:bg-white/5 p-3 md:p-4 rounded-[16px] md:rounded-[20px] border md:border border-white/5 md:border-white/5 flex items-center gap-3.5 md:gap-4 hover:bg-white/5 md:hover:bg-white/10 transition-colors duration-300">
-                        <div className="relative w-11 h-11 md:w-12 md:h-12 rounded-full overflow-hidden border-[1px] md:border-2 border-white/20 flex-shrink-0">
+                        <div className="relative w-11 h-11 md:w-12 md:h-12 rounded-full overflow-hidden border md:border-2 border-white/20 shrink-0">
                           <Image src={t.image} alt={t.name} fill className="object-cover" />
                         </div>
                         <div className="flex flex-col overflow-hidden">
@@ -1990,14 +2041,14 @@ export default function Home() {
                       className="w-full px-4 md:px-8 py-4 md:py-6 flex items-center justify-between text-left group"
                     >
                       <div className="flex items-center gap-4 md:gap-6 flex-1 min-w-0 pr-3">
-                        <span className="text-[#1a1c1e]/30 font-bold text-[15px] md:text-[18px] flex-shrink-0">
+                        <span className="text-[#1a1c1e]/30 font-bold text-[15px] md:text-[18px] shrink-0">
                           {String(idx + 1).padStart(2, '0')}
                         </span>
                         <span className={`text-[14.5px] md:text-[20px] font-semibold transition-colors leading-snug ${activeFaqIdx === idx ? 'text-blue-600' : 'text-[#1a1c1e] group-hover:text-blue-500'}`}>
                           {faq.question}
                         </span>
                       </div>
-                      <div className={`w-7 h-7 md:w-8 md:h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-all ${activeFaqIdx === idx ? 'bg-blue-600 text-white' : 'bg-black/5 text-black/60'}`}>
+                      <div className={`w-7 h-7 md:w-8 md:h-8 rounded-full flex items-center justify-center shrink-0 transition-all ${activeFaqIdx === idx ? 'bg-blue-600 text-white' : 'bg-black/5 text-black/60'}`}>
                         {activeFaqIdx === idx ? <FaMinus className="w-3 h-3 md:w-4 md:h-4" /> : <FaPlus className="w-3 h-3 md:w-4 md:h-4" />}
                       </div>
                     </button>
@@ -2013,7 +2064,7 @@ export default function Home() {
               </div>
 
               {/* Contact Card Column */}
-              <div className="w-full lg:w-[399px] flex-shrink-0 lg:sticky lg:top-24 mt-4 md:mt-0">
+              <div className="w-full lg:w-[399px] shrink-0 lg:sticky lg:top-24 mt-4 md:mt-0">
                 <div
                   className="rounded-[24px] md:rounded-[32px] p-6 md:p-8 relative overflow-hidden flex flex-col text-left md:text-center shadow-xl md:shadow-2xl"
                   style={{
@@ -2025,7 +2076,7 @@ export default function Home() {
                     className="absolute top-0 right-0 opacity-30 pointer-events-none"
                     style={{ width: '220px', height: '240px' }}
                   >
-                    <Image src="/Home/question-mark.png" alt="Question Mark" fill className="object-contain object-right-top" />
+                    <Image src="/Home/question-mark.png" alt="Question Mark" fill className="object-contain object-top-right" />
                   </div>
 
                   <div className="relative z-10 pt-4 md:pt-16 md:mt-4">

@@ -108,7 +108,7 @@ export default function Stats() {
                             src="/about/map-removebg-preview.png"
                             alt="Map Background"
                             fill
-                            className="object-contain object-center lg:object-left-top scale-125 lg:scale-100"
+                            className="object-contain object-center lg:object-top-left scale-125 lg:scale-100"
                             priority
                         />
                     </div>
@@ -122,7 +122,7 @@ export default function Stats() {
                 </div>
 
                 {/* Right Side: Stats Grid inside Glass Card */}
-                <div className="stats-glass-card w-full lg:w-[55%] p-6 sm:p-8 md:p-10 bg-white/5 backdrop-blur-xl border border-white/10 rounded-[2rem] md:rounded-[2.5rem] shadow-2xl relative z-10">
+                <div className="stats-glass-card w-full lg:w-[55%] p-6 sm:p-8 md:p-10 bg-white/5 backdrop-blur-xl border border-white/10 rounded-4xl md:rounded-[2.5rem] shadow-2xl relative z-10">
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-4">
                         {stats.map((stat, index) => (
                             <div
@@ -133,7 +133,7 @@ export default function Stats() {
                                 <span className="text-4xl md:text-5xl font-bold text-[#31B5FE] group-hover:text-white transition-colors duration-300">
                                     {stat.value}
                                 </span>
-                                <span className="mt-4 text-center text-zinc-400 text-sm font-medium leading-tight min-h-[2.5rem] flex items-center">
+                                <span className="mt-4 text-center text-zinc-400 text-sm font-medium leading-tight min-h-10 flex items-center">
                                     {stat.label}
                                 </span>
 

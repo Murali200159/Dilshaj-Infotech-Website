@@ -33,7 +33,7 @@ const cardsData = [
         buttonText: "View Project",
         buttonColor: "from-[#8fb2ff] to-[#604aff]",
         href: "/products/edu-det",
-        imageBg: "bg-gradient-to-br from-[#b4d2ff] via-[#dcdbfc] to-[#f4b6fa]",
+        imageBg: "bg-linear-to-br from-[#b4d2ff] via-[#dcdbfc] to-[#f4b6fa]",
         computercard: "",
         mobilecard: "",
         plogocard: "",
@@ -153,7 +153,7 @@ const cardsData = [
     {
         id: 6,
         tag: "Design & Architecture",
-        tagColor: "bg-gradient-to-r from-[#4ad1f2] to-[#ab52f2]",
+        tagColor: "bg-linear-to-r from-[#4ad1f2] to-[#ab52f2]",
         logoImage: "",
         title: "Architecture & Design Platform",
         quote: "Collaborative Architecture & Design Hub",
@@ -182,7 +182,7 @@ const cardsData = [
     {
         id: 7,
         tag: "Health Care",
-        tagColor: "bg-gradient-to-r from-[#4ad1f2] to-[#ab52f2]",
+        tagColor: "bg-linear-to-r from-[#4ad1f2] to-[#ab52f2]",
         logoImage: "",
         title: "Doctor-on-One-Click",
         quote: "Instant Doctor Access Anytime",
@@ -212,7 +212,7 @@ const cardsData = [
     {
         id: 8,
         tag: "On-Demand Services",
-        tagColor: "bg-gradient-to-r from-[#22d3ee] to-[#8b5cf6]",
+        tagColor: "bg-linear-to-r from-[#22d3ee] to-[#8b5cf6]",
         logoImage: "",
         title: "UrbanServe-Style Service App",
         quote: "All-in-One Home Services Platform",
@@ -243,7 +243,7 @@ const cardsData = [
     {
         id: 9,
         tag: "Food & Delivery",
-        tagColor: "bg-gradient-to-r from-[#4ad1f2] to-[#ab52f2]",
+        tagColor: "bg-linear-to-r from-[#4ad1f2] to-[#ab52f2]",
         logoImage: "",
         title: "Food Delivery Application",
         quote: "Fast & Reliable Food Delivery Platform",
@@ -331,26 +331,26 @@ function TextBox({ card }: { card: typeof cardsData[number] }) {
                         <Image src={card.logoImage} alt="Logo" fill className="object-contain object-left" />
                     </div>
                 ) : (
-                    <h2 className="text-[28px] sm:text-[36px] md:text-[42px] lg:text-[46px] font-[700] tracking-tight text-black leading-tight">
+                    <h2 className="text-[28px] sm:text-[36px] md:text-[42px] lg:text-[46px] font-bold tracking-tight text-black leading-tight">
                         {(card as any).title}
                     </h2>
                 )}
             </div>
-            <h3 className="w-full max-w-[675px] text-[18px] sm:text-[22px] md:text-[24px] lg:text-[28px] font-[600] text-black mb-4 leading-snug tracking-tight">
+            <h3 className="w-full max-w-[675px] text-[18px] sm:text-[22px] md:text-[24px] lg:text-[28px] font-semibold text-black mb-4 leading-snug tracking-tight">
                 &ldquo;{card.quote}&rdquo;
             </h3>
-            <p className="w-full max-w-[676px] text-[#4B5563] text-[14px] sm:text-[16px] md:text-[18px] leading-[1.6] mb-6 font-[500] pr-2">
+            <p className="w-full max-w-[676px] text-[#4B5563] text-[14px] sm:text-[16px] md:text-[18px] leading-[1.6] mb-6 font-medium pr-2">
                 {card.desc}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 mb-4 mt-6">
                 {card.metrics.map((m, idx) => (
                     <div key={idx} className="flex flex-col w-full sm:w-[280px] min-h-fit justify-start mt-2">
                         {m.val !== "text-only" && (
-                            <span className="text-[36px] sm:text-[48px] md:text-[56px] font-[700] text-black leading-none tracking-tight mb-1 flex items-center">
+                            <span className="text-[36px] sm:text-[48px] md:text-[56px] font-bold text-black leading-none tracking-tight mb-1 flex items-center">
                                 {m.val.startsWith("icon-") ? renderMetricValue(m.val) : m.val}
                             </span>
                         )}
-                        <span className={`text-[#000000] text-[15px] sm:text-[18px] md:text-[20px] font-[600] leading-snug w-full ${(m.val === "text-only" || m.val.startsWith("icon-")) ? "mt-3 mb-2" : ""}`}>
+                        <span className={`text-[#000000] text-[15px] sm:text-[18px] md:text-[20px] font-semibold leading-snug w-full ${(m.val === "text-only" || m.val.startsWith("icon-")) ? "mt-3 mb-2" : ""}`}>
                             {m.label}
                         </span>
                     </div>
@@ -360,22 +360,22 @@ function TextBox({ card }: { card: typeof cardsData[number] }) {
                 {(card as any).href ? (
                     <Link href={(card as any).href} className="flex items-center group relative h-12 w-fit cursor-pointer overflow-hidden transition-all duration-700 rounded-[34px_34px_0px_34px] hover:rounded-[34px_34px_34px_0px]">
                         {/* LEFT ICON CIRCLE */}
-                        <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-all duration-700 ease-in-out group-hover:left-[calc(100%-48px)] group-hover:bg-gradient-to-r group-hover:from-[#3799FA] group-hover:to-[#9961FB] group-hover:scale-105">
+                        <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-all duration-700 ease-in-out group-hover:left-[calc(100%-48px)] group-hover:bg-linear-to-r group-hover:from-[#3799FA] group-hover:to-[#9961FB] group-hover:scale-105">
                             <FaChevronRight className="w-4 h-4 text-[#3799FA] transition-all duration-700 ease-in-out group-hover:text-white" />
                         </div>
                         {/* MAIN BUTTON BODY */}
-                        <div className="pl-14 pr-8 h-full flex items-center text-white font-bold text-[15px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all duration-700 ease-in-out bg-gradient-to-r from-[#3799FA] to-[#9961FB] group-hover:from-white group-hover:to-white group-hover:text-black group-hover:pl-6 group-hover:pr-14 rounded-[34px_34px_0px_34px] group-hover:rounded-[34px_34px_34px_0px]">
+                        <div className="pl-14 pr-8 h-full flex items-center text-white font-bold text-[15px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all duration-700 ease-in-out bg-linear-to-r from-[#3799FA] to-[#9961FB] group-hover:from-white group-hover:to-white group-hover:text-black group-hover:pl-6 group-hover:pr-14 rounded-[34px_34px_0px_34px] group-hover:rounded-[34px_34px_34px_0px]">
                             {card.buttonText}
                         </div>
                     </Link>
                 ) : (
                     <button suppressHydrationWarning className="flex items-center group relative h-12 w-fit cursor-pointer overflow-hidden transition-all duration-700 rounded-[34px_34px_0px_34px] hover:rounded-[34px_34px_34px_0px]">
                         {/* LEFT ICON CIRCLE */}
-                        <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-all duration-700 ease-in-out group-hover:left-[calc(100%-48px)] group-hover:bg-gradient-to-r group-hover:from-[#3799FA] group-hover:to-[#9961FB] group-hover:scale-105">
+                        <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-all duration-700 ease-in-out group-hover:left-[calc(100%-48px)] group-hover:bg-linear-to-r group-hover:from-[#3799FA] group-hover:to-[#9961FB] group-hover:scale-105">
                             <FaChevronRight className="w-4 h-4 text-[#3799FA] transition-all duration-700 ease-in-out group-hover:text-white" />
                         </div>
                         {/* MAIN BUTTON BODY */}
-                        <div className="pl-14 pr-8 h-full flex items-center text-white font-bold text-[15px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all duration-700 ease-in-out bg-gradient-to-r from-[#3799FA] to-[#9961FB] group-hover:from-white group-hover:to-white group-hover:text-black group-hover:pl-6 group-hover:pr-14 rounded-[34px_34px_0px_34px] group-hover:rounded-[34px_34px_34px_0px]">
+                        <div className="pl-14 pr-8 h-full flex items-center text-white font-bold text-[15px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all duration-700 ease-in-out bg-linear-to-r from-[#3799FA] to-[#9961FB] group-hover:from-white group-hover:to-white group-hover:text-black group-hover:pl-6 group-hover:pr-14 rounded-[34px_34px_0px_34px] group-hover:rounded-[34px_34px_34px_0px]">
                             {card.buttonText}
                         </div>
                     </button>
@@ -392,71 +392,71 @@ function ImageBox({ card }: { card: typeof cardsData[number] }) {
             <div className="absolute inset-0 opacity-[0.25] pointer-events-none" style={{ background: "radial-gradient(circle at center, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 65%)" }}></div>
             {(card as any).plogocard && (
                 <div className="absolute top-[2%] left-[2%] w-[28%] h-[28%] z-0 pointer-events-none opacity-[0.6] mix-blend-overlay">
-                    <Image src={(card as any).plogocard} alt="Background P Logo" fill className="object-contain object-top object-left" />
+                    <Image src={(card as any).plogocard} alt="Background P Logo" fill className="object-contain object-top-left" />
                 </div>
             )}
             {(card as any).rightcard && (
                 <div className="absolute bottom-[-8%] right-[-5%] w-[32%] h-[32%] z-0 pointer-events-none opacity-[0.8] mix-blend-screen">
-                    <Image src={(card as any).rightcard} alt="Star Decoration" fill className="object-contain object-bottom object-right" />
+                    <Image src={(card as any).rightcard} alt="Star Decoration" fill className="object-contain object-bottom-right" />
                 </div>
             )}
             {card.computercard && (
-                <div className="absolute left-[-2%] xl:left-[-5%] top-[15%] w-[85%] xl:w-[85%] h-[80%] z-10 transform group-hover:-translate-y-2 group-hover:scale-[1.02] transition-all duration-[800ms] ease-out">
-                    <Image src={card.computercard} alt="Desktop Preview" fill className="object-contain object-bottom object-left" />
+                <div className="absolute left-[-2%] xl:left-[-5%] top-[15%] w-[85%] xl:w-[85%] h-[80%] z-10 transform group-hover:-translate-y-2 group-hover:scale-[1.02] transition-all duration-800 ease-out">
+                    <Image src={card.computercard} alt="Desktop Preview" fill className="object-contain object-bottom-left" />
                 </div>
             )}
             {card.mobilecard && (
-                <div className="absolute right-[2%] xl:right-[4%] top-[5%] w-[45%] xl:w-[42%] h-[95%] z-20 transform group-hover:-translate-y-4 group-hover:-translate-x-2 group-hover:scale-[1.05] transition-all duration-[1000ms] ease-out drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)]">
-                    <Image src={card.mobilecard} alt="Mobile Preview" fill className="object-contain object-bottom object-right" />
+                <div className="absolute right-[2%] xl:right-[4%] top-[5%] w-[45%] xl:w-[42%] h-[95%] z-20 transform group-hover:-translate-y-4 group-hover:-translate-x-2 group-hover:scale-[1.05] transition-all duration-1000 ease-out drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)]">
+                    <Image src={card.mobilecard} alt="Mobile Preview" fill className="object-contain object-bottom-right" />
                 </div>
             )}
             {(card as any).bgText && (
                 <div className="absolute top-[4%] left-[5%] z-0 pointer-events-none">
-                    <span className="text-white opacity-[0.6] text-[48px] md:text-[60px] lg:text-[75px] font-[600] tracking-wider leading-none drop-shadow-sm">{(card as any).bgText}</span>
+                    <span className="text-white opacity-[0.6] text-[48px] md:text-[60px] lg:text-[75px] font-semibold tracking-wider leading-none drop-shadow-sm">{(card as any).bgText}</span>
                 </div>
             )}
             {(card as any).newscard && (
-                <div className="absolute right-[-5%] lg:right-[-10%] bottom-[-5%] w-[110%] h-[105%] z-20 transform group-hover:-translate-y-2 group-hover:scale-[1.03] transition-all duration-[1000ms] ease-out">
-                    <Image src={(card as any).newscard} alt="News App Preview" fill className="object-contain object-bottom object-right drop-shadow-[0_20px_40px_rgba(0,0,0,0.4)]" />
+                <div className="absolute right-[-5%] lg:right-[-10%] bottom-[-5%] w-[110%] h-[105%] z-20 transform group-hover:-translate-y-2 group-hover:scale-[1.03] transition-all duration-1000 ease-out">
+                    <Image src={(card as any).newscard} alt="News App Preview" fill className="object-contain object-bottom-right drop-shadow-[0_20px_40px_rgba(0,0,0,0.4)]" />
                 </div>
             )}
             {(card as any).ridecard && (
-                <div className="absolute inset-0 w-full h-full z-20 overflow-hidden rounded-[16px] transform group-hover:scale-[1.01] transition-all duration-[1000ms] ease-out">
+                <div className="absolute inset-0 w-full h-full z-20 overflow-hidden rounded-[16px] transform group-hover:scale-[1.01] transition-all duration-1000 ease-out">
                     <Image src={(card as any).ridecard} alt="Ride App Dashboard" fill className="object-cover object-center" />
                 </div>
             )}
             {(card as any).ecommercecard && (
-                <div className="absolute inset-0 w-full h-full z-20 overflow-hidden rounded-[16px] transform group-hover:scale-[1.02] transition-all duration-[1000ms] ease-out">
+                <div className="absolute inset-0 w-full h-full z-20 overflow-hidden rounded-[16px] transform group-hover:scale-[1.02] transition-all duration-1000 ease-out">
                     <Image src={(card as any).ecommercecard} alt="E-Commerce Interface Preview" fill className="object-cover object-center" />
                 </div>
             )}
             {(card as any).securitycard && (
-                <div className="absolute inset-0 w-full h-full z-20 overflow-hidden rounded-[16px] transform group-hover:scale-[1.02] transition-all duration-[1000ms] ease-out">
+                <div className="absolute inset-0 w-full h-full z-20 overflow-hidden rounded-[16px] transform group-hover:scale-[1.02] transition-all duration-1000 ease-out">
                     <Image src={(card as any).securitycard} alt="Security App Dashboard" fill className="object-cover object-bottom" />
                 </div>
             )}
             {(card as any).architecturecard && (
-                <div className="absolute inset-0 w-full h-full z-20 overflow-hidden rounded-[16px] transform group-hover:scale-[1.02] transition-all duration-[1000ms] ease-out">
-                    <Image src={(card as any).architecturecard} alt="Architecture Blueprint Interface" fill className="object-cover object-left" />
+                <div className="absolute inset-0 w-full h-full z-20 overflow-hidden rounded-[16px] transform group-hover:scale-[1.02] transition-all duration-1000 ease-out">
+                    <Image src={(card as any).architecturecard} alt="Architecture Blueprint Interface" fill className="object-cover object-center" />
                 </div>
             )}
             {(card as any).doctorcard && (
-                <div className="absolute inset-0 w-full h-full z-20 overflow-hidden rounded-[16px] transform group-hover:scale-[1.02] transition-all duration-[1000ms] ease-out">
+                <div className="absolute inset-0 w-full h-full z-20 overflow-hidden rounded-[16px] transform group-hover:scale-[1.02] transition-all duration-1000 ease-out">
                     <Image src={(card as any).doctorcard} alt="Doctor Appointment Interface" fill className="object-cover object-bottom" />
                 </div>
             )}
             {(card as any).urbancard && (
-                <div className="absolute inset-0 w-full h-full z-20 overflow-hidden rounded-[16px] transform group-hover:scale-[1.02] transition-all duration-[1000ms] ease-out">
+                <div className="absolute inset-0 w-full h-full z-20 overflow-hidden rounded-[16px] transform group-hover:scale-[1.02] transition-all duration-1000 ease-out">
                     <Image src={(card as any).urbancard} alt="UrbanClap Services Interface" fill className="object-cover object-center" />
                 </div>
             )}
             {(card as any).foodcard && (
-                <div className="absolute inset-0 w-full h-full z-20 overflow-hidden rounded-[16px] transform group-hover:scale-[1.02] transition-all duration-[1000ms] ease-out">
+                <div className="absolute inset-0 w-full h-full z-20 overflow-hidden rounded-[16px] transform group-hover:scale-[1.02] transition-all duration-1000 ease-out">
                     <Image src={(card as any).foodcard} alt="Food Delivery App Interface" fill className="object-cover object-center" />
                 </div>
             )}
             {(card as any).eduprovacard && (
-                <div className="absolute inset-0 w-full h-full z-20 overflow-hidden rounded-[16px] transform group-hover:scale-[1.03] transition-all duration-[1000ms] ease-out">
+                <div className="absolute inset-0 w-full h-full z-20 overflow-hidden rounded-[16px] transform group-hover:scale-[1.03] transition-all duration-1000 ease-out">
                     <Image src={(card as any).eduprovacard} alt="EduProva Platform Mockup" fill className="object-contain object-center" />
                 </div>
             )}
@@ -478,32 +478,32 @@ function MobileImageSection({ card }: { card: typeof cardsData[number] }) {
 
             {card.plogocard && (
                 <div className="absolute top-[2%] left-[2%] w-[28%] h-[28%] z-0 pointer-events-none opacity-60 mix-blend-overlay">
-                    <Image src={card.plogocard} alt="P Logo" fill className="object-contain object-top object-left" />
+                    <Image src={card.plogocard} alt="P Logo" fill className="object-contain object-top-left" />
                 </div>
             )}
             {card.rightcard && (
                 <div className="absolute bottom-[-8%] right-[-5%] w-[32%] h-[32%] z-0 pointer-events-none opacity-80 mix-blend-screen">
-                    <Image src={card.rightcard} alt="Star" fill className="object-contain object-bottom object-right" />
+                    <Image src={card.rightcard} alt="Star" fill className="object-contain object-bottom-right" />
                 </div>
             )}
             {card.computercard && (
                 <div className="absolute left-[-2%] top-[12%] w-[80%] h-[80%] z-10 group-hover:-translate-y-1 transition-transform duration-700 ease-out">
-                    <Image src={card.computercard} alt="Desktop" fill className="object-contain object-bottom object-left" />
+                    <Image src={card.computercard} alt="Desktop" fill className="object-contain object-bottom-left" />
                 </div>
             )}
             {card.mobilecard && (
                 <div className="absolute right-[2%] top-[4%] w-[44%] h-[94%] z-20 group-hover:-translate-y-2 group-hover:scale-[1.03] transition-all duration-700 ease-out drop-shadow-[0_16px_30px_rgba(0,0,0,0.45)]">
-                    <Image src={card.mobilecard} alt="Mobile" fill className="object-contain object-bottom object-right" />
+                    <Image src={card.mobilecard} alt="Mobile" fill className="object-contain object-bottom-right" />
                 </div>
             )}
             {(card as any).bgText && (
                 <div className="absolute top-[4%] left-[5%] z-0 pointer-events-none">
-                    <span className="text-white opacity-60 text-[56px] font-[600] tracking-wider leading-none">{(card as any).bgText}</span>
+                    <span className="text-white opacity-60 text-[56px] font-semibold tracking-wider leading-none">{(card as any).bgText}</span>
                 </div>
             )}
             {(card as any).newscard && (
                 <div className="absolute right-[-5%] bottom-[-5%] w-[108%] h-[108%] z-20 group-hover:-translate-y-1 group-hover:scale-[1.02] transition-all duration-700">
-                    <Image src={(card as any).newscard} alt="News" fill className="object-contain object-bottom object-right" />
+                    <Image src={(card as any).newscard} alt="News" fill className="object-contain object-bottom-right" />
                 </div>
             )}
             {(card as any).ridecard && (
@@ -523,7 +523,7 @@ function MobileImageSection({ card }: { card: typeof cardsData[number] }) {
             )}
             {(card as any).architecturecard && (
                 <div className="absolute inset-0 z-20 overflow-hidden rounded-t-[20px]">
-                    <Image src={(card as any).architecturecard} alt="Architecture" fill className="object-cover object-left" />
+                    <Image src={(card as any).architecturecard} alt="Architecture" fill className="object-cover object-center" />
                 </div>
             )}
             {(card as any).doctorcard && (
@@ -559,16 +559,16 @@ function MobileTextSection({ card }: { card: typeof cardsData[number] }) {
                     <Image src={card.logoImage} alt="Logo" fill className="object-contain object-left" />
                 </div>
             ) : (
-                <h2 className="text-[22px] font-[700] tracking-tight text-black leading-tight mb-3">
+                <h2 className="text-[22px] font-bold tracking-tight text-black leading-tight mb-3">
                     {(card as any).title}
                 </h2>
             )}
 
-            <h3 className="text-[15px] font-[600] text-black mb-3 leading-snug tracking-tight">
+            <h3 className="text-[15px] font-semibold text-black mb-3 leading-snug tracking-tight">
                 &ldquo;{card.quote}&rdquo;
             </h3>
 
-            <p className="text-[#4B5563] text-[13px] leading-[1.65] font-[500] mb-5">
+            <p className="text-[#4B5563] text-[13px] leading-[1.65] font-medium mb-5">
                 {card.desc}
             </p>
 
@@ -576,11 +576,11 @@ function MobileTextSection({ card }: { card: typeof cardsData[number] }) {
                 {card.metrics.map((m, idx) => (
                     <div key={idx} className="flex flex-col">
                         {m.val !== "text-only" && (
-                            <span className="text-[32px] font-[700] text-black leading-none tracking-tight mb-[2px] flex items-center">
+                            <span className="text-[32px] font-bold text-black leading-none tracking-tight mb-[2px] flex items-center">
                                 {m.val.startsWith("icon-") ? renderMetricValue(m.val) : m.val}
                             </span>
                         )}
-                        <span className={`text-black text-[13px] font-[600] leading-snug ${(m.val === "text-only" || m.val.startsWith("icon-")) ? "mt-2" : ""}`}>
+                        <span className={`text-black text-[13px] font-semibold leading-snug ${(m.val === "text-only" || m.val.startsWith("icon-")) ? "mt-2" : ""}`}>
                             {m.label}
                         </span>
                     </div>
@@ -591,22 +591,22 @@ function MobileTextSection({ card }: { card: typeof cardsData[number] }) {
                 {(card as any).href ? (
                     <Link href={(card as any).href} className="flex items-center group relative h-12 w-fit cursor-pointer overflow-hidden transition-all duration-700 rounded-[34px_34px_0px_34px] hover:rounded-[34px_34px_34px_0px]">
                         {/* LEFT ICON CIRCLE */}
-                        <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-all duration-700 ease-in-out group-hover:left-[calc(100%-48px)] group-hover:bg-gradient-to-r group-hover:from-[#3799FA] group-hover:to-[#9961FB] group-hover:scale-105">
+                        <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-all duration-700 ease-in-out group-hover:left-[calc(100%-48px)] group-hover:bg-linear-to-r group-hover:from-[#3799FA] group-hover:to-[#9961FB] group-hover:scale-105">
                             <FaChevronRight className="w-4 h-4 text-[#3799FA] transition-all duration-700 ease-in-out group-hover:text-white" />
                         </div>
                         {/* MAIN BUTTON BODY */}
-                        <div className="pl-14 pr-8 h-full flex items-center text-white font-bold text-[15px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all duration-700 ease-in-out bg-gradient-to-r from-[#3799FA] to-[#9961FB] group-hover:from-white group-hover:to-white group-hover:text-black group-hover:pl-6 group-hover:pr-14 rounded-[34px_34px_0px_34px] group-hover:rounded-[34px_34px_34px_0px]">
+                        <div className="pl-14 pr-8 h-full flex items-center text-white font-bold text-[15px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all duration-700 ease-in-out bg-linear-to-r from-[#3799FA] to-[#9961FB] group-hover:from-white group-hover:to-white group-hover:text-black group-hover:pl-6 group-hover:pr-14 rounded-[34px_34px_0px_34px] group-hover:rounded-[34px_34px_34px_0px]">
                             {card.buttonText}
                         </div>
                     </Link>
                 ) : (
                     <button suppressHydrationWarning className="flex items-center group relative h-12 w-fit cursor-pointer overflow-hidden transition-all duration-700 rounded-[34px_34px_0px_34px] hover:rounded-[34px_34px_34px_0px]">
                         {/* LEFT ICON CIRCLE */}
-                        <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-all duration-700 ease-in-out group-hover:left-[calc(100%-48px)] group-hover:bg-gradient-to-r group-hover:from-[#3799FA] group-hover:to-[#9961FB] group-hover:scale-105">
+                        <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-all duration-700 ease-in-out group-hover:left-[calc(100%-48px)] group-hover:bg-linear-to-r group-hover:from-[#3799FA] group-hover:to-[#9961FB] group-hover:scale-105">
                             <FaChevronRight className="w-4 h-4 text-[#3799FA] transition-all duration-700 ease-in-out group-hover:text-white" />
                         </div>
                         {/* MAIN BUTTON BODY */}
-                        <div className="pl-14 pr-8 h-full flex items-center text-white font-bold text-[15px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all duration-700 ease-in-out bg-gradient-to-r from-[#3799FA] to-[#9961FB] group-hover:from-white group-hover:to-white group-hover:text-black group-hover:pl-6 group-hover:pr-14 rounded-[34px_34px_0px_34px] group-hover:rounded-[34px_34px_34px_0px]">
+                        <div className="pl-14 pr-8 h-full flex items-center text-white font-bold text-[15px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all duration-700 ease-in-out bg-linear-to-r from-[#3799FA] to-[#9961FB] group-hover:from-white group-hover:to-white group-hover:text-black group-hover:pl-6 group-hover:pr-14 rounded-[34px_34px_0px_34px] group-hover:rounded-[34px_34px_34px_0px]">
                             {card.buttonText}
                         </div>
                     </button>

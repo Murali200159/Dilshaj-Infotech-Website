@@ -190,7 +190,7 @@ function CarouselCard({ card, index, scrollX }: { card: any, index: number, scro
             <div className={`absolute inset-0 bg-black/85 transition-opacity duration-300 z-20 ${isHovered ? "opacity-100" : "opacity-0"}`} />
 
             {/* Dark Gradient from bottom (hidden on hover) */}
-            <div className={`absolute inset-0 bg-gradient-to-t from-black/95 via-black/20 to-transparent z-10 p-8 flex flex-col justify-end transition-all duration-300 ${isHovered ? "opacity-0 invisible" : "opacity-100 visible"}`}>
+            <div className={`absolute inset-0 bg-linear-to-t from-black/95 via-black/20 to-transparent z-10 p-8 flex flex-col justify-end transition-all duration-300 ${isHovered ? "opacity-0 invisible" : "opacity-100 visible"}`}>
                 <h3 className="text-2xl font-bold text-white mb-2 shadow-sm drop-shadow-md">
                     {card.title}
                 </h3>
@@ -202,23 +202,25 @@ function CarouselCard({ card, index, scrollX }: { card: any, index: number, scro
                     <h3 className="text-2xl font-bold text-white mb-6 drop-shadow-xl">
                         {card.title}
                     </h3>
-                    <ul className="space-y-4">
-                        {card.bullets.map((bullet: string, i: number) => (
-                            <li key={i} className="flex items-center gap-3 text-white text-sm sm:text-base font-semibold">
-                                <span className="drop-shadow-lg">{bullet}</span>
-                            </li>
-                        ))}
-                    </ul>
+                    <div className="max-h-[280px] overflow-y-auto pr-2 custom-scrollbar md:max-h-none md:overflow-visible">
+                        <ul className="space-y-4">
+                            {card.bullets.map((bullet: string, i: number) => (
+                                <li key={i} className="flex items-center gap-3 text-white text-sm sm:text-base font-semibold">
+                                    <span className="drop-shadow-lg">{bullet}</span>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
                 </div>
 
                 <button suppressHydrationWarning className="group/btn flex items-center relative h-12 w-fit cursor-pointer overflow-hidden transition-all duration-700 rounded-[34px_34px_0px_34px] hover:rounded-[34px_34px_34px_0px]">
                     {/* LEFT ICON CIRCLE */}
-                    <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-all duration-700 ease-in-out group-hover/btn:left-[calc(100%-48px)] group-hover/btn:bg-gradient-to-r group-hover/btn:from-[#3799FA] group-hover/btn:to-[#9961FB] group-hover/btn:scale-105">
+                    <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-all duration-700 ease-in-out group-hover/btn:left-[calc(100%-48px)] group-hover/btn:bg-linear-to-r group-hover/btn:from-[#3799FA] group-hover/btn:to-[#9961FB] group-hover/btn:scale-105">
                         <ChevronRight className="w-4 h-4 text-[#3799FA] transition-all duration-700 ease-in-out group-hover/btn:text-white" />
                     </div>
 
                     {/* MAIN BUTTON BODY */}
-                    <div className="pl-14 pr-8 h-full flex items-center text-white font-bold text-[15px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all duration-700 ease-in-out bg-gradient-to-r from-[#3799FA] to-[#9961FB] group-hover/btn:from-white group-hover/btn:to-white group-hover/btn:text-black group-hover/btn:pl-6 group-hover/btn:pr-14 rounded-[34px_34px_0px_34px] group-hover/btn:rounded-[34px_34px_34px_0px]">
+                    <div className="pl-14 pr-8 h-full flex items-center text-white font-bold text-[15px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all duration-700 ease-in-out bg-linear-to-r from-[#3799FA] to-[#9961FB] group-hover/btn:from-white group-hover/btn:to-white group-hover/btn:text-black group-hover/btn:pl-6 group-hover/btn:pr-14 rounded-[34px_34px_0px_34px] group-hover/btn:rounded-[34px_34px_34px_0px]">
                         {card.ctaText}
                     </div>
                 </button>

@@ -151,35 +151,35 @@ export default function ContactSection() {
 
                         <h2 className="gsap-contact-left-item text-[32px] sm:text-[40px] md:text-[56px] lg:text-[50px] font-semibold text-white leading-[1.3] lg:leading-[1.1] mb-8 md:mb-12 max-w-2xl px-2 lg:px-0">
                             We help transform your ideas into{" "}
-                            <span className="bg-gradient-to-r from-[#3799FA] to-[#9961FB] bg-clip-text text-transparent">
+                            <span className="bg-linear-to-r from-[#3799FA] to-[#9961FB] bg-clip-text text-transparent">
                                 successful digital solutions.
                             </span>
                         </h2>
 
                         {/* Contact Info */}
                         <div className="gsap-contact-left-item space-y-8 w-full max-w-md">
-                            <div className="flex items-center gap-6 group">
-                                <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center transition-all group-hover:bg-[#3799FA]/20 group-hover:border-[#3799FA]/30">
-                                    <FaPhone className="w-5 h-5 text-white" />
+                            <div className="flex items-center gap-4 lg:gap-6 group">
+                                <div className="w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center transition-all group-hover:bg-[#3799FA]/20 group-hover:border-[#3799FA]/30">
+                                    <FaPhone className="w-4 h-4 lg:w-5 lg:h-5 text-white" />
                                 </div>
-                                <span className="text-white/80 text-[18px] font-medium tracking-tight">089772 72783</span>
+                                <span className="text-white/80 text-[15px] lg:text-[18px] font-medium tracking-tight">089772 72783</span>
                             </div>
 
-                            <div className="flex items-start gap-6 group">
-                                <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 transition-all group-hover:bg-[#3799FA]/20 group-hover:border-[#3799FA]/30 mt-1">
-                                    <FaEnvelope className="w-5 h-5 text-white" />
+                            <div className="flex items-start gap-4 lg:gap-6 group">
+                                <div className="w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center shrink-0 transition-all group-hover:bg-[#3799FA]/20 group-hover:border-[#3799FA]/30 mt-1">
+                                    <FaEnvelope className="w-4 h-4 lg:w-5 lg:h-5 text-white" />
                                 </div>
-                                <div className="flex flex-col gap-1">
-                                    <span className="text-white/80 text-[18px] font-medium tracking-tight">info@dilshajinfotech.tech</span>
-                                    <span className="text-white/80 text-[18px] font-medium tracking-tight">careers@dilshajinfotech.tech</span>
+                                <div className="flex flex-col gap-1 text-left">
+                                    <span className="text-white/80 text-[14px] lg:text-[18px] font-medium tracking-tight break-all">info@dilshajinfotech.tech</span>
+                                    <span className="text-white/80 text-[14px] lg:text-[18px] font-medium tracking-tight break-all">careers@dilshajinfotech.tech</span>
                                 </div>
                             </div>
 
-                            <div className="flex items-start gap-6 group">
-                                <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 transition-all group-hover:bg-[#3799FA]/20 group-hover:border-[#3799FA]/30 mt-1">
-                                    <FaLocationDot className="w-5 h-5 text-white" />
+                            <div className="flex items-center gap-4 lg:gap-6 group">
+                                <div className="w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center shrink-0 transition-all group-hover:bg-[#3799FA]/20 group-hover:border-[#3799FA]/30">
+                                    <FaLocationDot className="w-4 h-4 lg:w-5 lg:h-5 text-white" />
                                 </div>
-                                <span className="text-white/80 text-[18px] font-medium tracking-tight leading-relaxed text-left">
+                                <span className="text-white/80 text-[15px] lg:text-[18px] font-medium tracking-tight leading-relaxed text-left">
                                     Visakhapatnam, India.
                                 </span>
                             </div>
@@ -188,9 +188,9 @@ export default function ContactSection() {
 
                     {/* RIGHT SIDE – GLASS FORM */}
                     <div className="relative">
-                        <div className="absolute inset-0 bg-gradient-to-br from-[#3799FA]/20 to-[#9961FB]/20 blur-[100px] -z-10" />
+                        <div className="absolute inset-0 bg-linear-to-br from-[#3799FA]/20 to-[#9961FB]/20 blur-[100px] -z-10" />
 
-                        <div className="gsap-contact-form bg-white/[0.08] backdrop-blur-2xl border border-white/20 rounded-[24px] md:rounded-[40px] p-6 md:p-10 shadow-2xl relative overflow-hidden">
+                        <div className="gsap-contact-form bg-white/8 backdrop-blur-2xl border border-white/20 rounded-[24px] md:rounded-[40px] p-6 md:p-10 shadow-2xl relative overflow-hidden">
                             <h3 className="text-white text-[18px] md:text-[22px] font-medium mb-8 md:mb-10 leading-relaxed text-center lg:text-left">
                                 Partner With Experts Who Leverage AI & Tech To Transform Ideas Into Market-Leading Solutions.
                             </h3>
@@ -265,13 +265,13 @@ export default function ContactSection() {
                                     suppressHydrationWarning
                                     type="submit"
                                     disabled={status === "loading"}
-                                    className="flex items-center group relative h-12 w-full cursor-pointer transition-all"
+                                    className="flex items-center group relative h-12 w-full cursor-pointer overflow-hidden transition-all duration-700 rounded-[34px_34px_0px_34px] hover:rounded-[34px_34px_34px_0px]"
                                 >
-                                    <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-transform group-hover:scale-105">
-                                        <FaChevronRight className="w-4 h-4 text-[#3799FA]" />
+                                    <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-all duration-700 ease-in-out group-hover:left-[calc(100%-48px)] group-hover:bg-linear-to-r group-hover:from-[#3799FA] group-hover:to-[#9961FB] group-hover:scale-105">
+                                        <FaChevronRight className="w-4 h-4 text-[#3799FA] transition-all duration-700 ease-in-out group-hover:text-white" />
                                     </div>
 
-                                    <div className="pl-14 pr-8 h-full w-full flex items-center justify-center text-white font-bold text-[15px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all bg-gradient-to-r from-[#3799FA] to-[#9961FB] rounded-[34px_34px_0px_34px]">
+                                    <div className="pl-14 pr-8 h-full w-full flex items-center justify-center text-white font-bold text-[15px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all duration-700 ease-in-out bg-linear-to-r from-[#3799FA] to-[#9961FB] group-hover:from-white group-hover:to-white group-hover:text-black group-hover:pl-6 group-hover:pr-14 rounded-[34px_34px_0px_34px] group-hover:rounded-[34px_34px_34px_0px]">
                                         {status === "loading" ? "Sending..." : "Lets Connect"}
                                     </div>
                                 </button>

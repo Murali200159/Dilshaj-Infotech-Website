@@ -2,7 +2,7 @@
 import React, { useEffect, useRef } from "react";
 import Image from "next/image";
 import { Poppins } from "next/font/google";
-import { Check } from "lucide-react";
+
 import { FaChevronRight } from "react-icons/fa6";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -143,9 +143,9 @@ export default function Hero() {
                     objectPosition="right center"
                     priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#07050e] via-[#07050e]/80 to-transparent" />
-                <div className="absolute right-[40%] top-0 w-[1px] h-full bg-[#8e54e9]/20 hidden lg:block" />
-                <div className="absolute right-[20%] top-0 w-[1px] h-full bg-[#8e54e9]/20 hidden lg:block" />
+                <div className="absolute inset-0 bg-linear-to-r from-[#07050e] via-[#07050e]/80 to-transparent" />
+                <div className="absolute right-[40%] top-0 w-px h-full bg-[#8e54e9]/20 hidden lg:block" />
+                <div className="absolute right-[20%] top-0 w-px h-full bg-[#8e54e9]/20 hidden lg:block" />
             </div>
 
             {/* ── Decorative glow orbs ── */}
@@ -154,7 +154,7 @@ export default function Hero() {
             <div className="gsap-glow absolute top-[55%] left-[40%] w-[180px] h-[180px] rounded-full bg-cyan-500/8 blur-[60px] pointer-events-none" />
 
             {/* ── Main grid ── */}
-            <div className="w-full px-[5%] xl:px-[8%] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 items-center relative z-10 flex-grow mt-[-40px]">
+            <div className="w-full px-[5%] xl:px-[8%] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 items-center relative z-10 grow mt-[-40px]">
 
                 {/* Left Column */}
                 <div className="flex flex-col items-center text-center lg:items-start lg:text-left justify-start pt-14 lg:pt-0 mt-2 lg:mt-[-80px]">
@@ -177,18 +177,21 @@ export default function Hero() {
                     </div>
 
                     {/* Body */}
-                    <p className="gsap-body text-[#a5a5af] text-[13px] md:text-[18px] max-w-[45rem] font-normal leading-[1.7] lg:leading-[1.6] mt-2 lg:mt-12 mb-7 w-[95%] px-5 lg:px-0 mx-auto lg:mx-0">
+                    <p className="gsap-body text-[#a5a5af] text-[13px] md:text-[18px] max-w-180 font-normal leading-[1.7] lg:leading-[1.6] mt-2 lg:mt-12 mb-7 w-[95%] px-5 lg:px-0 mx-auto lg:mx-0">
                         Dilshaj Infotech delivers innovative digital solutions,
                         scalable products, and industry-ready services designed
                         to transform your business vision into reality.
                     </p>
 
                     {/* CTA Button */}
-                    <button suppressHydrationWarning className="gsap-cta group flex items-center relative h-12 w-fit cursor-pointer">
-                        <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-transform group-hover:scale-110 duration-300">
-                            <FaChevronRight className="w-4 h-4 text-[#3799FA]" />
+                    <button
+                        suppressHydrationWarning
+                        className="gsap-cta flex items-center group relative h-12 w-fit cursor-pointer overflow-hidden transition-all duration-700 rounded-[34px_34px_0px_34px] hover:rounded-[34px_34px_34px_0px]"
+                    >
+                        <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-all duration-700 ease-in-out group-hover:left-[calc(100%-48px)] group-hover:bg-linear-to-r group-hover:from-[#3799FA] group-hover:to-[#9961FB] group-hover:scale-105">
+                            <FaChevronRight className="w-4 h-4 text-[#3799FA] transition-all duration-700 ease-in-out group-hover:text-white" />
                         </div>
-                        <div className="pl-14 pr-8 h-full flex items-center text-white font-bold text-[15px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all bg-gradient-to-r from-[#3799FA] to-[#9961FB] rounded-[34px_34px_0px_34px] group-hover:shadow-[0_12px_28px_rgba(55,153,250,0.45)] duration-300">
+                        <div className="pl-14 pr-8 h-full flex items-center text-white font-bold text-[15px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all duration-700 ease-in-out bg-linear-to-r from-[#3799FA] to-[#9961FB] group-hover:from-white group-hover:to-white group-hover:text-black group-hover:pl-6 group-hover:pr-14 rounded-[34px_34px_0px_34px] group-hover:rounded-[34px_34px_34px_0px]">
                             Build Your Future Today
                         </div>
                     </button>
@@ -217,14 +220,14 @@ export default function Hero() {
 
             {/* ── 3 Bottom Cards ── */}
             <div className="gsap-hero-card-container w-full px-0 md:px-[5%] xl:px-[8%] mx-auto mt-[-30px] md:mt-6 mb-0 md:mb-8 relative z-20">
-                <div className="w-full bg-[#1b1c1e]/90 md:bg-[#1c1d20]/95 backdrop-blur-[40px] md:rounded-2xl border-t border-[#ffffff15] md:border md:border-white/30 flex flex-col md:flex-row shadow-[0_20px_60px_rgba(0,0,0,0.5)]">
+                <div className="w-full bg-[#1b1c1e]/90 md:bg-[#1c1d20]/95 backdrop-blur-2xl md:rounded-2xl border-t border-[#ffffff15] md:border md:border-white/30 flex flex-col md:flex-row shadow-[0_20px_60px_rgba(0,0,0,0.5)]">
 
                     {/* Card 1 */}
                     <div className="gsap-hero-card flex-1 flex flex-row items-center p-6 md:p-8 lg:p-10 xl:p-12 border-b border-[#ffffff10] md:border-b-0 md:border-r md:border-white/20 relative overflow-hidden group">
-                        <div className="gsap-card-border absolute left-0 top-0 h-full w-[3px] bg-gradient-to-b from-blue-400 to-purple-500 rounded-full" />
-                        <div className="absolute -inset-2 bg-gradient-to-r from-blue-500/0 via-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                        <div className="gsap-card-border absolute left-0 top-0 h-full w-[3px] bg-linear-to-b from-blue-400 to-purple-500 rounded-full" />
+                        <div className="absolute -inset-2 bg-linear-to-r from-blue-500/0 via-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                         <div className="w-[30px] h-[30px] md:w-[48px] md:h-[48px] min-w-[30px] min-h-[30px] md:min-w-[48px] md:min-h-[48px] rounded-full bg-[#3b82f6] flex items-center justify-center mr-5 shadow-sm group-hover:scale-110 transition-transform duration-300">
-                            <Check className="w-[14px] h-[14px] md:w-6 md:h-6 text-white stroke-[4]" />
+                            <Image src="/services/technology/img1.png" alt="Scalable Web" width={24} height={24} className="w-[14px] h-[14px] md:w-6 md:h-6 object-contain brightness-0 invert" />
                         </div>
                         <p className="text-[#a0a0ab] text-[13px] md:text-[16px] lg:text-[17px] leading-[1.6] font-normal tracking-wide group-hover:text-white/80 transition-colors duration-300">
                             Scalable Web Solutions Powered By Modern Technology &amp; Smart Architecture
@@ -233,10 +236,10 @@ export default function Hero() {
 
                     {/* Card 2 */}
                     <div className="gsap-hero-card flex-1 flex flex-row items-center p-6 md:p-8 lg:p-10 xl:p-12 border-b border-[#ffffff10] md:border-b-0 md:border-r md:border-white/20 relative overflow-hidden group">
-                        <div className="gsap-card-border absolute left-0 top-0 h-full w-[3px] bg-gradient-to-b from-cyan-400 to-blue-500 rounded-full" />
-                        <div className="absolute -inset-2 bg-gradient-to-r from-blue-500/0 via-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                        <div className="gsap-card-border absolute left-0 top-0 h-full w-[3px] bg-linear-to-b from-cyan-400 to-blue-500 rounded-full" />
+                        <div className="absolute -inset-2 bg-linear-to-r from-blue-500/0 via-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                         <div className="w-[30px] h-[30px] md:w-[48px] md:h-[48px] min-w-[30px] min-h-[30px] md:min-w-[48px] md:min-h-[48px] rounded-full bg-[#3b82f6] flex items-center justify-center mr-5 shadow-sm group-hover:scale-110 transition-transform duration-300">
-                            <Check className="w-[14px] h-[14px] md:w-6 md:h-6 text-white stroke-[4]" />
+                            <Image src="/services/technology/img2.png" alt="Performance" width={24} height={24} className="w-[14px] h-[14px] md:w-6 md:h-6 object-contain brightness-0 invert" />
                         </div>
                         <p className="text-[#a0a0ab] text-[13px] md:text-[16px] lg:text-[17px] leading-[1.6] font-normal tracking-wide group-hover:text-white/80 transition-colors duration-300">
                             Performance-Driven Development Built For Speed, Security &amp; Reliability
@@ -245,10 +248,10 @@ export default function Hero() {
 
                     {/* Card 3 */}
                     <div className="gsap-hero-card flex-1 flex flex-row items-center p-6 md:p-8 lg:p-10 xl:p-12 relative overflow-hidden group">
-                        <div className="gsap-card-border absolute left-0 top-0 h-full w-[3px] bg-gradient-to-b from-purple-400 to-pink-500 rounded-full" />
-                        <div className="absolute -inset-2 bg-gradient-to-r from-blue-500/0 via-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                        <div className="gsap-card-border absolute left-0 top-0 h-full w-[3px] bg-linear-to-b from-purple-400 to-pink-500 rounded-full" />
+                        <div className="absolute -inset-2 bg-linear-to-r from-blue-500/0 via-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                         <div className="w-[30px] h-[30px] md:w-[48px] md:h-[48px] min-w-[30px] min-h-[30px] md:min-w-[48px] md:min-h-[48px] rounded-full bg-[#3b82f6] flex items-center justify-center mr-5 shadow-sm group-hover:scale-110 transition-transform duration-300">
-                            <Check className="w-[14px] h-[14px] md:w-6 md:h-6 text-white stroke-[4]" />
+                            <Image src="/services/technology/img3.png" alt="User-Centric" width={24} height={24} className="w-[14px] h-[14px] md:w-6 md:h-6 object-contain brightness-0 invert" />
                         </div>
                         <p className="text-[#a0a0ab] text-[13px] md:text-[16px] lg:text-[17px] leading-[1.6] font-normal tracking-wide group-hover:text-white/80 transition-colors duration-300">
                             User-Centric Web Experiences Designed To Maximize Growth &amp; Engagement

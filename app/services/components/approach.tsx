@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useRef } from "react";
 import { Poppins } from "next/font/google";
-import { ChevronsRight, Search, Lightbulb, PenTool, LayoutGrid, CheckSquare } from "lucide-react";
+import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -16,31 +16,31 @@ const steps = [
     {
         title: "Deep Analysis",
         watermark: "Discover",
-        icon: <Search className="w-5 h-5 text-white" />,
+        icon: "/services/approach/icon1.png",
         isTop: false,
     },
     {
         title: "Smart Roadmap",
         watermark: "Strategy",
-        icon: <Lightbulb className="w-5 h-5 text-white" />,
+        icon: "/services/approach/icon2.png",
         isTop: true,
     },
     {
         title: "Visual Experience",
         watermark: "Design",
-        icon: <PenTool className="w-5 h-5 text-white" />,
+        icon: "/services/approach/icon3.png",
         isTop: false,
     },
     {
         title: "Product Development",
         watermark: "Development",
-        icon: <LayoutGrid className="w-5 h-5 text-white" />,
+        icon: "/services/approach/icon4.png",
         isTop: true,
     },
     {
         title: "Precision Testing",
         watermark: "Testing",
-        icon: <CheckSquare className="w-5 h-5 text-white" />,
+        icon: "/services/approach/icon5.png",
         isTop: false,
     }
 ];
@@ -196,7 +196,7 @@ export default function Approach() {
                 <img
                     src="/services/square.png"
                     alt="perspective grid"
-                    className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full min-w-[1400px] h-[100%] object-cover object-bottom opacity-100"
+                    className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full min-w-[1400px] h-full object-cover object-bottom opacity-100"
                     style={{
                         maskImage: "linear-gradient(to top, rgba(0,0,0,1) 5%, rgba(0,0,0,0) 80%)",
                         WebkitMaskImage: "linear-gradient(to top, rgba(0,0,0,1) 5%, rgba(0,0,0,0) 80%)"
@@ -218,7 +218,7 @@ export default function Approach() {
                 {/* ── TIMELINE GRAPHIC (DESKTOP) Image 2 ──────────────────────── */}
                 <div className="gsap-timeline-container relative w-full max-w-[1500px] px-2 md:px-8 mx-auto h-[400px] hidden md:block">
                     {/* SVG Wavy Dashed Line precisely connecting nodes directly through their centers */}
-                    <svg viewBox="0 0 1000 400" className="gsap-timeline-svg absolute inset-x-0 w-[100%] h-[400px] pointer-events-none overflow-visible" preserveAspectRatio="none">
+                    <svg viewBox="0 0 1000 400" className="gsap-timeline-svg absolute inset-x-0 w-full h-[400px] pointer-events-none overflow-visible" preserveAspectRatio="none">
                         <path
                             d="M 60 280 C 148 280, 192 120, 280 120 S 412 280, 500 280 S 632 120, 720 120 S 852 280, 940 280 Q 970 280, 985 240"
                             fill="none"
@@ -254,8 +254,8 @@ export default function Approach() {
                                 }}
                             >
                                 {/* Circle Icon Centered Dead-on the absolute CSS coordinates on the line! */}
-                                <div className="node-circle absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 w-[50px] h-[50px] rounded-full bg-[#1678f2] flex items-center justify-center shadow-[0_0_20px_rgba(22,120,242,0.4)] pointer-events-auto hover:scale-110 transition-transform duration-300 cursor-pointer text-white">
-                                    {step.icon}
+                                <div className="node-circle absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 w-[50px] h-[50px] rounded-full bg-[#1678f2] flex items-center justify-center shadow-[0_0_20px_rgba(22,120,242,0.4)] pointer-events-auto hover:scale-110 transition-transform duration-300 cursor-pointer">
+                                    <Image src={step.icon} alt={step.title} width={26} height={26} className="object-contain brightness-0 invert" />
                                 </div>
 
                                 {/* Text Block: Vertically stacked properly ABOVE every single circle like Image 2 strictly */}
@@ -278,7 +278,7 @@ export default function Approach() {
                     {steps.map((step, idx) => (
                         <div key={idx} className="gsap-mobile-node flex flex-col items-center relative z-10 w-full px-6">
                             <div className="node-circle w-[56px] h-[56px] rounded-full bg-[#1678f2] flex items-center justify-center shadow-[0_0_24px_rgba(22,120,242,0.5)] mb-3 shrink-0 z-20 transition-all duration-300">
-                                {step.icon}
+                                <Image src={step.icon} alt={step.title} width={28} height={28} className="object-contain brightness-0 invert" />
                             </div>
 
                             <div className="flex flex-col justify-center items-center w-full">
@@ -287,7 +287,7 @@ export default function Approach() {
                                 </h3>
                                 {/* Mobile Dark Watermark firmly stacked beneath the title in explicit gray */}
                                 <h4 className="node-watermark text-[32px] sm:text-[42px] font-black text-[#333333] uppercase tracking-wide leading-none select-none z-0 mt-[-2px] transition-colors duration-300">
-                                    {step.watermark}
+                                . {step.watermark}
                                 </h4>
                             </div>
                         </div>

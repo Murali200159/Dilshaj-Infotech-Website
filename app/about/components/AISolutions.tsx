@@ -1,10 +1,10 @@
 "use client";
 
 import { useRef, useEffect } from "react";
+import Image from "next/image";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Cpu, Sparkles, Eye, Smartphone, Bot, Mic2, Cloud, Puzzle } from "lucide-react";
 import "./ChromaGrid.css";
 
 if (typeof window !== "undefined") {
@@ -15,49 +15,49 @@ const solutions = [
     {
         title: "Custom AI/ML Development",
         description: "We design and develop tailored AI solutions that automate workflows and improve operational efficiency.",
-        icon: Cpu,
+        img: "/about/advanced/ai1.png",
         color: "#3B82F6", // Blue
     },
     {
         title: "Generative AI & LLM Solutions",
         description: "Building intelligent chatbots, content automation systems, and AI-powered assistants for smarter engagement.",
-        icon: Sparkles,
+        img: "/about/advanced/ai2.png",
         color: "#10B981", // Emerald
     },
     {
         title: "Computer Vision Solutions",
         description: "Implementing AI-driven image processing and visual intelligence systems for real-world applications.",
-        icon: Eye,
+        img: "/about/advanced/ai3.png",
         color: "#F59E0B", // Amber
     },
     {
         title: "AI-Powered App Development",
         description: "Integrating AI into web and mobile applications to deliver smarter user experiences.",
-        icon: Smartphone,
+        img: "/about/advanced/ai4.png",
         color: "#EC4899", // Pink
     },
     {
         title: "AI Agents & Process Automation",
         description: "Developing intelligent agents and automation systems to streamline business operations.",
-        icon: Bot,
+        img: "/about/advanced/ai5.png",
         color: "#8B5CF6", // Violet
     },
     {
         title: "Voice & Speech Solutions",
         description: "Creating speech recognition and voice-enabled applications for interactive digital experiences.",
-        icon: Mic2,
+        img: "/about/advanced/ai6.png",
         color: "#14B8A6", // Teal
     },
     {
         title: "Cloud-Based AI Deployment",
         description: "Deploying secure, scalable AI systems on modern cloud infrastructure.",
-        icon: Cloud,
+        img: "/about/advanced/ai7.png",
         color: "#06B6D4", // Cyan
     },
     {
         title: "AI Strategy & Technology Consulting",
         description: "Helping businesses identify AI opportunities and implement solutions aligned with growth objectives.",
-        icon: Puzzle,
+        img: "/about/advanced/ai8.png",
         color: "#F43F5E", // Rose
     },
 ];
@@ -177,29 +177,37 @@ export default function AISolutions() {
                 {/* ChromaGrid container wrapping the cards */}
                 <div
                     ref={gridRef}
-                    className="chroma-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 justify-items-center"
+                    className="chroma-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 justify-items-center"
                     onPointerMove={handleGridMove}
                     onPointerLeave={handleGridLeave}
                 >
                     {solutions.map((item, index) => (
                         <div
                             key={index}
-                            className="chroma-card ai-solution-card bg-[#111111] border border-zinc-800/50 rounded-[24px] p-8 flex flex-col items-start gap-6 hover:shadow-[0_0_30px_rgba(var(--card-color-rgb),0.1)] transition-all duration-300 w-full lg:w-[355px] lg:h-[343px] group"
+                            className="chroma-card ai-solution-card bg-[#111111] border border-zinc-800/50 rounded-[24px] p-8 flex flex-col items-start gap-6 hover:shadow-[0_0_30px_rgba(var(--card-color-rgb),0.1)] transition-all duration-300 w-full max-w-[380px] lg:h-[343px] group"
                             style={{
                                 '--card-color': item.color,
                             } as React.CSSProperties}
                             onMouseMove={handleCardMove}
                         >
                             <div className="icon-box w-12 h-12 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center shrink-0 transition-all duration-500 z-10 relative group-hover:bg-[#111111]">
-                                <item.icon className="icon-svg w-6 h-6 text-white transition-colors duration-500" />
+                                <Image
+                                    src={item.img}
+                                    alt={item.title}
+                                    width={24}
+                                    height={24}
+                                    className="icon-svg object-contain brightness-0 invert transition-all duration-500"
+                                />
                             </div>
                             <div className="space-y-4 z-10 relative pointer-events-none">
                                 <h3 className="text-xl font-bold text-white leading-tight">
                                     {item.title}
                                 </h3>
-                                <p className="text-gray-400 text-sm leading-relaxed">
-                                    {item.description}
-                                </p>
+                                <div className="max-h-[140px] overflow-y-auto pr-1 md:max-h-none md:overflow-visible">
+                                    <p className="text-gray-400 text-sm leading-relaxed">
+                                        {item.description}
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     ))}

@@ -182,7 +182,7 @@ export default function HeroSection() {
                     {/* DOMINANT HEADLINE ZONE */}
                     <div className="relative w-full h-auto lg:h-[40vh] flex flex-col items-center justify-center mt-12 sm:mt-16 lg:mt-25 order-last lg:order-1 pt-0 lg:pt-0 py-4 lg:py-0">
 
-                        <h1 className="text-[100px] sm:text-[110px] lg:text-[12vw] 2xl:text-[220px] font-bold lg:font-semibold text-gray-400 lg:text-black tracking-[-0.05em] z-10 text-center lg:opacity-100 w-[430px] lg:w-full max-w-[100vw] lg:h-auto whitespace-normal lg:whitespace-nowrap drop-shadow-none lg:drop-shadow-sm flex flex-col lg:flex-row justify-center lg:items-center gap-[65px] sm:gap-[75px] lg:gap-[3vw] select-none" style={{ perspective: "1000px" }}>
+                        <h1 className="text-[60px] min-[380px]:text-[80px] sm:text-[110px] lg:text-[100px] xl:text-[12vw] 2xl:text-[220px] font-bold lg:font-semibold text-gray-400 lg:text-black tracking-[-0.05em] z-10 text-center lg:opacity-100 w-full lg:w-full max-w-[100vw] lg:h-auto whitespace-normal xl:whitespace-nowrap drop-shadow-none lg:drop-shadow-sm flex flex-col lg:flex-row justify-center lg:items-center gap-[45px] sm:gap-[75px] lg:gap-[3vw] select-none" style={{ perspective: "1000px" }}>
                             <span className="hero-word block lg:inline leading-[0.75] lg:leading-none opacity-0 will-change-transform">Dilshaj</span>
                             <span className="hero-word block lg:inline leading-[0.75] lg:leading-none opacity-0 will-change-transform">Infotech</span>
                         </h1>
@@ -202,13 +202,13 @@ export default function HeroSection() {
                                                 <div className="absolute -left-10 -top-4 w-7 h-7 z-30 drop-shadow-md">
                                                     <Image src="/Home/arrow.svg" alt="cursor" width={28} height={28} className="object-contain" />
                                                 </div>
-                                                <div className={`px-5 py-2 rounded-[8px] border flex items-center justify-center transition-all duration-500 shadow-lg ${isActive ? "bg-gradient-to-r from-[#31B5FE] to-[#AC52F2] text-white border-transparent" : "bg-white text-gray-800 border-black/[0.03]"}`}>
+                                                <div className={`px-5 py-2 rounded-[8px] border flex items-center justify-center transition-all duration-500 shadow-lg ${isActive ? "bg-linear-to-r from-[#31B5FE] to-[#AC52F2] text-white border-transparent" : "bg-white text-gray-800 border-black/3"}`}>
                                                     <span className="text-[16px] font-medium tracking-tight">{badge.role}</span>
                                                 </div>
                                             </div>
                                         )}
                                         <div className="relative group/avatar">
-                                            <div className={`rounded-full bg-gradient-to-br from-[#31B5FE] to-[#AC52F2] shadow-xl p-[3px] transition-all duration-500 ${isActive ? "w-16 h-16" : "w-12 h-12"} ${isActive ? "ring-4 ring-[#31B5FE]/20" : ""}`}>
+                                            <div className={`rounded-full bg-linear-to-br   from-[#31B5FE] to-[#7206de] shadow-xl p-[3px] transition-all duration-500 ${isActive ? "w-16 h-16" : "w-12 h-12"} ${isActive ? "ring-4 ring-[#31B5FE]/20" : ""}`}>
                                                 <img src={badge.img} alt={badge.role} className="w-full h-full object-cover rounded-full" />
                                             </div>
                                         </div>
@@ -217,7 +217,7 @@ export default function HeroSection() {
                                                 <div className="absolute -left-10 -top-4 w-7 h-7 z-30 drop-shadow-md">
                                                     <Image src="/Home/arrow.svg" alt="cursor" width={28} height={28} className="object-contain" />
                                                 </div>
-                                                <div className={`px-5 py-2 rounded-[8px] shadow-lg border-0 flex items-center justify-center transition-all duration-500 ${isActive ? "bg-gradient-to-r from-[#31B5FE] to-[#AC52F2] text-white" : "bg-white text-gray-800 border-black/[0.03]"}`}>
+                                                <div className={`px-5 py-2 rounded-[8px] shadow-lg border-0 flex items-center justify-center transition-all duration-500 ${isActive ? "bg-linear-to-r from-[#31B5FE] to-[#AC52F2] text-white" : "bg-white text-gray-800 border-black/3"}`}>
                                                     <span className="text-[16px] font-medium tracking-tight">{badge.role}</span>
                                                 </div>
                                             </div>
@@ -234,14 +234,14 @@ export default function HeroSection() {
                                     const isActive = i === activeIndex;
                                     return (
                                         <div key={i} className={`hero-mobile-badge flex flex-col items-center relative gap-2 transition-all duration-500 ${isActive ? "scale-110 z-30" : "scale-100 z-20 opacity-80"}`}>
-                                            <div className={`w-[44px] h-[44px] sm:w-[48px] sm:h-[48px] rounded-full bg-gradient-to-br from-[#31B5FE] to-[#AC52F2] p-[2px] shadow-md transition-all duration-500 ${isActive ? "ring-4 ring-[#31B5FE]/30" : ""}`}>
-                                                <img src={badge.img} alt={badge.role} className="w-full h-full object-cover rounded-full border-[2px] border-white bg-white" />
+                                            <div className={`w-[44px] h-[44px] sm:w-[48px] sm:h-[48px] rounded-full bg-linear-to-br from-[#31B5FE] to-[#AC52F2] p-[2px] shadow-md transition-all duration-500 ${isActive ? "ring-4 ring-[#31B5FE]/30" : ""}`}>
+                                                <img src={badge.img} alt={badge.role} className="w-full h-full object-cover rounded-full border-2 border-white bg-white" />
                                             </div>
                                             <div className="relative flex justify-center w-full">
-                                                <div className="absolute -left-1 sm:-left-0 -top-[8px] w-[14px] h-[14px] z-30 drop-shadow-md">
+                                                <div className="absolute -left-1 sm:left-0 -top-[8px] w-[14px] h-[14px] z-30 drop-shadow-md">
                                                     <Image src="/Home/arrow.svg" alt="cursor" width={14} height={14} className="object-contain" />
                                                 </div>
-                                                <div className={`px-2 py-[4px] sm:py-[5px] rounded-[4px] text-[10px] sm:text-[11px] font-bold text-center whitespace-nowrap shadow-md transition-all duration-500 border ${isActive ? 'bg-gradient-to-r from-[#31B5FE] to-[#AC52F2] text-white border-transparent' : 'bg-white text-gray-800 border-gray-100'}`}>
+                                                <div className={`px-2 py-[4px] sm:py-[5px] rounded-[4px] text-[10px] sm:text-[11px] font-bold text-center whitespace-nowrap shadow-md transition-all duration-500 border ${isActive ? 'bg-linear-to-r from-[#31B5FE] to-[#AC52F2] text-white border-transparent' : 'bg-white text-gray-800 border-gray-100'}`}>
                                                     {badge.role}
                                                 </div>
                                             </div>
@@ -259,14 +259,14 @@ export default function HeroSection() {
                                     const isActive = i === activeIndex;
                                     return (
                                         <div key={i} className={`hero-mobile-badge flex flex-col items-center relative gap-2 transition-all duration-500 ${isActive ? "scale-110 z-30" : "scale-100 z-20 opacity-80"}`}>
-                                            <div className={`w-[44px] h-[44px] sm:w-[48px] sm:h-[48px] rounded-full bg-gradient-to-br from-[#31B5FE] to-[#AC52F2] p-[2px] shadow-md transition-all duration-500 ${isActive ? "ring-4 ring-[#31B5FE]/30" : ""}`}>
-                                                <img src={badge.img} alt={badge.role} className="w-full h-full object-cover rounded-full border-[2px] border-white bg-white" />
+                                            <div className={`w-[44px] h-[44px] sm:w-[48px] sm:h-[48px] rounded-full bg-linear-to-br from-[#31B5FE] to-[#AC52F2] p-[2px] shadow-md transition-all duration-500 ${isActive ? "ring-4 ring-[#31B5FE]/30" : ""}`}>
+                                                <img src={badge.img} alt={badge.role} className="w-full h-full object-cover rounded-full border-2 border-white bg-white" />
                                             </div>
                                             <div className="relative flex justify-center w-full">
-                                                <div className="absolute -left-1 sm:-left-0 -top-[8px] w-[14px] h-[14px] z-30 drop-shadow-md">
+                                                <div className="absolute -left-1 sm:left-0 -top-[8px] w-[14px] h-[14px] z-30 drop-shadow-md">
                                                     <Image src="/Home/arrow.svg" alt="cursor" width={14} height={14} className="object-contain" />
                                                 </div>
-                                                <div className={`px-2 py-[4px] sm:py-[5px] rounded-[4px] text-[10px] sm:text-[11px] font-bold text-center whitespace-nowrap shadow-md transition-all duration-500 border ${isActive ? 'bg-gradient-to-r from-[#31B5FE] to-[#AC52F2] text-white border-transparent' : 'bg-white text-gray-800 border-gray-100'}`}>
+                                                <div className={`px-2 py-[4px] sm:py-[5px] rounded-[4px] text-[10px] sm:text-[11px] font-bold text-center whitespace-nowrap shadow-md transition-all duration-500 border ${isActive ? 'bg-linear-to-r from-[#31B5FE] to-[#AC52F2] text-white border-transparent' : 'bg-white text-gray-800 border-gray-100'}`}>
                                                     {badge.role}
                                                 </div>
                                             </div>
@@ -282,7 +282,7 @@ export default function HeroSection() {
 
                         {/* ZONE 1: Left Text */}
                         <div className="w-full lg:w-[40%] flex flex-col gap-6 pl-0 lg:pl-0">
-                            <h2 className="w-[383px] max-w-full h-auto lg:w-full text-[36px] lg:text-[60px] font-semibold lg:font-bold text-black leading-[1.2] lg:leading-[1] tracking-[-0.04em] flex flex-col justify-start gap-1 lg:gap-0">
+                            <h2 className="w-[383px] max-w-full h-auto lg:w-full text-[36px] lg:text-[60px] font-semibold lg:font-bold text-black leading-[1.2] lg:leading-none tracking-[-0.04em] flex flex-col justify-start gap-1 lg:gap-0">
                                 <div className="hero-headline-line mb-0 lg:mb-6">Driving Digital</div>
                                 <div className="hero-headline-line mb-0 lg:mb-6">Innovation with</div>
                                 <div className="hero-headline-line mb-0 lg:mb-6">Smart Technology</div>
@@ -291,7 +291,7 @@ export default function HeroSection() {
 
                         {/* ZONE 2: Robot Mascot */}
                         <div className="hidden lg:flex w-full lg:w-[25%] justify-center">
-                            <div className="hero-bot relative w-full aspect-[3/4] max-h-[60vh] flex flex-col items-center justify-end">
+                            <div className="hero-bot relative w-full aspect-3/4 max-h-[60vh] flex flex-col items-center justify-end">
                                 <Image
                                     src="/Home/Bot.png"
                                     alt="Robot"
@@ -305,22 +305,25 @@ export default function HeroSection() {
                         {/* ZONE 3: Supporting Content */}
                         <div className="w-full lg:w-[35%] flex flex-col gap-3 lg:gap-10 ml-0 lg:ml-6 mt-2 lg:mt-0 pl-0 lg:pl-0">
                             <div className="space-y-4 lg:space-y-6 flex flex-col">
-                                <h3 className="hero-subheading w-[320px] max-w-full h-auto lg:w-[80%] text-[17px] lg:text-[24px] font-normal lg:font-[700] text-black opacity-90 leading-[1.4] lg:leading-snug pr-4 lg:pr-0">
+                                <h3 className="hero-subheading w-[320px] max-w-full h-auto lg:w-[80%] text-[17px] lg:text-[24px] font-normal lg:font-bold text-black opacity-90 leading-[1.4] lg:leading-snug pr-4 lg:pr-0">
                                     Empowering Your Vision with <br className="lg:hidden" />
                                     <span className="font-bold text-black lg:inline">Dilshaj Infotech</span>
                                 </h3>
                                 <ul className="space-y-4 hidden lg:block">
                                     {[
-                                        { main: "High-performance digital", bold: "product development" },
-                                        { main: "Intelligent platforms &", bold: "AI-driven solutions" },
-                                        { main: "Scalable, secure, and future-", bold: "ready technology" }
+                                        { main: "High-performance digital", bold: "product development", img: "/Home/empowering/vision1.png" },
+                                        { main: "Intelligent platforms &", bold: "AI-driven solutions", img: "/Home/empowering/vision2.png" },
+                                        { main: "Scalable, secure, and future-", bold: "ready technology", img: "/Home/empowering/vision3.png" }
                                     ].map((item, i) => (
                                         <li key={i} className="hero-bullet flex gap-4 items-center">
-                                            <span className="flex-shrink-0 w-5 h-5 rounded-full bg-white border border-gray-200 flex items-center justify-center shadow-sm">
-                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" className="w-2.5 h-2.5 text-black">
-                                                    <path d="M5 13l4 4L19 7" />
-                                                </svg>
-                                            </span>
+                                            <div className="shrink-0 w-8 h-8 relative">
+                                                <Image 
+                                                    src={item.img} 
+                                                    alt="vision icon" 
+                                                    fill 
+                                                    className="object-contain" 
+                                                />
+                                            </div>
                                             <span className="text-[15px] text-gray-600 leading-tight">
                                                 {item.main} <span className="font-bold text-black">{item.bold}</span>
                                             </span>
@@ -335,11 +338,11 @@ export default function HeroSection() {
                                 className="hero-cta flex items-center group relative h-12 w-fit cursor-pointer overflow-hidden transition-all duration-700 rounded-[34px_34px_0px_34px] hover:rounded-[34px_34px_34px_0px]"
                             >
                                 {/* LEFT ICON CIRCLE */}
-                                <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-all duration-700 ease-in-out group-hover:left-[calc(100%-48px)] group-hover:bg-gradient-to-r group-hover:from-[#3799FA] group-hover:to-[#9961FB] group-hover:scale-105">
+                                <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-all duration-700 ease-in-out group-hover:left-[calc(100%-48px)] group-hover:bg-linear-to-r group-hover:from-[#3799FA] group-hover:to-[#9961FB] group-hover:scale-105">
                                     <FaChevronRight className="w-4 h-4 text-[#3799FA] transition-all duration-700 ease-in-out group-hover:text-white" />
                                 </div>
                                 {/* MAIN BUTTON BODY */}
-                                <div className="pl-14 pr-8 h-full flex items-center text-white font-bold text-[15px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all duration-700 ease-in-out bg-gradient-to-r from-[#3799FA] to-[#9961FB] group-hover:from-white group-hover:to-white group-hover:text-black group-hover:pl-6 group-hover:pr-14 rounded-[34px_34px_0px_34px] group-hover:rounded-[34px_34px_34px_0px]">
+                                <div className="pl-14 pr-8 h-full flex items-center text-white font-bold text-[15px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all duration-700 ease-in-out bg-linear-to-r from-[#3799FA] to-[#9961FB] group-hover:from-white group-hover:to-white group-hover:text-black group-hover:pl-6 group-hover:pr-14 rounded-[34px_34px_0px_34px] group-hover:rounded-[34px_34px_34px_0px]">
                                     Build Your Future Today
                                 </div>
                             </button>

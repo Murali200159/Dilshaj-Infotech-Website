@@ -62,7 +62,7 @@ export default function Launch() {
             className={`
                 ${poppins.className}
                 w-full
-                bg-gradient-to-b from-white via-slate-50 to-sky-100/80
+                bg-linear-to-b from-white via-slate-50 to-sky-100/80
                 px-2 sm:px-3 lg:px-4
                 pt-6 sm:pt-8 lg:pt-10
                 pb-8 sm:pb-10 lg:pb-14
@@ -89,7 +89,7 @@ export default function Launch() {
                     />
 
                     {/* Bottom fade */}
-                    <div className="absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-white/60 to-transparent pointer-events-none" />
+                    <div className="absolute inset-x-0 bottom-0 h-10 bg-linear-to-t from-white/60 to-transparent pointer-events-none" />
 
                     {/* Red location pins */}
                     <div className="absolute z-10" style={{ top: "25%", left: "15%" }}>
@@ -121,14 +121,17 @@ export default function Launch() {
 
                 {/* ── Button below card ── */}
                 <div className="flex justify-center pt-6 sm:pt-8">
-                    <button className="flex items-center group relative h-12 w-fit cursor-pointer">
-                        <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-transform group-hover:scale-105">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 text-[#3799FA]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
-                        </div>
-                        <div className="pl-14 pr-8 h-full flex items-center text-white font-bold text-[15px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all bg-gradient-to-r from-[#3799FA] to-[#9961FB] rounded-[34px_34px_0px_34px]">
-                            Notify Me When Live
-                        </div>
-                    </button>
+                        <button
+                            suppressHydrationWarning
+                            className="flex items-center group relative h-12 w-fit cursor-pointer overflow-hidden transition-all duration-700 rounded-[34px_34px_0px_34px] hover:rounded-[34px_34px_34px_0px]"
+                        >
+                            <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-all duration-700 ease-in-out group-hover:left-[calc(100%-48px)] group-hover:bg-linear-to-r group-hover:from-[#3799FA] group-hover:to-[#9961FB] group-hover:scale-105">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#3799FA" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 ml-0.5 transition-all duration-700 ease-in-out group-hover:text-white"><polyline points="9 18 15 12 9 6" /></svg>
+                            </div>
+                            <div className="pl-14 pr-8 h-full flex items-center text-white font-bold text-[15px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all duration-700 ease-in-out bg-linear-to-r from-[#3799FA] to-[#9961FB] group-hover:from-white group-hover:to-white group-hover:text-black group-hover:pl-6 group-hover:pr-14 rounded-[34px_34px_0px_34px] group-hover:rounded-[34px_34px_34px_0px]">
+                                Notify Me When Live
+                            </div>
+                        </button>
                 </div>
 
             </div>

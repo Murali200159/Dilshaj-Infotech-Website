@@ -35,7 +35,8 @@ const allCards = [
         num: "04",
         title: "Cloud & Digital Solutions",
         desc: "We deliver cloud-based and digital transformation solutions that improve agility, scalability, and operational efficiency. From cloud migration to system optimization, we help businesses embrace modern digital infrastructure.",
-        img: "/Home/technologies/devops.png"
+        img: "/Home/technologies/devops.png",
+        imgPos: "object-top"
     },
     {
         num: "05",
@@ -158,24 +159,24 @@ export default function ServicesSection() {
                 </div>
 
                 {/* ── HEADER ────────────────────────────────────────────────── */}
-                <div className="mb-20 mt-16">
+                <div className="mb-12 sm:mb-20 mt-16 sm:mt-24">
                     <div className="flex flex-col lg:flex-row lg:items-end">
                         <h1 className="font-medium leading-[0.88] tracking-tight text-[#0a0a0a] shrink-0
-                                       text-[80px] sm:text-[110px] lg:text-[140px] xl:text-[160px]">
+                                       text-[42px] min-[360px]:text-[50px] min-[450px]:text-[70px] sm:text-[110px] lg:text-[140px] xl:text-[160px]">
                             Tech
                         </h1>
                         <p className="text-[#3b3a43] font-medium leading-[1.65] lg:ml-[30px] lg:pb-3 mt-4 lg:mt-0
-                                      text-[15px] lg:text-[17px] max-w-[420px]">
+                                      text-[14px] min-[450px]:text-[15px] lg:text-[17px] max-w-[420px]">
                             Crafting high-quality digital experiences that combine performance, innovation, and seamless usability.
                         </p>
                     </div>
-                    <div className="flex flex-row items-center gap-4 mt-2 lg:mt-0">
+                    <div className="flex flex-row items-center gap-2 min-[450px]:gap-4 mt-2 lg:mt-0">
                         <h1 className="font-medium leading-[0.88] tracking-tight text-[#0a0a0a] shrink-0
-                                       text-[80px] sm:text-[100px] lg:text-[130px] xl:text-[150px]">
+                                       text-[42px] min-[360px]:text-[50px] min-[450px]:text-[70px] sm:text-[100px] lg:text-[130px] xl:text-[150px]">
                             Innovation
                         </h1>
-                        <span className="inline-block bg-[#a55df6] text-white text-[13px] lg:text-[14px]
-                                         font-medium py-1.5 px-6 rounded-full shadow-md ml-4 shrink-0">
+                        <span className="inline-block bg-[#a55df6] text-white text-[10px] min-[360px]:text-[12px] min-[450px]:text-[13px] lg:text-[14px]
+                                         font-medium py-1 px-3 min-[360px]:px-4 min-[450px]:py-1.5 min-[450px]:px-6 rounded-full shadow-md ml-1 min-[450px]:ml-4 shrink-0">
                             Services
                         </span>
                     </div>
@@ -185,7 +186,7 @@ export default function ServicesSection() {
                 <div className="flex flex-col gap-16 lg:hidden">
                     {visibleCards.map((card, i) => (
                         <div key={`mobile-${i}`} className="flex flex-col gap-6 anim-mobile">
-                            <ImageBlock src={card.img} alt={card.title} />
+                            <ImageBlock src={card.img} alt={card.title} imgPos={card.imgPos} />
                             <ContentBlock number={card.num} title={card.title} description={card.desc} />
                         </div>
                     ))}
@@ -204,7 +205,7 @@ export default function ServicesSection() {
                             return (
                                 <div key={`left-${i}`} className={`anim-left ${!isEven ? 'flex items-center h-full' : ''}`}>
                                     {isEven ? (
-                                        <ImageBlock src={card.img} alt={card.title} />
+                                        <ImageBlock src={card.img} alt={card.title} imgPos={card.imgPos} />
                                     ) : (
                                         <ContentBlock number={card.num} title={card.title} description={card.desc} />
                                     )}
@@ -222,7 +223,7 @@ export default function ServicesSection() {
                                     {isEven ? (
                                         <ContentBlock number={card.num} title={card.title} description={card.desc} />
                                     ) : (
-                                        <ImageBlock src={card.img} alt={card.title} />
+                                        <ImageBlock src={card.img} alt={card.title} imgPos={card.imgPos} />
                                     )}
                                 </div>
                             );
@@ -238,10 +239,10 @@ export default function ServicesSection() {
                         onClick={() => setShowAll(!showAll)}
                         className="group relative h-12 w-fit cursor-pointer overflow-hidden transition-all duration-700 rounded-[34px_34px_0px_34px] hover:rounded-[34px_34px_34px_0px] shadow-xl"
                     >
-                        <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-all duration-700 ease-in-out group-hover:left-[calc(100%-48px)] group-hover:bg-gradient-to-r group-hover:from-[#3799FA] group-hover:to-[#9961FB] group-hover:scale-105">
+                        <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-all duration-700 ease-in-out group-hover:left-[calc(100%-48px)] group-hover:bg-linear-to-r group-hover:from-[#3799FA] group-hover:to-[#9961FB] group-hover:scale-105">
                             <ArrowRight className={`w-4 h-4 text-[#3799FA] transition-all duration-700 ease-in-out group-hover:text-white ${showAll ? '-rotate-90' : 'rotate-90'}`} />
                         </div>
-                        <div className="pl-14 pr-8 h-full py-3 flex items-center text-white font-bold text-[15px] transition-all duration-700 ease-in-out bg-gradient-to-r from-[#3799FA] to-[#9961FB] group-hover:from-white group-hover:to-white group-hover:text-black group-hover:pl-6 group-hover:pr-14 rounded-[34px_34px_0px_34px] group-hover:rounded-[34px_34px_34px_0px]">
+                        <div className="pl-14 pr-8 h-full py-3 flex items-center text-white font-bold text-[15px] transition-all duration-700 ease-in-out bg-linear-to-r from-[#3799FA] to-[#9961FB] group-hover:from-white group-hover:to-white group-hover:text-black group-hover:pl-6 group-hover:pr-14 rounded-[34px_34px_0px_34px] group-hover:rounded-[34px_34px_34px_0px]">
                             {showAll ? "View Less" : "View All"}
                         </div>
                     </button>
@@ -253,10 +254,10 @@ export default function ServicesSection() {
 }
 
 // Separate beautifully styled div for Image Block to match exact dimensions
-function ImageBlock({ src, alt }: { src: string; alt: string }) {
+function ImageBlock({ src, alt, imgPos = "object-center" }: { src: string; alt: string; imgPos?: string }) {
     return (
-        <div className="relative w-full aspect-[660/640]">
-            <Image src={src} alt={alt} fill className="object-cover" sizes="(min-width: 1024px) 50vw, 100vw" />
+        <div className="relative w-full aspect-660/640 rounded-[16px] overflow-hidden shadow-2xl">
+            <Image src={src} alt={alt} fill className={`object-cover transition-transform duration-700 hover:scale-105 ${imgPos}`} sizes="(min-width: 1024px) 50vw, 100vw" />
         </div>
     );
 }
@@ -266,7 +267,7 @@ function ContentBlock({ number, title, description }: { number: string; title: s
     return (
         <div className="flex flex-col items-start w-full pr-4 pb-10">
             <div className="flex items-center gap-4 mb-6">
-                <div className="flex-shrink-0 w-11 h-11 rounded-full bg-[#418cf5]
+                <div className="shrink-0 w-11 h-11 rounded-full bg-[#418cf5]
                                 flex items-center justify-center shadow-lg">
                     <span className="text-white font-bold text-[15px] leading-none">{number}</span>
                 </div>
@@ -283,10 +284,10 @@ function ContentBlock({ number, title, description }: { number: string; title: s
                 suppressHydrationWarning
                 className="group relative h-12 w-fit cursor-pointer overflow-hidden transition-all duration-700 rounded-[34px_34px_0px_34px] hover:rounded-[34px_34px_34px_0px] shadow-xl"
             >
-                <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-all duration-700 ease-in-out group-hover:left-[calc(100%-48px)] group-hover:bg-gradient-to-r group-hover:from-[#3799FA] group-hover:to-[#9961FB] group-hover:scale-105">
+                <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-all duration-700 ease-in-out group-hover:left-[calc(100%-48px)] group-hover:bg-linear-to-r group-hover:from-[#3799FA] group-hover:to-[#9961FB] group-hover:scale-105">
                     <FaChevronRight className="w-4 h-4 text-[#3799FA] transition-all duration-700 ease-in-out group-hover:text-white" />
                 </div>
-                <div className="pl-14 pr-8 h-full py-3 flex items-center text-white font-bold text-[15px] transition-all duration-700 ease-in-out bg-gradient-to-r from-[#3799FA] to-[#9961FB] group-hover:from-white group-hover:to-white group-hover:text-black group-hover:pl-6 group-hover:pr-14 rounded-[34px_34px_0px_34px] group-hover:rounded-[34px_34px_34px_0px]">
+                <div className="pl-14 pr-8 h-full py-3 flex items-center text-white font-bold text-[15px] transition-all duration-700 ease-in-out bg-linear-to-r from-[#3799FA] to-[#9961FB] group-hover:from-white group-hover:to-white group-hover:text-black group-hover:pl-6 group-hover:pr-14 rounded-[34px_34px_0px_34px] group-hover:rounded-[34px_34px_34px_0px]">
                     Know More
                 </div>
             </button>
