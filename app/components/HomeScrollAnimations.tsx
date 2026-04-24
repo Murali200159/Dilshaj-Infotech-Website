@@ -36,10 +36,10 @@ export default function HomeScrollAnimations() {
                 trigger: string | Element,
                 customStart?: string
             ) => {
-                const els = typeof targets === "string" 
-                    ? gsap.utils.toArray<Element>(targets) 
+                const els = typeof targets === "string"
+                    ? gsap.utils.toArray<Element>(targets)
                     : Array.isArray(targets) ? targets : [targets];
-                
+
                 if (!els.length) return;
 
                 gsap.fromTo(els, fromVars, {
@@ -130,12 +130,6 @@ export default function HomeScrollAnimations() {
 
                 const h2 = productsSection.querySelector("h2");
                 if (h2) animateFrom(h2, { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, delay: 0.1, ease: "power3.out" }, productsSection);
-
-                const sidebar = productsSection.querySelector(".products-sidebar");
-                if (sidebar) animateFrom(sidebar, { x: isMobile ? 0 : -60, y: isMobile ? 40 : 0, opacity: 0 }, { x: 0, y: 0, opacity: 1, duration: 0.8, ease: "power3.out" }, productsSection, "top 80%");
-
-                const detailCard = productsSection.querySelector(".product-detail-card");
-                if (detailCard) animateFrom(detailCard, { x: isMobile ? 0 : 60, y: isMobile ? 40 : 0, opacity: 0, scale: isMobile ? 0.98 : 1 }, { x: 0, y: 0, opacity: 1, scale: 1, duration: 0.9, ease: "power3.out" }, productsSection, "top 80%");
             }
 
             // ─── 4. TECHNOLOGIES SECTION ──────────────────────────────────
@@ -146,18 +140,46 @@ export default function HomeScrollAnimations() {
 
                 const h2 = techSection.querySelector("h2");
                 if (h2) animateFrom(h2, { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.9, ease: "power3.out" }, techSection);
-
-                const tabs = gsap.utils.toArray<Element>(techSection.querySelectorAll(".tech-tab-item"));
-                if (tabs.length) {
-                    gsap.fromTo(tabs, { x: isMobile ? -30 : -45, opacity: 0 }, {
-                        x: 0, opacity: 1, duration: 0.6, stagger: 0.09, ease: "power3.out",
-                        scrollTrigger: { trigger: techSection, start: "top 80%", toggleActions: "play none none none" }
-                    });
-                }
-
-                const detailCard = techSection.querySelector(".tech-detail-card");
-                if (detailCard) animateFrom(detailCard, { scale: 0.95, y: 40, opacity: 0 }, { scale: 1, y: 0, opacity: 1, duration: 0.9, ease: "power3.out" }, techSection, "top 75%");
             }
+
+            // ─── SLIDER PILL TRANSITION LOGIC (Optimized) ────────────────
+            const sections = ['product', 'tech'];
+            sections.forEach(sectionType => {
+                const panels = gsap.utils.toArray<Element>(`.${sectionType}-panel`);
+                panels.forEach((panel, i) => {
+                    const innerCard = panel.querySelector('.will-change-transform');
+                    if (!innerCard) return;
+
+                    // 1. Entrance: Fast & Sharp
+                    gsap.fromTo(innerCard, 
+                        { y: 150, opacity: 0, scale: 0.95, filter: "blur(6px)" },
+                        {
+                            y: 0, opacity: 1, scale: 1, filter: "blur(0px)",
+                            ease: "power2.out", force3D: true,
+                            scrollTrigger: {
+                                trigger: panel,
+                                start: "top 100%",
+                                end: "top 45%",
+                                scrub: 2.2, // Silkier, weighted movement
+                            }
+                        }
+                    );
+
+                    // 2. Hide Card: ONLY when the next card is almost fully covering it
+                    const nextPanel = i < panels.length - 1 ? panels[i + 1] : null;
+                    if (nextPanel) {
+                        gsap.to(innerCard, {
+                            opacity: 0, scale: 0.93, y: -60,
+                            scrollTrigger: {
+                                trigger: nextPanel,
+                                start: "top 50%", 
+                                end: "top 0%",    
+                                scrub: 2.2,
+                            }
+                        });
+                    }
+                });
+            });
 
             // ─── 5. WHY DILSHAJ / ACCELERATION SECTION ────────────────────
             const accelSection = document.querySelector('[data-section="acceleration"]');

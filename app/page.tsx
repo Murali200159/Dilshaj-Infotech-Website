@@ -6,13 +6,19 @@ import Link from "next/link";
 import { FaReact, FaNodeJs, FaAws, FaFigma, FaFlutter, FaChartBar, FaJava, FaPython, FaDocker, FaHtml5, FaCss3Alt, FaGraduationCap, FaBriefcase, FaUsers, FaMobileScreenButton, FaAward, FaChalkboardUser, FaLightbulb, FaShieldHalved, FaClock, FaCirclePlay, FaStar, FaPhone, FaWhatsapp, FaPlus, FaMinus, FaCar, FaMotorcycle, FaMapLocationDot, FaCreditCard, FaStore, FaBox, FaCartShopping, FaNewspaper, FaBell, FaGear, FaMagnifyingGlassChart, FaChevronRight } from "react-icons/fa6";
 import { SiMongodb, SiNextdotjs } from "react-icons/si";
 import { IoMdArrowForward, IoMdArrowBack } from "react-icons/io";
+import Lenis from "lenis";
 import ContactSection from "./components/ContactSection";
 import Footer from "./components/Footer";
 import HomeScrollAnimations from "./components/HomeScrollAnimations";
 import HeroSection from "./components/HeroSection";
 import ScrollStack, { ScrollStackItem } from "./components/ScrollStack";
 import Carousel from "./components/Carousel";
+import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const products = [
   {
@@ -170,7 +176,7 @@ const technologies = [
     title: "CLOUD & DEVOPS",
     content: "We design and manage cloud-native systems with seamless deployment pipelines, ensuring high performance, scalability, and reliability.",
     features: ["Auto Scaling Systems", "Continuous Integration & Delivery", "High Availability Architecture"],
-    image: "/Home/technologies/devops.png"
+    image: "/Home/technologies/cloud and dev .png"
   },
   {
     name: "Web Technologies",
@@ -178,7 +184,7 @@ const technologies = [
     title: "WEB TECHNOLOGIES",
     content: "We create responsive, fast, and scalable web applications using modern frameworks tailored to deliver seamless user experiences.",
     features: ["Responsive UI Systems", "Fast Load Performance", "Scalable Architecture"],
-    image: "/Home/technologies/web.png"
+    image: "/Home/technologies/web technologies.png"
   },
   {
     name: "Mobile Technologies",
@@ -186,7 +192,7 @@ const technologies = [
     title: "MOBILE TECHNOLOGIES",
     content: "We develop intuitive and high-performance mobile applications focused on usability, speed, and engaging user experiences.",
     features: ["Cross-Platform Apps", "Smooth Performance", "User-Centric Design"],
-    image: "/Home/technologies/mobile.png"
+    image: "/Home/technologies/mobile1.png"
   },
   {
     name: "Data & Analytics",
@@ -194,7 +200,7 @@ const technologies = [
     title: "DATA & ANALYTICS",
     content: "We transform raw data into meaningful insights with powerful analytics solutions that help businesses make smarter decisions.",
     features: ["Real-Time Data Processing", "Insightful Dashboards", "Predictive Analytics"],
-    image: "/Home/technologies/data&analytics.png"
+    image: "/Home/technologies/data analytics.png"
   },
   {
     name: "UI/UX Design",
@@ -471,15 +477,89 @@ export default function Home() {
   const [isContactActive, setIsContactActive] = useState(false);
 
   useEffect(() => {
+    // Initialize Lenis for smooth scrolling
+    const lenis = new Lenis({
+      lerp: 0.08, // Increased smoothing for buttery feel
+      duration: 1.5, // Longer, more graceful travel
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+      wheelMultiplier: 0.9, // Better control
+    });
+
+    const raf = (time: number) => {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    };
+    requestAnimationFrame(raf);
+
     const handleScroll = () => {
       setHasScrolled(window.scrollY > 20);
     };
     window.addEventListener("scroll", handleScroll);
 
+    // ─── Bi-Directional Scroll Tracking with GSAP ───
+    // Using ScrollTrigger for the sidebars is much more reliable than IntersectionObserver
+    // for sticky/stacking layouts when scrolling both UP and DOWN.
+    const ctx = gsap.context(() => {
+      // Products Tracking
+      const productPanels = document.querySelectorAll('.product-panel');
+      productPanels.forEach((panel, i) => {
+        ScrollTrigger.create({
+          trigger: panel,
+          start: "top 50%",
+          end: "bottom 50%",
+          onToggle: (self) => {
+            if (self.isActive) setActiveProductIdx(i);
+          },
+          // On leave back (scrolling up), if it's the first card, ensure it stays active
+          onLeaveBack: () => {
+            if (i === 0) setActiveProductIdx(0);
+          }
+        });
+      });
+
+      // Tech Tracking
+      const techPanels = document.querySelectorAll('.tech-panel');
+      techPanels.forEach((panel, i) => {
+        ScrollTrigger.create({
+          trigger: panel,
+          start: "top 50%",
+          end: "bottom 50%",
+          onToggle: (self) => {
+            if (self.isActive) setActiveTechIdx(i);
+          },
+          onLeaveBack: () => {
+            if (i === 0) setActiveTechIdx(0);
+          }
+        });
+      });
+    });
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      ctx.revert();
+      lenis.destroy();
     };
   }, []);
+
+  // ─── Auto-Scroll Sidebars to keep active item in view ───
+  useEffect(() => {
+    const activeItem = document.getElementById(`product-sidebar-item-${activeProductIdx}`);
+    const sidebar = document.getElementById('product-sidebar-container');
+    if (activeItem && sidebar) {
+      const topPos = activeItem.offsetTop - (sidebar.clientHeight / 2) + (activeItem.clientHeight / 2);
+      sidebar.scrollTo({ top: topPos, behavior: 'smooth' });
+    }
+  }, [activeProductIdx]);
+
+  useEffect(() => {
+    const activeItem = document.getElementById(`tech-sidebar-item-${activeTechIdx}`);
+    const sidebar = document.getElementById('tech-sidebar-container');
+    if (activeItem && sidebar) {
+      const topPos = activeItem.offsetTop - (sidebar.clientHeight / 2) + (activeItem.clientHeight / 2);
+      sidebar.scrollTo({ top: topPos, behavior: 'smooth' });
+    }
+  }, [activeTechIdx]);
 
   return (
     <div className="min-h-screen selection:bg-blue-100 relative overflow-x-clip font-sans bg-linear-to-r from-[#CAD0FF] to-[#E3E3E3]">
@@ -815,12 +895,12 @@ export default function Home() {
                   <div className="absolute bottom-10 left-8">
                     <button
                       suppressHydrationWarning
-                      className="flex items-center group relative h-12 w-fit cursor-pointer overflow-hidden transition-all duration-700 rounded-[34px_34px_0px_34px] hover:rounded-[34px_34px_34px_0px] shadow-xl"
+                      className="flex items-center group/btn relative h-12 w-fit cursor-pointer overflow-hidden transition-all duration-700 rounded-[34px_34px_0px_34px] hover:rounded-[34px_34px_34px_0px] shadow-xl"
                     >
-                      <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-all duration-700 ease-in-out group-hover:left-[calc(100%-48px)] group-hover:bg-linear-to-r group-hover:from-[#3799FA] group-hover:to-[#9961FB] group-hover:scale-105">
-                        <FaChevronRight className="w-4 h-4 text-[#3799FA] transition-all duration-700 ease-in-out group-hover:text-white" />
+                      <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-all duration-700 ease-in-out group-hover/btn:left-[calc(100%-48px)] group-hover/btn:bg-linear-to-r group-hover/btn:from-[#3799FA] group-hover/btn:to-[#9961FB] group-hover/btn:scale-105">
+                        <FaChevronRight className="w-4 h-4 text-[#3799FA] transition-all duration-700 ease-in-out group-hover/btn:text-white" />
                       </div>
-                      <div className="pl-14 pr-8 h-full py-3 flex items-center text-white font-bold text-[15px] transition-all duration-700 ease-in-out bg-linear-to-r from-[#3799FA] to-[#9961FB] group-hover:from-white group-hover:to-white group-hover:text-black group-hover:pl-6 group-hover:pr-14 rounded-[34px_34px_0px_34px] group-hover:rounded-[34px_34px_34px_0px]">
+                      <div className="pl-14 pr-8 h-full py-3 flex items-center text-white font-bold text-[15px] transition-all duration-700 ease-in-out bg-linear-to-r from-[#3799FA] to-[#9961FB] group-hover/btn:from-white group-hover/btn:to-white group-hover/btn:text-black group-hover/btn:pl-6 group-hover/btn:pr-14 rounded-[34px_34px_0px_34px] group-hover/btn:rounded-[34px_34px_34px_0px]">
                         Lets Build Together
                       </div>
                     </button>
@@ -866,8 +946,8 @@ export default function Home() {
                         </div>
 
                         <div className={`absolute right-6 top-1/2 -translate-y-1/2 transition-all duration-500 ${(hoveredServiceIdx !== null && hoveredServiceIdx === idx) || (hoveredServiceIdx === null && activeServiceIdx === idx)
-                            ? "opacity-100 translate-x-0"
-                            : "opacity-0 translate-x-4"
+                          ? "opacity-100 translate-x-0"
+                          : "opacity-0 translate-x-4"
                           }`}>
                           <div className="w-10 h-10 rounded-full flex items-center justify-center transition-all shadow-md shrink-0"
                             style={{ background: 'linear-gradient(135deg, #31B5FE 0%, #AC52F2 100%)' }}>
@@ -1015,104 +1095,164 @@ export default function Home() {
 
           <div className="w-full max-w-[1700px] px-0 lg:px-10 lg:md:px-20">
             {/* --- DESKTOP VIEW --- */}
-            <div className="hidden lg:grid grid-cols-[1.2fr_2.8fr] gap-12 items-start w-full">
-              {/* Product Sidebar */}
-              <div className="products-sidebar flex flex-col gap-8">
+            {/* --- DESKTOP VIEW: SCROLLYTELLING LAYOUT --- */}
+            <div className="hidden lg:flex gap-0 items-start w-full">
+              {/* LEFT: Sticky Sidebar */}
+              <div id="product-sidebar-container" className="products-sidebar w-[300px] xl:w-[360px] shrink-0 sticky top-32 max-h-[75vh] flex flex-col gap-3 pr-8 transform-gpu overflow-y-auto scrollbar-none pb-20">
                 {products.map((product, idx) => (
                   <div
                     key={idx}
-                    id={`product-sidebar-${idx}`}
+                    id={`product-sidebar-item-${idx}`}
                     onClick={() => {
-                      setActiveProductIdx(idx);
-                      const el = document.getElementById(`product-sidebar-${idx}`);
+                      const el = document.getElementById(`product-content-${idx}`);
                       if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
                     }}
-                    className={`p-6 xl:p-12 rounded-[32px] cursor-pointer transition-all duration-500 border ${activeProductIdx === idx
-                      ? "bg-white shadow-[0_20px_50px_rgba(0,0,0,0.1)] border-blue-500/20 scale-[1.05] z-10"
-                      : "bg-[#F8F9FA] border-transparent opacity-60 hover:opacity-100"
+                    className={`p-5 xl:p-6 rounded-[24px] cursor-pointer transition-colors duration-300 border-2 ${activeProductIdx === idx
+                      ? "bg-white shadow-[0_20px_50px_rgba(49,181,254,0.12)] border-blue-200"
+                      : "bg-gray-50/80 border-transparent opacity-50 hover:opacity-85 hover:bg-white hover:border-gray-100"
                       }`}
                   >
-                    <h3 className={`text-[32px] font-bold mb-4 transition-colors ${activeProductIdx === idx ? "text-blue-600" : "text-black"}`}>
+                    <h3 className={`text-[17px] xl:text-[19px] font-bold mb-2 transition-colors duration-300 ${activeProductIdx === idx ? "text-blue-600" : "text-black"
+                      }`}>
                       {product.name}
                     </h3>
-                    <p className="text-[18px] text-gray-500 leading-relaxed font-medium">
+                    <p className="text-[12px] xl:text-[13px] text-gray-500 leading-relaxed font-medium">
                       {product.desc}
                     </p>
                   </div>
                 ))}
 
                 {/* See All Products Button */}
-                <div className="mt-4 flex justify-start">
+                <div className="mt-4">
                   <Link href="/products" className="flex items-center group relative h-12 w-fit cursor-pointer overflow-hidden transition-all duration-700 rounded-[34px_34px_0px_34px] hover:rounded-[34px_34px_34px_0px]">
-                    {/* LEFT ICON CIRCLE */}
                     <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-all duration-700 ease-in-out group-hover:left-[calc(100%-48px)] group-hover:bg-linear-to-r group-hover:from-[#3799FA] group-hover:to-[#9961FB] group-hover:scale-105">
                       <FaChevronRight className="w-4 h-4 text-[#3799FA] transition-all duration-700 ease-in-out group-hover:text-white" />
                     </div>
-                    {/* MAIN BUTTON BODY */}
-                    <div className="pl-14 pr-8 h-full flex items-center text-white font-bold text-[15px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all duration-700 ease-in-out bg-linear-to-r from-[#3799FA] to-[#9961FB] group-hover:from-white group-hover:to-white group-hover:text-black group-hover:pl-6 group-hover:pr-14 rounded-[34px_34px_0px_34px] group-hover:rounded-[34px_34px_34px_0px]">
+                    <div className="pl-14 pr-8 h-full flex items-center text-white font-bold text-[14px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all duration-700 ease-in-out bg-linear-to-r from-[#3799FA] to-[#9961FB] group-hover:from-white group-hover:to-white group-hover:text-black group-hover:pl-6 group-hover:pr-14 rounded-[34px_34px_0px_34px] group-hover:rounded-[34px_34px_34px_0px]">
                       See All Products
                     </div>
                   </Link>
                 </div>
               </div>
 
-              {/* Product Detail Card */}
-              <div className="product-detail-card bg-white rounded-[40px] shadow-[0_30px_100px_rgba(0,0,0,0.05)] border border-gray-100 sticky top-32 overflow-hidden group min-h-[650px] h-fit">
-                {/* Slidable Content Wrapper */}
-                <div
-                  className="absolute inset-0 transition-transform duration-700 ease-in-out"
-                  style={{ transform: `translateY(${-activeProductIdx * 100}%)` }}
-                >
-                  {products.map((product, pIdx) => (
-                    <div key={pIdx} className="w-full h-full shrink-0 p-8 xl:p-16 relative">
-                      {/* Top Right Arrow Icon - Each card has its own for consistent layout */}
-                      <div className="absolute top-12 right-12 w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition-transform group-hover:rotate-12 group-hover:scale-110"
-                        style={{ background: 'linear-gradient(135deg, #20B5F9 0%, #A851ED 100%)' }}>
-                        <svg className="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M7 17L17 7M17 7H7M17 7v10" />
-                        </svg>
+              {/* RIGHT: Scrollable Product Panels */}
+              <div className="flex-1 min-w-0">
+                {products.map((product, pIdx) => (
+                  <div
+                    key={pIdx}
+                    id={`product-content-${pIdx}`}
+                    data-idx={String(pIdx)}
+                    className="product-panel sticky top-0 min-h-screen flex items-center justify-center py-20"
+                    style={{ zIndex: pIdx + 10 }}
+                  >
+                    <div className="w-full bg-white rounded-[40px] shadow-[0_20px_80px_rgba(0,0,0,0.05)] border border-gray-100 overflow-hidden p-6 xl:p-10 group transition-shadow duration-500 hover:shadow-[0_30px_100px_rgba(0,0,0,0.08)] transform-gpu backface-hidden">
+
+                      {/* Header Row */}
+                      <div className="flex items-start justify-between mb-6 xl:mb-8">
+                        <div className="flex-1 pr-8">
+                          <h2 className="text-[28px] xl:text-[42px] font-bold text-black uppercase tracking-tighter leading-none mb-3 xl:mb-4">
+                            {product.title}
+                          </h2>
+                          <p className="text-[15px] xl:text-[18px] text-gray-500 leading-relaxed font-medium max-w-[95%]">
+                            {product.subtitle}
+                          </p>
+                        </div>
+                        <div
+                          className="w-14 h-14 rounded-full flex items-center justify-center shadow-lg shrink-0 transition-all duration-500 hover:rotate-12 hover:scale-110 cursor-pointer"
+                          style={{ background: 'linear-gradient(135deg, #20B5F9 0%, #A851ED 100%)' }}
+                        >
+                          <svg className="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M7 17L17 7M17 7H7M17 7v10" />
+                          </svg>
+                        </div>
                       </div>
 
-                      {/* Content */}
-                      <div className="flex flex-col h-full">
-                        <h2 className="text-[36px] md:text-[44px] font-bold text-black mb-6 max-w-[80%]">
-                          {product.title}
-                        </h2>
-                        <p className="text-[18px] text-gray-500 leading-relaxed mb-12 max-w-[85%] font-medium">
-                          {product.subtitle}
-                        </p>
-
-                        {/* Highlights Row */}
-                        <div className="flex flex-col md:flex-row gap-12 mb-16">
+                      {/* Middle: Highlights + Visual */}
+                      <div className="grid grid-cols-[1fr_1fr] gap-8 mb-6 xl:mb-8">
+                        {/* Highlights */}
+                        <div className="flex flex-col justify-center gap-6">
                           {product.highlights.map((item, i) => (
-                            <div key={i} className="flex items-center gap-5">
-                              <div className="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center shrink-0 shadow-sm border border-blue-100">
+                            <div key={i} className="flex items-center gap-4">
+                              <div className="w-10 h-10 xl:w-12 xl:h-12 rounded-xl xl:rounded-2xl bg-blue-50 flex items-center justify-center shrink-0 shadow-sm border border-blue-100 transition-transform duration-500 group-hover:scale-105">
                                 {item.icon}
                               </div>
-                              <span className="text-[17px] font-bold text-black leading-tight max-w-[150px]">
+                              <span className="text-[14px] xl:text-[16px] font-bold text-black leading-tight">
                                 {item.label}
                               </span>
                             </div>
                           ))}
                         </div>
 
-                        {/* Features Grid Footer */}
-                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-5 border-t border-gray-100 pt-12 gap-8 mt-auto">
-                          {product.features.map((feature, i) => (
-                            <div key={i} className="flex flex-col items-center text-center px-4 border-r border-gray-100 last:border-0">
-                              <div className="text-blue-500 mb-6 drop-shadow-sm p-3 bg-blue-50 rounded-2xl">
-                                {feature.icon}
-                              </div>
-                              <span className="text-[15px] font-bold text-[#1F2933] leading-[1.3] max-w-[120px]">
-                                {feature.name}
-                              </span>
+                        {/* Visual Area */}
+                        {pIdx === 0 ? (
+                          // Ride Booking App
+                          <div className="relative w-full h-[220px] xl:h-[280px] transition-transform duration-700 group-hover:scale-105">
+                            <Image
+                              src="/products/bike-rider-images/bike.png"
+                              alt="Ride Booking"
+                              fill
+                              className="object-cover rounded-[24px] drop-shadow-2xl"
+                            />
+                          </div>
+                        ) : pIdx === 1 ? (
+                          // E-Commerce: show image directly without extra background card
+                          <div className="relative w-full h-[220px] xl:h-[280px] transition-transform duration-700 group-hover:scale-105">
+                            <Image
+                              src="/products/commerce/image1.png"
+                              alt="E-Commerce"
+                              fill
+                              className="object-cover rounded-[24px] drop-shadow-2xl"
+                            />
+                          </div>
+                        ) : pIdx === 2 ? (
+                          // Food Delivery App: show image directly without extra background card
+                          <div className="relative w-full h-[220px] xl:h-[280px] transition-transform duration-700 group-hover:scale-105">
+                            <Image
+                              src="/products/food-images/image.png"
+                              alt="Food Delivery"
+                              fill
+                              className="object-cover rounded-[24px] drop-shadow-2xl"
+                            />
+                          </div>
+                        ) : pIdx === 3 ? (
+                          // Digital News: show image directly without extra background card
+                          <div className="relative w-full h-[220px] xl:h-[280px] transition-transform duration-700 group-hover:scale-105">
+                            <Image
+                              src="/products/digital news/image.png"
+                              alt="Digital News"
+                              fill
+                              className="object-cover rounded-[24px] drop-shadow-2xl"
+                            />
+                          </div>
+                        ) : (
+                          // Default gradient card for any future products
+                          <div
+                            className="rounded-[32px] flex flex-col items-center justify-center min-h-[220px] xl:min-h-[280px] relative overflow-hidden"
+                            style={{ background: 'linear-gradient(135deg, #F0F9FF 0%, #E0F2FE 100%)' }}
+                          >
+                            <div className="text-blue-200">
+                              <FaStore className="w-24 h-24 xl:w-32 xl:h-32 opacity-20" />
                             </div>
-                          ))}
-                        </div>
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Footer: Features List */}
+                      <div className="border-t border-gray-100 pt-6 xl:pt-8 grid grid-cols-2 lg:grid-cols-5 gap-4">
+                        {product.features.map((feature, i) => (
+                          <div key={i} className="flex flex-col items-center text-center group/feat">
+                            <div className="text-blue-500 mb-3 p-2 bg-blue-50 rounded-xl transition-transform duration-500 group-hover/feat:scale-110">
+                              {feature.icon}
+                            </div>
+                            <span className="text-[12px] xl:text-[13px] font-bold text-gray-700 leading-tight">
+                              {feature.name}
+                            </span>
+                          </div>
+                        ))}
                       </div>
                     </div>
-                  ))}
-                </div>
+                  </div>
+                ))}
               </div>
             </div>
 
@@ -1277,102 +1417,121 @@ export default function Home() {
             </div>
 
             {/* Desktop Layout */}
-            <div className="hidden lg:grid lg:grid-cols-[1fr_2fr] xl:grid-cols-[1fr_2.5fr] gap-8 xl:gap-12 items-start">
-              {/* Sidebar Tabs */}
-              <div className="flex flex-col gap-5">
+            {/* --- DESKTOP VIEW: SCROLLYTELLING LAYOUT --- */}
+            <div className="hidden lg:flex gap-0 items-start w-full">
+              {/* LEFT: Sticky Sidebar */}
+              <div id="tech-sidebar-container" className="w-[300px] xl:w-[360px] shrink-0 sticky top-32 max-h-[75vh] flex flex-col gap-3 pr-8 transform-gpu overflow-y-auto scrollbar-none pb-20">
                 {technologies.map((tech, idx) => (
                   <div
                     key={idx}
-                    id={`tech-sidebar-${idx}`}
+                    id={`tech-sidebar-item-${idx}`}
                     onClick={() => {
-                      setActiveTechIdx(idx);
-                      const el = document.getElementById(`tech-sidebar-${idx}`);
+                      const el = document.getElementById(`tech-content-${idx}`);
                       if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
                     }}
-                    className={`tech-tab-item p-8 rounded-[24px] cursor-pointer transition-all duration-500 border backdrop-blur-md ${activeTechIdx === idx
-                      ? "bg-white shadow-[0_20px_50px_rgba(255,255,255,0.1)] scale-[1.03] border-white"
-                      : "bg-white/5 hover:bg-white/10 border-white/10 hover:border-white/20"
+                    className={`p-5 xl:p-6 rounded-[24px] cursor-pointer transition-colors duration-300 border-2 ${activeTechIdx === idx
+                      ? "bg-white shadow-[0_20px_50px_rgba(255,255,255,0.12)] border-blue-200"
+                      : "bg-white/5 border-transparent opacity-50 hover:opacity-85 hover:bg-white/10"
                       }`}
                   >
-                    <h3 className={`text-[22px] font-bold mb-1 transition-colors ${activeTechIdx === idx ? "text-black" : "text-white"}`}>
+                    <h3 className={`text-[17px] xl:text-[19px] font-bold mb-2 transition-colors duration-300 ${activeTechIdx === idx ? "text-blue-600" : "text-white"
+                      }`}>
                       {tech.name}
                     </h3>
-                    <p className={`text-[14px] font-medium transition-colors ${activeTechIdx === idx ? "text-gray-500" : "text-gray-400"}`}>
+                    <p className={`text-[12px] xl:text-[13px] leading-relaxed font-medium transition-colors ${activeTechIdx === idx ? "text-gray-500" : "text-gray-400"}`}>
                       {tech.desc}
                     </p>
                   </div>
                 ))}
               </div>
 
-              {/* slidable Content Detail Card */}
-              <div className="tech-detail-card bg-white rounded-xl shadow-[0_30px_100px_rgba(0,0,0,0.3)] sticky top-32 overflow-hidden min-h-[600px] h-fit">
-                <div
-                  className="absolute inset-0 transition-transform duration-700 ease-in-out"
-                  style={{ transform: `translateY(${-activeTechIdx * 100}%)` }}
-                >
-                  {technologies.map((tech, tIdx) => (
-                    <div key={tIdx} className="w-full h-full shrink-0 p-12 md:p-16 flex flex-col xl:flex-row gap-12 relative">
-                      {/* Left: Content Area */}
-                      <div className="flex-1 flex flex-col justify-center">
-                        <h3 className="text-[32px] md:text-[40px] font-bold text-black mb-8 uppercase">
-                          {tech.title}
-                        </h3>
-                        <p className="text-[18px] text-gray-500 leading-relaxed mb-10 font-medium max-w-[550px]">
-                          {tech.content}
-                        </p>
+              {/* RIGHT: Scrollable Tech Panels */}
+              <div className="flex-1 min-w-0">
+                {technologies.map((tech, tIdx) => (
+                  <div
+                    key={tIdx}
+                    id={`tech-content-${tIdx}`}
+                    data-idx={String(tIdx)}
+                    className="tech-panel sticky top-0 min-h-screen flex items-center justify-center py-20"
+                    style={{ zIndex: tIdx + 10 }}
+                  >
+                    <div className="w-full bg-white rounded-[40px] shadow-[0_30px_100px_rgba(0,0,0,0.5)] border border-gray-100 overflow-hidden p-6 xl:p-10 group transition-shadow duration-500 hover:shadow-[0_40px_120px_rgba(0,0,0,0.6)] transform-gpu backface-hidden">
 
-                        <div className="space-y-6 mb-12 flex-1">
+                      {/* Header Row */}
+                      <div className="flex items-start justify-between mb-6 xl:mb-8">
+                        <div className="flex-1 pr-8">
+                          <h2 className="text-[28px] xl:text-[42px] font-bold text-black uppercase tracking-tighter leading-none mb-3 xl:mb-4">
+                            {tech.title}
+                          </h2>
+                          <p className="text-[15px] xl:text-[18px] text-gray-500 leading-relaxed font-medium max-w-[95%]">
+                            {tech.content}
+                          </p>
+                        </div>
+                        <div
+                          className="w-14 h-14 rounded-full flex items-center justify-center shadow-lg shrink-0 transition-all duration-500 hover:rotate-12 hover:scale-110 cursor-pointer"
+                          style={{ background: 'linear-gradient(135deg, #20B5F9 0%, #A851ED 100%)' }}
+                        >
+                          <svg className="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M7 17L17 7M17 7H7M17 7v10" />
+                          </svg>
+                        </div>
+                      </div>
+
+                      {/* Middle Row */}
+                      <div className="grid grid-cols-[1fr_1fr] gap-8 mb-6 xl:mb-8">
+                        {/* Features List */}
+                        <div className="flex flex-col justify-center gap-4">
                           {tech.features.map((feature, fIdx) => (
-                            <div key={fIdx} className="flex items-center gap-5">
-                              <div className="w-10 h-10 rounded-full bg-[#0E4E8B] flex items-center justify-center shrink-0 shadow-sm">
+                            <div key={fIdx} className="flex items-center gap-4 group/feat">
+                              <div className="w-10 h-10 xl:w-12 xl:h-12 rounded-xl xl:rounded-2xl bg-blue-50 flex items-center justify-center shrink-0 shadow-sm border border-blue-100 transition-transform duration-500 group-hover/feat:scale-110">
                                 {tIdx === 0 ? (
-                                  <Image src={`/Home/mechine learning/ai${fIdx + 1}.png`} alt="ai icon" width={24} height={24} className="object-contain brightness-0 invert" />
+                                  <Image src={`/Home/mechine learning/ai${fIdx + 1}.png`} alt="ai" width={24} height={24} />
                                 ) : tIdx === 1 ? (
-                                  <Image src={`/Home/cloud/icon${fIdx + 1}.png`} alt="cloud icon" width={24} height={24} className="object-contain brightness-0 invert" />
+                                  <Image src={`/Home/cloud/icon${fIdx + 1}.png`} alt="cloud" width={24} height={24} />
                                 ) : tIdx === 2 ? (
-                                  <Image src={`/Home/web technology/icon${fIdx + 1}.png`} alt="web icon" width={24} height={24} className="object-contain brightness-0 invert" />
+                                  <Image src={`/Home/web technology/icon${fIdx + 1}.png`} alt="web" width={24} height={24} />
                                 ) : tIdx === 3 ? (
-                                  <Image src={`/Home/mobile/icon${fIdx + 1}.png`} alt="mobile icon" width={24} height={24} className="object-contain brightness-0 invert" />
+                                  <Image src={`/Home/mobile/icon${fIdx + 1}.png`} alt="mobile" width={24} height={24} />
                                 ) : tIdx === 4 ? (
-                                  <Image src={`/Home/data and analytics/icon${fIdx + 1}.png`} alt="analytics icon" width={24} height={24} className="object-contain brightness-0 invert" />
-                                ) : tIdx === 5 ? (
-                                  <Image src={`/Home/UI/UX Design/icon${fIdx + 1}.png`} alt="ui/ux icon" width={24} height={24} className="object-contain brightness-0 invert" />
+                                  <Image src={`/Home/data and analytics/icon${fIdx + 1}.png`} alt="data" width={24} height={24} />
                                 ) : (
-                                  <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={4}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                                  <Image src={`/Home/UI/UX Design/icon${fIdx + 1}.png`} alt="uiux" width={24} height={24} />
                                 )}
                               </div>
-                              <span className="text-[17px] font-bold text-black">{feature}</span>
+                              <span className="text-[14px] xl:text-[16px] font-bold text-black group-hover:text-blue-600 transition-colors">
+                                {feature}
+                              </span>
                             </div>
                           ))}
                         </div>
 
-                        {/* Action Button: Custom Asymmetrical Design */}
-                        <div className="mt-auto mb-6 flex justify-start">
-                          <button suppressHydrationWarning className="flex items-center group relative h-12 w-fit overflow-hidden transition-all duration-700 rounded-[34px_34px_0px_34px] hover:rounded-[34px_34px_34px_0px]">
-                            <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-lg z-20 transition-all duration-700 ease-in-out group-hover:left-[calc(100%-48px)] group-hover:bg-linear-to-r group-hover:from-[#3799FA] group-hover:to-[#9961FB] group-hover:scale-105">
-                              <svg className="w-5 h-5 text-[#3799FA] transition-all duration-700 ease-in-out group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={4}>
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                              </svg>
-                            </div>
-                            <div
-                              className="pl-14 pr-8 h-full flex items-center text-white font-bold text-[15px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all duration-700 ease-in-out bg-linear-to-r from-[#3799FA] to-[#9961FB] group-hover:from-white group-hover:to-white group-hover:text-black group-hover:pl-6 group-hover:pr-14 rounded-[34px_34px_0px_34px] group-hover:rounded-[34px_34px_34px_0px]"
-                            >
-                              Learn More
-                            </div>
-                          </button>
+                        {/* Visual Asset Area */}
+                        <div className="flex items-center justify-center min-h-[220px] xl:min-h-[260px] relative">
+                          <div className="relative w-full h-[220px] xl:h-[260px] p-8 transition-transform duration-[1.5s] group-hover:scale-110">
+                            <Image
+                              src={tech.image}
+                              alt={tech.title}
+                              fill
+                              className="object-cover rounded-[24px] drop-shadow-[0_20px_50px_rgba(0,0,0,0.1)]"
+                            />
+                          </div>
                         </div>
                       </div>
 
-                      {/* Right: Thematic Image */}
-                      <div className="w-full xl:flex-1 relative min-h-[400px] aspect-video xl:aspect-auto xl:min-h-0">
-                        <div className="absolute inset-0 rounded-xl overflow-hidden">
-                          <Image src={tech.image} alt={tech.title} fill className="object-cover" />
-                          <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent" />
-                        </div>
+                      {/* Action Button */}
+                      <div className="flex justify-start">
+                        <button suppressHydrationWarning className="flex items-center group/btn relative h-12 w-fit cursor-pointer overflow-hidden transition-all duration-700 rounded-[34px_34px_0px_34px] hover:rounded-[34px_34px_34px_0px]">
+                          <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-all duration-700 ease-in-out group-hover/btn:left-[calc(100%-48px)] group-hover/btn:bg-linear-to-r group-hover/btn:from-[#3799FA] group-hover/btn:to-[#9961FB] group-hover/btn:scale-105">
+                            <FaChevronRight className="w-4 h-4 text-[#3799FA] transition-all duration-700 ease-in-out group-hover/btn:text-white" />
+                          </div>
+                          <div className="pl-14 pr-8 h-full flex items-center text-white font-bold text-[14px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all duration-700 ease-in-out bg-linear-to-r from-[#3799FA] to-[#9961FB] group-hover/btn:from-white group-hover/btn:to-white group-hover/btn:text-black group-hover/btn:pl-6 group-hover/btn:pr-14 rounded-[34px_34px_0px_34px] group-hover/btn:rounded-[34px_34px_34px_0px]">
+                            Learn More
+                          </div>
+                        </button>
                       </div>
                     </div>
-                  ))}
-                </div>
+                  </div>
+                ))}
               </div>
             </div>
 

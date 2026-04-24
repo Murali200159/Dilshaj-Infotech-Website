@@ -7,13 +7,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FaPhone, FaWhatsapp, FaChevronRight } from "react-icons/fa6";
 import ContactSection from "../components/ContactSection";
 import Footer from "../components/Footer";
-import backgroundImage from "./image copy.png";
+
 import img1 from "./republi.png";
 import img2 from "./image copy 2.png";
 import img3 from "./image copy 3.png";
 import img4 from "./image copy 4.png";
 import img5 from "./DSC_0939.jpg";
-import img6 from "./image copy.png";
+import img6 from "./image copy.jpeg";
 
 const poppins = Poppins({
   weight: ["400", "500", "600", "700"],
@@ -112,20 +112,13 @@ export default function Home() {
       <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden shrink-0">
         {/* Background Image */}
         <div className="absolute inset-0 z-0 bg-black/10">
-          <Image
-            src={backgroundImage}
-            alt="Office Background Desktop"
-            fill
-            className="object-cover"
-            priority
-          />
-          {/* Gradient Overlay */}
-          <div
-            className="absolute inset-0 z-10"
-            style={{
-              background:
-                "linear-gradient(90deg, rgba(32, 181, 249, 0.85) 0%, rgba(168, 81, 237, 0.85) 100%)",
-            }}
+          <video
+            src="/career/new building.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover absolute inset-0"
           />
         </div>
 
@@ -140,7 +133,7 @@ export default function Home() {
         </div>
 
         {/* Hero Content */}
-        <div className="relative z-20 w-full max-w-[1200px] px-6 mx-auto flex flex-col items-center text-center text-white mt-24 md:mt-8">
+        <div className="relative z-20 w-full max-w-[1200px] px-6 mx-auto flex flex-col items-center text-center text-white mt-40 md:mt-[160px]">
           <div className="flex flex-col items-center w-full">
             {/* Desktop Headline */}
             <div className="hidden md:flex flex-col items-center w-full">
@@ -155,10 +148,8 @@ export default function Home() {
               >
                 JOIN US! GREAT
               </h1>
-              {/* Cyan Underline */}
-              <div className="w-full max-w-[75%] h-1.5 bg-[#20B5F9] my-5 rounded-full shadow-sm" />
               <h1
-                className="text-white drop-shadow-sm uppercase md:text-[60px] lg:text-[80px]"
+                className="text-white drop-shadow-sm uppercase md:text-[60px] lg:text-[80px] mt-2"
                 style={{
                   fontWeight: 600,
                   lineHeight: "100%",
@@ -184,7 +175,7 @@ export default function Home() {
             </div>
           </div>
 
-          <p className="mt-8 md:mt-11 max-w-4xl text-[16px] xl:text-[20px] font-normal leading-relaxed md:leading-[1.8] px-2 md:px-0 text-white drop-shadow-sm text-center">
+          <p className="mt-6 md:mt-8 max-w-4xl text-[16px] xl:text-[20px] font-normal leading-relaxed md:leading-[1.8] px-2 md:px-0 text-white drop-shadow-sm text-center">
             At Dilshaj Infotech, we&apos;re more than a team — we&apos;re a
             hub of innovation and growth. Driven by creativity,
             powered by collaboration, and supported by strong
@@ -193,7 +184,7 @@ export default function Home() {
             shape the future.
           </p>
 
-          <div className="mt-14 md:mt-16 w-full flex flex-col items-center gap-6 md:gap-8 text-[16px] sm:text-[18px] md:text-[20px] font-bold text-white drop-shadow-md px-4">
+          <div className="mt-8 md:mt-10 w-full flex flex-col items-center gap-4 md:gap-5 text-[16px] sm:text-[18px] md:text-[20px] font-bold text-white drop-shadow-md px-4">
             {/* Contact No Row */}
             <div className="flex flex-col sm:flex-row items-center gap-1 sm:gap-3 text-center">
               <span className="opacity-90">Contact No :</span>
@@ -371,7 +362,7 @@ export default function Home() {
 
           {/* Image 6 (Meeting Desk) - taller span and object-top for face visibility */}
           <div className="col-span-2 lg:col-span-4 row-span-2 relative overflow-hidden group">
-            <Image src={img6} alt="Team meeting" fill className="object-cover object-top group-hover:scale-105 transition-transform duration-700" />
+            <Image src={img6} alt="Team meeting" fill className="object-cover object-center group-hover:scale-105 transition-transform duration-700" />
           </div>
         </div>
       </section>

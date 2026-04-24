@@ -321,36 +321,36 @@ const renderMetricValue = (val: string) => {
 // ─── Desktop TextBox ───────────────────────────────────────────────────────────
 function TextBox({ card }: { card: typeof cardsData[number] }) {
     return (
-        <div className="bg-white relative flex flex-col justify-center p-6 sm:p-8 lg:p-16 xl:p-[80px] z-20 w-full min-h-[480px] lg:h-[758px] rounded-[16px] overflow-hidden">
+        <div className="bg-white relative flex flex-col justify-center px-10 sm:px-12 lg:px-14 xl:px-16 py-6 sm:py-8 z-20 w-full min-h-[400px] lg:h-[480px] rounded-[16px] overflow-hidden">
             <div className={`absolute top-0 right-0 ${card.tagColor} text-white text-[11px] sm:text-[13px] font-bold px-4 sm:px-6 py-2 rounded-bl-[16px] z-50`}>
                 {card.tag}
             </div>
             <div className="flex items-center gap-2 mb-6 mt-4">
                 {card.logoImage ? (
-                    <div className="relative w-[220px] sm:w-[308px] h-[55px] sm:h-[77px]">
+                    <div className="relative w-[160px] sm:w-[200px] h-[40px] sm:h-[50px]">
                         <Image src={card.logoImage} alt="Logo" fill className="object-contain object-left" />
                     </div>
                 ) : (
-                    <h2 className="text-[28px] sm:text-[36px] md:text-[42px] lg:text-[46px] font-bold tracking-tight text-black leading-tight">
+                    <h2 className="text-[20px] sm:text-[24px] md:text-[28px] lg:text-[30px] font-bold tracking-tight text-black leading-tight">
                         {(card as any).title}
                     </h2>
                 )}
             </div>
-            <h3 className="w-full max-w-[675px] text-[18px] sm:text-[22px] md:text-[24px] lg:text-[28px] font-semibold text-black mb-4 leading-snug tracking-tight">
+            <h3 className="w-full max-w-[600px] text-[15px] sm:text-[17px] md:text-[18px] lg:text-[20px] font-semibold text-black mb-3 leading-snug tracking-tight">
                 &ldquo;{card.quote}&rdquo;
             </h3>
-            <p className="w-full max-w-[676px] text-[#4B5563] text-[14px] sm:text-[16px] md:text-[18px] leading-[1.6] mb-6 font-medium pr-2">
+            <p className="w-full max-w-[620px] text-[#4B5563] text-[12.5px] sm:text-[13px] md:text-[14px] leading-[1.6] mb-5 font-medium pr-2">
                 {card.desc}
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 mb-4 mt-6">
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 mb-3 mt-4">
                 {card.metrics.map((m, idx) => (
-                    <div key={idx} className="flex flex-col w-full sm:w-[280px] min-h-fit justify-start mt-2">
+                    <div key={idx} className="flex flex-col w-full sm:w-[210px] min-h-fit justify-start mt-1">
                         {m.val !== "text-only" && (
-                            <span className="text-[36px] sm:text-[48px] md:text-[56px] font-bold text-black leading-none tracking-tight mb-1 flex items-center">
+                            <span className="text-[24px] sm:text-[30px] md:text-[34px] font-bold text-black leading-none tracking-tight mb-1 flex items-center">
                                 {m.val.startsWith("icon-") ? renderMetricValue(m.val) : m.val}
                             </span>
                         )}
-                        <span className={`text-[#000000] text-[15px] sm:text-[18px] md:text-[20px] font-semibold leading-snug w-full ${(m.val === "text-only" || m.val.startsWith("icon-")) ? "mt-3 mb-2" : ""}`}>
+                        <span className={`text-[#000000] text-[12px] sm:text-[13.5px] md:text-[14.5px] font-semibold leading-snug w-full ${(m.val === "text-only" || m.val.startsWith("icon-")) ? "mt-2 mb-1" : ""}`}>
                             {m.label}
                         </span>
                     </div>
@@ -358,13 +358,13 @@ function TextBox({ card }: { card: typeof cardsData[number] }) {
             </div>
             <div className="mt-6">
                 {(card as any).href ? (
-                    <Link href={(card as any).href} className="flex items-center group relative h-12 w-fit cursor-pointer overflow-hidden transition-all duration-700 rounded-[34px_34px_0px_34px] hover:rounded-[34px_34px_34px_0px]">
+                    <Link href={(card as any).href} className="flex items-center group relative h-12 w-fit cursor-pointer overflow-hidden transition-all duration-400 rounded-[34px_34px_0px_34px] hover:rounded-[34px_34px_34px_0px]">
                         {/* LEFT ICON CIRCLE */}
-                        <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-all duration-700 ease-in-out group-hover:left-[calc(100%-48px)] group-hover:bg-linear-to-r group-hover:from-[#3799FA] group-hover:to-[#9961FB] group-hover:scale-105">
-                            <FaChevronRight className="w-4 h-4 text-[#3799FA] transition-all duration-700 ease-in-out group-hover:text-white" />
+                        <div className="absolute left-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md z-20 transition-all duration-400 ease-in-out group-hover:left-[calc(100%-48px)] group-hover:bg-linear-to-r group-hover:from-[#3799FA] group-hover:to-[#9961FB] group-hover:scale-105">
+                            <FaChevronRight className="w-4 h-4 text-[#3799FA] transition-all duration-400 ease-in-out group-hover:text-white" />
                         </div>
                         {/* MAIN BUTTON BODY */}
-                        <div className="pl-14 pr-8 h-full flex items-center text-white font-bold text-[15px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all duration-700 ease-in-out bg-linear-to-r from-[#3799FA] to-[#9961FB] group-hover:from-white group-hover:to-white group-hover:text-black group-hover:pl-6 group-hover:pr-14 rounded-[34px_34px_0px_34px] group-hover:rounded-[34px_34px_34px_0px]">
+                        <div className="pl-14 pr-8 h-full flex items-center text-white font-bold text-[15px] shadow-[0_8px_18px_rgba(55,153,250,0.25)] transition-all duration-400 ease-in-out bg-linear-to-r from-[#3799FA] to-[#9961FB] group-hover:from-white group-hover:to-white group-hover:text-black group-hover:pl-6 group-hover:pr-14 rounded-[34px_34px_0px_34px] group-hover:rounded-[34px_34px_34px_0px]">
                             {card.buttonText}
                         </div>
                     </Link>
@@ -388,7 +388,7 @@ function TextBox({ card }: { card: typeof cardsData[number] }) {
 // ─── Desktop ImageBox ──────────────────────────────────────────────────────────
 function ImageBox({ card }: { card: typeof cardsData[number] }) {
     return (
-        <div className={`w-full min-h-[320px] sm:min-h-[420px] lg:h-[758px] flex items-center justify-center ${card.imageBg} relative overflow-hidden group rounded-[16px]`}>
+        <div className={`w-full min-h-[320px] sm:min-h-[400px] lg:h-[480px] flex items-center justify-center ${card.imageBg} relative overflow-hidden group rounded-[16px]`}>
             <div className="absolute inset-0 opacity-[0.25] pointer-events-none" style={{ background: "radial-gradient(circle at center, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 65%)" }}></div>
             {(card as any).plogocard && (
                 <div className="absolute top-[2%] left-[2%] w-[28%] h-[28%] z-0 pointer-events-none opacity-[0.6] mix-blend-overlay">
@@ -401,12 +401,12 @@ function ImageBox({ card }: { card: typeof cardsData[number] }) {
                 </div>
             )}
             {card.computercard && (
-                <div className="absolute left-[-2%] xl:left-[-5%] top-[15%] w-[85%] xl:w-[85%] h-[80%] z-10 transform group-hover:-translate-y-2 group-hover:scale-[1.02] transition-all duration-800 ease-out">
+                <div className="absolute left-[-2%] xl:left-[-5%] top-[15%] w-[85%] xl:w-[85%] h-[80%] z-10 transform group-hover:-translate-y-2 group-hover:scale-[1.02] transition-all duration-500 ease-out">
                     <Image src={card.computercard} alt="Desktop Preview" fill className="object-contain object-bottom-left" />
                 </div>
             )}
             {card.mobilecard && (
-                <div className="absolute right-[2%] xl:right-[4%] top-[5%] w-[45%] xl:w-[42%] h-[95%] z-20 transform group-hover:-translate-y-4 group-hover:-translate-x-2 group-hover:scale-[1.05] transition-all duration-1000 ease-out drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)]">
+                <div className="absolute right-[2%] xl:right-[4%] top-[5%] w-[45%] xl:w-[42%] h-[95%] z-20 transform group-hover:-translate-y-4 group-hover:-translate-x-2 group-hover:scale-[1.05] transition-all duration-600 ease-out drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)]">
                     <Image src={card.mobilecard} alt="Mobile Preview" fill className="object-contain object-bottom-right" />
                 </div>
             )}
@@ -431,33 +431,33 @@ function ImageBox({ card }: { card: typeof cardsData[number] }) {
                 </div>
             )}
             {(card as any).securitycard && (
-                <div className="absolute inset-0 w-full h-full z-20 overflow-hidden rounded-[16px] transform group-hover:scale-[1.02] transition-all duration-1000 ease-out">
-                    <Image src={(card as any).securitycard} alt="Security App Dashboard" fill className="object-cover object-bottom" />
+                <div className="absolute inset-0 w-full h-full z-20 overflow-hidden rounded-[16px] p-16 transform group-hover:scale-[1.02] transition-all duration-600 ease-out">
+                    <Image src={(card as any).securitycard} alt="Security App Dashboard" fill className="object-contain" />
                 </div>
             )}
             {(card as any).architecturecard && (
-                <div className="absolute inset-0 w-full h-full z-20 overflow-hidden rounded-[16px] transform group-hover:scale-[1.02] transition-all duration-1000 ease-out">
-                    <Image src={(card as any).architecturecard} alt="Architecture Blueprint Interface" fill className="object-cover object-center" />
+                <div className="absolute inset-0 w-full h-full z-20 overflow-hidden rounded-[16px] p-16 transform group-hover:scale-[1.02] transition-all duration-600 ease-out">
+                    <Image src={(card as any).architecturecard} alt="Architecture Blueprint Interface" fill className="object-contain" />
                 </div>
             )}
             {(card as any).doctorcard && (
-                <div className="absolute inset-0 w-full h-full z-20 overflow-hidden rounded-[16px] transform group-hover:scale-[1.02] transition-all duration-1000 ease-out">
-                    <Image src={(card as any).doctorcard} alt="Doctor Appointment Interface" fill className="object-cover object-bottom" />
+                <div className="absolute inset-0 w-full h-full z-20 overflow-hidden rounded-[16px] p-16 transform group-hover:scale-[1.02] transition-all duration-600 ease-out">
+                    <Image src={(card as any).doctorcard} alt="Doctor Appointment Interface" fill className="object-contain" />
                 </div>
             )}
             {(card as any).urbancard && (
-                <div className="absolute inset-0 w-full h-full z-20 overflow-hidden rounded-[16px] transform group-hover:scale-[1.02] transition-all duration-1000 ease-out">
-                    <Image src={(card as any).urbancard} alt="UrbanClap Services Interface" fill className="object-cover object-center" />
+                <div className="absolute inset-0 w-full h-full z-20 overflow-hidden rounded-[16px] p-16 transform group-hover:scale-[1.02] transition-all duration-600 ease-out">
+                    <Image src={(card as any).urbancard} alt="UrbanClap Services Interface" fill className="object-contain" />
                 </div>
             )}
             {(card as any).foodcard && (
-                <div className="absolute inset-0 w-full h-full z-20 overflow-hidden rounded-[16px] transform group-hover:scale-[1.02] transition-all duration-1000 ease-out">
-                    <Image src={(card as any).foodcard} alt="Food Delivery App Interface" fill className="object-cover object-center" />
+                <div className="absolute inset-0 w-full h-full z-20 overflow-hidden rounded-[16px] p-16 transform group-hover:scale-[1.02] transition-all duration-600 ease-out">
+                    <Image src={(card as any).foodcard} alt="Food Delivery App Interface" fill className="object-contain" />
                 </div>
             )}
             {(card as any).eduprovacard && (
-                <div className="absolute inset-0 w-full h-full z-20 overflow-hidden rounded-[16px] transform group-hover:scale-[1.03] transition-all duration-1000 ease-out">
-                    <Image src={(card as any).eduprovacard} alt="EduProva Platform Mockup" fill className="object-contain object-center" />
+                <div className="absolute inset-0 w-full h-full z-20 overflow-hidden rounded-[16px] p-16 transform group-hover:scale-[1.03] transition-all duration-600 ease-out">
+                    <Image src={(card as any).eduprovacard} alt="EduProva Platform Mockup" fill className="object-contain" />
                 </div>
             )}
         </div>
@@ -517,28 +517,28 @@ function MobileImageSection({ card }: { card: typeof cardsData[number] }) {
                 </div>
             )}
             {(card as any).securitycard && (
-                <div className="absolute inset-0 z-20 overflow-hidden rounded-t-[20px]">
-                    <Image src={(card as any).securitycard} alt="Security" fill className="object-cover object-bottom" />
+                <div className="absolute inset-0 z-20 overflow-hidden rounded-t-[20px] p-8">
+                    <Image src={(card as any).securitycard} alt="Security" fill className="object-contain" />
                 </div>
             )}
             {(card as any).architecturecard && (
-                <div className="absolute inset-0 z-20 overflow-hidden rounded-t-[20px]">
-                    <Image src={(card as any).architecturecard} alt="Architecture" fill className="object-cover object-center" />
+                <div className="absolute inset-0 z-20 overflow-hidden rounded-t-[20px] p-4">
+                    <Image src={(card as any).architecturecard} alt="Architecture" fill className="object-contain" />
                 </div>
             )}
             {(card as any).doctorcard && (
-                <div className="absolute inset-0 z-20 overflow-hidden rounded-t-[20px]">
-                    <Image src={(card as any).doctorcard} alt="Doctor" fill className="object-cover object-bottom" />
+                <div className="absolute inset-0 z-20 overflow-hidden rounded-t-[20px] p-4">
+                    <Image src={(card as any).doctorcard} alt="Doctor" fill className="object-contain" />
                 </div>
             )}
             {(card as any).urbancard && (
-                <div className="absolute inset-0 z-20 overflow-hidden rounded-t-[20px]">
-                    <Image src={(card as any).urbancard} alt="Urban" fill className="object-cover object-center" />
+                <div className="absolute inset-0 z-20 overflow-hidden rounded-t-[20px] p-4">
+                    <Image src={(card as any).urbancard} alt="Urban" fill className="object-contain" />
                 </div>
             )}
             {(card as any).foodcard && (
-                <div className="absolute inset-0 z-20 overflow-hidden rounded-t-[20px]">
-                    <Image src={(card as any).foodcard} alt="Food" fill className="object-cover object-center" />
+                <div className="absolute inset-0 z-20 overflow-hidden rounded-t-[20px] p-4">
+                    <Image src={(card as any).foodcard} alt="Food" fill className="object-contain" />
                 </div>
             )}
             {(card as any).eduprovacard && (
@@ -553,7 +553,7 @@ function MobileImageSection({ card }: { card: typeof cardsData[number] }) {
 // ─── Mobile: Text section (bottom half) ───────────────────────────────────────
 function MobileTextSection({ card }: { card: typeof cardsData[number] }) {
     return (
-        <div className="bg-white w-full rounded-b-[20px] px-5 pt-6 pb-7 flex flex-col">
+        <div className="bg-white w-full rounded-b-[20px] px-8 pt-7 pb-8 flex flex-col">
             {card.logoImage ? (
                 <div className="relative w-[180px] h-[46px] mb-4">
                     <Image src={card.logoImage} alt="Logo" fill className="object-contain object-left" />
@@ -649,34 +649,39 @@ export default function CardsSection() {
         rows.forEach((row) => {
             const leftBox = row.querySelector(".box-left");
             const rightBox = row.querySelector(".box-right");
+            if (!leftBox || !rightBox) return;
+
             gsap.from(leftBox, {
-                x: -120, opacity: 0, duration: 0.8, ease: "power2.out",
-                scrollTrigger: { trigger: row, start: "top 85%", toggleActions: "play none none reverse" },
+                x: -120, opacity: 0, duration: 0.8, ease: "power2.inOut",
+                scrollTrigger: { trigger: row, start: "top bottom-=80", end: "bottom top+=80", toggleActions: "play reverse play reverse" },
             });
             gsap.from(rightBox, {
-                x: 120, opacity: 0, duration: 0.8, ease: "power2.out",
-                scrollTrigger: { trigger: row, start: "top 85%", toggleActions: "play none none reverse" },
+                x: 120, opacity: 0, duration: 0.8, ease: "power2.inOut",
+                scrollTrigger: { trigger: row, start: "top bottom-=80", end: "bottom top+=80", toggleActions: "play reverse play reverse" },
             });
         });
-    }, { scope: desktopRef });
+        ScrollTrigger.refresh();
+    }, { dependencies: [filteredCards], scope: desktopRef });
 
     // Mobile GSAP — alternating left / right per card
     useGSAP(() => {
         const cards = gsap.utils.toArray<HTMLElement>(".mobile-card-item");
         cards.forEach((card, i) => {
             gsap.from(card, {
-                x: i % 2 === 0 ? -80 : 80,
+                y: 50,
                 opacity: 0,
-                duration: 0.75,
+                duration: 0.5,
                 ease: "power3.out",
                 scrollTrigger: {
                     trigger: card,
-                    start: "top 90%",
-                    toggleActions: "play none none reverse",
+                    start: "top bottom-=30",
+                    toggleActions: "play none none none",
+                    once: true
                 },
             });
         });
-    }, { scope: mobileRef });
+        ScrollTrigger.refresh();
+    }, { dependencies: [filteredCards], scope: mobileRef });
 
     return (
         <section className={`w-full bg-[#020617] pt-10 lg:pt-[20px] pb-20 px-4 md:px-8 xl:px-0 ${poppins.className} overflow-x-hidden`}>

@@ -23,7 +23,17 @@ body {
     linear-gradient(to right, rgba(0, 0, 0, 0.02) 1px, transparent 1px),
     linear-gradient(135deg, #FAFAFA 0%, #F5F5F5 100%);
   background-size: 20% 100%, 100% 100%;
-  background-attachment: fixed;
+  background-attachment: scroll;
+  overflow-x: hidden;
+  overscroll-behavior-y: none;
+}
+
+.product-panel, .tech-panel, .sticky, .will-change-transform {
+  will-change: transform, opacity;
+  transform: translateZ(0); /* Force GPU */
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  perspective: 1000px;
 }
 
 .premium-shadow {
@@ -204,4 +214,12 @@ html.lenis body {
   /* IE and Edge */
   scrollbar-width: none;
   /* Firefox */
+}
+
+/* ── Performance Optimizations for Scroll ── */
+.product-panel, .tech-panel, .sticky {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
 }
