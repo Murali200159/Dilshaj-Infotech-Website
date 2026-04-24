@@ -840,30 +840,30 @@ export default function Home() {
         </div>
 
         {/* SERVICES SECTION */}
-        <section data-section="services" className="w-full bg-[#F8F9FA] pb-12 pt-6 lg:py-12 flex flex-col items-center relative z-20">
+        <section data-section="services" className="w-full bg-[#F8F9FA] pb-6 pt-4 lg:py-6 flex flex-col items-center relative z-20">
           <div className="w-full flex justify-start mb-6 lg:mb-8 px-0">
             <div
-              className="ribbon-banner relative flex items-center gap-2 lg:gap-4 pl-4 pr-10 lg:px-10 py-2.5 lg:py-3 w-fit"
+              className="ribbon-banner relative flex items-center gap-2 lg:gap-3 pl-4 pr-10 lg:px-8 py-2 lg:py-2.5 w-fit"
               style={{
                 background: 'linear-gradient(to right, #029EFA, #0E4E8B)',
                 clipPath: 'polygon(0% 0%, 100% 0%, 88% 50%, 100% 100%, 0% 100%)'
               }}
             >
-              <div className="relative w-7 h-7 lg:w-12 lg:h-12 flex items-center justify-center">
+              <div className="relative w-6 h-6 lg:w-9 lg:h-9 flex items-center justify-center">
                 <Image src="/Home/arrow.png" alt="Arrow" fill className="object-contain" />
               </div>
-              <span className="text-white font-semibold lg:font-bold text-[18px] lg:text-[24px] tracking-wider pr-2">Services</span>
+              <span className="text-white font-semibold lg:font-bold text-[16px] lg:text-[20px] tracking-wider pr-2">Services</span>
             </div>
           </div>
 
           <div className="w-full max-w-[1700px] lg:pl-[40px] lg:md:pl-[64px] px-0 lg:pr-0">
             {/* --- DESKTOP VIEW --- */}
-            <div className="hidden lg:flex flex-row gap-6 xl:gap-10 items-stretch lg:pr-[64px] relative services-desktop-wrapper min-h-[580px]">
-              <div className="flex flex-col gap-8 lg:w-[480px] xl:w-[800px] shrink-0">
-                <h2 className="text-[22px] md:text-[24px] xl:text-[28px] font-semibold text-[#1F2933] leading-[1.2] lg:mb-2">
-                  <span className="text-gray-500 font-semibold block xl:whitespace-nowrap">We will bring the breathe of our</span>
-                  <span className="text-gray-500 font-semibold">experience</span> <span className="text-black font-semibold">and industry</span><br className="hidden md:block" />
-                  <span className="text-black font-semibold block xl:whitespace-nowrap">knowledge to help you succeed</span>
+            <div className="hidden lg:flex flex-row gap-6 xl:gap-10 items-stretch lg:pr-[64px] relative services-desktop-wrapper min-h-[500px]">
+              <div className="flex flex-col gap-6 lg:w-[480px] xl:w-[800px] shrink-0">
+                <h2 className="text-[20px] md:text-[22px] xl:text-[26px] font-semibold text-[#1F2933] leading-[1.15] lg:mb-1">
+                  <span className="text-gray-500 font-semibold inline">We will bring the breathe of our </span>
+                  <span className="text-gray-500 font-semibold inline">experience</span> <span className="text-black font-semibold inline">and industry </span><br className="hidden xl:block" />
+                  <span className="text-black font-semibold inline">knowledge to help you succeed</span>
                 </h2>
 
                 <div className="services-image-card relative w-full h-full rounded-[32px] overflow-hidden group shadow-2xl">
@@ -908,7 +908,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="flex flex-col gap-3 flex-1 h-full py-1 min-w-[340px]">
+              <div className="flex flex-col gap-2 xl:gap-2.5 flex-1 h-full py-1 min-w-[340px]">
                 {services.map((service, idx) => {
                   const getIcon = (i: number) => {
                     const iconNum = i + 1;
@@ -925,14 +925,14 @@ export default function Home() {
                       onClick={() => setActiveServiceIdx(idx)}
                       onMouseEnter={() => setHoveredServiceIdx(idx)}
                       onMouseLeave={() => setHoveredServiceIdx(null)}
-                      className={`service-list-item relative p-6 rounded-2xl transition-all duration-500 border group cursor-pointer overflow-hidden ${activeServiceIdx === idx
+                      className={`service-list-item relative p-4 xl:p-5 rounded-2xl transition-all duration-500 border group cursor-pointer overflow-hidden ${activeServiceIdx === idx
                         ? "bg-white border-[#CAD0FF]/50 scale-[1.02] z-10"
                         : "bg-transparent border-transparent hover:bg-white/50 opacity-80 hover:opacity-100"
                         }`}
                     >
                       <div className="flex gap-5 items-start">
                         {/* Icon Square */}
-                        <div className={`w-14 h-14 rounded-xl flex items-center justify-center transition-colors duration-500 shrink-0 border p-2 ${activeServiceIdx === idx ? "bg-white border-gray-100 text-black shadow-sm" : "bg-white border-gray-200 text-gray-400"}`}>
+                        <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-colors duration-500 shrink-0 border p-2 ${activeServiceIdx === idx ? "bg-white border-gray-100 text-black shadow-sm" : "bg-white border-gray-200 text-gray-400"}`}>
                           {getIcon(idx)}
                         </div>
 
@@ -940,7 +940,7 @@ export default function Home() {
                           <h4 className={`text-[18px] font-bold transition-all duration-500 ${activeServiceIdx === idx ? "text-black" : "text-gray-800"}`}>
                             {service.name}
                           </h4>
-                          <p className={`text-[12.5px] leading-relaxed transition-all duration-500 ${activeServiceIdx === idx ? "text-gray-600" : "text-gray-500"}`}>
+                          <p className={`text-[12px] leading-snug transition-all duration-500 ${activeServiceIdx === idx ? "text-gray-600" : "text-gray-500"}`}>
                             {service.desc}
                           </p>
                         </div>
@@ -1770,7 +1770,6 @@ export default function Home() {
             </div>
           </div>
         </section>
-
         <section data-section="careers" className="w-full bg-black pt-16 pb-20 flex flex-col items-center relative overflow-hidden">
           <style jsx>{`
             .vertical-grid {
@@ -1882,7 +1881,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section data-section="blog" className="w-full bg-[#f8fafc] py-14 md:py-24 flex flex-col items-center relative overflow-hidden">
+        <section data-section="blog" className="w-full bg-[#f8fafc] pt-14 pb-8 md:pt-24 md:pb-12 flex flex-col items-center relative overflow-hidden">
           <div className="w-full flex justify-start mb-6 px-4 md:px-[104px]">
             {/* Desktop Ribbon */}
             <div
@@ -2000,8 +1999,8 @@ export default function Home() {
           </div>
         </section>
 
+{/* 
         <section id="testimonials" data-section="testimonials" className="w-full bg-[#0a0a0a] flex flex-col items-center relative overflow-hidden h-[896px] py-20">
-          {/* Cinematic Background Image */}
           <div className="absolute inset-0 z-0">
             <Image
               src="/Home/bg_jobs.png"
@@ -2014,7 +2013,6 @@ export default function Home() {
           </div>
 
           <div className="w-full flex justify-start mb-6 md:mb-10 px-0 md:px-[104px] relative z-10">
-            {/* Desktop Ribbon */}
             <div
               className="relative hidden md:flex items-center gap-4 px-10 py-3 w-fit ml-[-104px]"
               style={{
@@ -2028,7 +2026,6 @@ export default function Home() {
               <span className="text-white font-bold text-[24px] tracking-wider pr-4">Testimonials</span>
             </div>
 
-            {/* Mobile Ribbon */}
             <div
               className="ribbon-banner relative flex md:hidden items-center justify-center gap-2 py-3.5 w-[85%]"
               style={{
@@ -2047,7 +2044,6 @@ export default function Home() {
             </h2>
 
             <div className="relative group mx-auto w-full md:w-fit max-w-full">
-              {/* Desktop Scroll Controls */}
               <button
                 suppressHydrationWarning
                 onClick={() => document.getElementById('testimonial-scroll')?.scrollBy({ left: -(document.getElementById('testimonial-scroll')?.clientWidth || 1352), behavior: 'smooth' })}
@@ -2064,7 +2060,6 @@ export default function Home() {
                 <IoMdArrowForward className="w-6 h-6 text-white" />
               </button>
 
-              {/* Mobile Left Arrow */}
               <button
                 suppressHydrationWarning
                 onClick={() => document.getElementById('testimonial-scroll')?.scrollBy({ left: -300, behavior: 'smooth' })}
@@ -2073,7 +2068,6 @@ export default function Home() {
                 <IoMdArrowBack className="w-5 h-5" />
               </button>
 
-              {/* Testimonial Cards Carousel */}
               <div
                 id="testimonial-scroll"
                 className="flex gap-4 md:gap-8 overflow-x-auto snap-x snap-mandatory py-4 pb-12 w-full max-w-[1320px] scrollbar-none px-[calc(50%-145px)] md:px-0"
@@ -2123,7 +2117,6 @@ export default function Home() {
                 ))}
               </div>
 
-              {/* Mobile Right Arrow */}
               <button
                 suppressHydrationWarning
                 onClick={() => document.getElementById('testimonial-scroll')?.scrollBy({ left: 300, behavior: 'smooth' })}
@@ -2134,7 +2127,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Perspective Grid Background Effect */}
           <div className="absolute bottom-0 left-0 right-0 h-[500px] pointer-events-none opacity-20 z-0"
             style={{
               perspective: '1000px',
@@ -2149,9 +2141,10 @@ export default function Home() {
               }} />
           </div>
         </section>
+        */}
 
         {/* FAQ Section */}
-        <section id="faq" data-section="faq" className="w-full bg-[#f8fafc] py-14 md:py-24 flex flex-col items-center relative overflow-hidden">
+        <section id="faq" data-section="faq" className="w-full bg-[#f8fafc] pt-8 pb-14 md:pt-12 md:pb-24 flex flex-col items-center relative overflow-hidden">
           <div className="w-full flex justify-start mb-8 md:mb-10 px-0 md:px-[104px] relative z-10">
             {/* Desktop Ribbon */}
             <div

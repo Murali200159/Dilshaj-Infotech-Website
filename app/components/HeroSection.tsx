@@ -182,7 +182,7 @@ export default function HeroSection() {
                     {/* DOMINANT HEADLINE ZONE */}
                     <div className="relative w-full h-auto lg:h-[40vh] flex flex-col items-center justify-center mt-12 sm:mt-16 lg:mt-25 order-last lg:order-1 pt-0 lg:pt-0 py-4 lg:py-0">
 
-                        <h1 className="text-[60px] min-[380px]:text-[80px] sm:text-[110px] lg:text-[100px] xl:text-[12vw] 2xl:text-[220px] font-bold lg:font-semibold text-gray-400 lg:text-black tracking-[-0.05em] z-10 text-center lg:opacity-100 w-full lg:w-full max-w-[100vw] lg:h-auto whitespace-normal xl:whitespace-nowrap drop-shadow-none lg:drop-shadow-sm flex flex-col lg:flex-row justify-center lg:items-center gap-[45px] sm:gap-[75px] lg:gap-[3vw] select-none" style={{ perspective: "1000px" }}>
+                        <h1 className="text-[60px] min-[380px]:text-[80px] sm:text-[110px] lg:text-[100px] xl:text-[10vw] 2xl:text-[170px] font-bold lg:font-semibold text-gray-400 lg:text-black tracking-[-0.05em] z-10 text-center lg:opacity-100 w-full lg:w-full max-w-[100vw] lg:h-auto whitespace-normal xl:whitespace-nowrap drop-shadow-none lg:drop-shadow-sm flex flex-col lg:flex-row justify-center lg:items-center gap-[45px] sm:gap-[75px] lg:gap-[4vw] select-none" style={{ perspective: "1000px" }}>
                             <span className="hero-word block lg:inline leading-[0.75] lg:leading-none opacity-0 will-change-transform">Dilshaj</span>
                             <span className="hero-word block lg:inline leading-[0.75] lg:leading-none opacity-0 will-change-transform">Infotech</span>
                         </h1>
