@@ -142,42 +142,56 @@ export default function HomeScrollAnimations() {
                 if (h2) animateFrom(h2, { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.9, ease: "power3.out" }, techSection);
             }
 
-            // ─── SLIDER PILL TRANSITION LOGIC (Weighted & Silky) ────────
+            // ─── SLIDER PILL TRANSITION LOGIC (High-Performance & Snappy) ───────
             const sections = ['product', 'tech'];
             sections.forEach(sectionType => {
-                const panels = gsap.utils.toArray<Element>(`.${sectionType}-panel`);
+                const panels = gsap.utils.toArray<HTMLElement>(`.${sectionType}-panel`);
                 panels.forEach((panel, i) => {
-                    const innerCard = panel.querySelector('.will-change-transform');
+                    const innerCard = panel.querySelector('.will-change-transform') as HTMLElement;
                     if (!innerCard) return;
 
-                    // 1. Entrance: Weighted glide from bottom
+                    // 1. Entrance: Snappy appearance
                     gsap.fromTo(innerCard, 
-                        { y: 200, opacity: 0, scale: 0.94, filter: "blur(8px)" },
+                        { y: 60, opacity: 0, scale: 0.98 },
                         {
-                            y: 0, opacity: 1, scale: 1, filter: "blur(0px)",
-                            ease: "power2.out", force3D: true,
+                            y: 0, opacity: 1, scale: 1,
+                            ease: "power2.out",
+                            overwrite: "auto",
+                            lazy: false,
                             scrollTrigger: {
                                 trigger: panel,
                                 start: "top 100%",
-                                end: "top 40%", // Finished by the time it reaches 40% height
-                                scrub: 1.8, // Weighted movement
+                                end: "top 70%", // Finish very early for snappiness
+                                scrub: 0.1,    // Near-instant response
+                                invalidateOnRefresh: true,
+                                fastScrollEnd: true,
                             }
                         }
                     );
 
-                    // 2. Exit: Smooth fade and lift as next card approaches
+                    // 2. Exit/Hide: Fast push-out
                     const nextPanel = i < panels.length - 1 ? panels[i + 1] : null;
                     if (nextPanel) {
-                        gsap.to(innerCard, {
-                            opacity: 0, scale: 0.92, y: -100,
-                            filter: "blur(4px)",
-                            scrollTrigger: {
-                                trigger: nextPanel,
-                                start: "top 70%", // Start lifting earlier
-                                end: "top 20%",   // Fully gone before it's covered
-                                scrub: 1.8,
+                        gsap.fromTo(innerCard,
+                            { opacity: 1, scale: 1, y: 0 },
+                            {
+                                opacity: 0, scale: 0.95, y: -40,
+                                ease: "power1.inOut",
+                                overwrite: "auto",
+                                lazy: false,
+                                scrollTrigger: {
+                                    trigger: nextPanel,
+                                    start: "top 100%", 
+                                    end: "top 0%",    
+                                    scrub: 0.1,    // Near-instant response
+                                    invalidateOnRefresh: true,
+                                    fastScrollEnd: true,
+                                    onLeaveBack: () => {
+                                        gsap.set(innerCard, { opacity: 1, scale: 1, y: 0, clearProps: "filter" });
+                                    }
+                                }
                             }
-                        });
+                        );
                     }
                 });
             });

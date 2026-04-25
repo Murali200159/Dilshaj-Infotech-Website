@@ -208,7 +208,7 @@ const technologies = [
     title: "UI/UX DESIGN",
     content: "We design user-focused interfaces that combine aesthetics and functionality, delivering seamless and engaging experiences that enhance usability and strengthen your brand.",
     features: ["User-Centered Design", "Consistent Design Systems", "Intuitive User Journeys"],
-    image: "/Home/technologies/uiux.png"
+    image: "/Home/technologies/UIUX.png"
   }
 ];
 
@@ -498,43 +498,33 @@ export default function Home() {
     window.addEventListener("scroll", handleScroll);
 
     // ─── Bi-Directional Scroll Tracking with GSAP ───
+    // Using ScrollTrigger for the sidebars is much more reliable than IntersectionObserver
+    // for sticky/stacking layouts when scrolling both UP and DOWN.
     const ctx = gsap.context(() => {
-      // Products Tracking with Snap
-      const productPanels = gsap.utils.toArray<Element>('.product-panel');
+      // Products Tracking
+      const productPanels = document.querySelectorAll('.product-panel');
       productPanels.forEach((panel, i) => {
         ScrollTrigger.create({
           trigger: panel,
-          start: "top 45%", // Align closer to the entrance transition
-          end: "bottom 45%",
+          start: "top 50%",
+          end: "bottom 50%",
           onToggle: (self) => {
             if (self.isActive) setActiveProductIdx(i);
           },
+          // On leave back (scrolling up), if it's the first card, ensure it stays active
           onLeaveBack: () => {
             if (i === 0) setActiveProductIdx(0);
           }
         });
       });
 
-      // Snapping for Products
-      ScrollTrigger.create({
-        trigger: ".products-sidebar", // use the sidebar container area as trigger for snapping
-        start: "top 100%",
-        end: "bottom 0%",
-        snap: {
-          snapTo: 1 / (productPanels.length - 1),
-          duration: { min: 0.2, max: 0.6 },
-          delay: 0.1,
-          ease: "power2.inOut"
-        }
-      });
-
-      // Tech Tracking with Snap
-      const techPanels = gsap.utils.toArray<Element>('.tech-panel');
+      // Tech Tracking
+      const techPanels = document.querySelectorAll('.tech-panel');
       techPanels.forEach((panel, i) => {
         ScrollTrigger.create({
           trigger: panel,
-          start: "top 45%",
-          end: "bottom 45%",
+          start: "top 50%",
+          end: "bottom 50%",
           onToggle: (self) => {
             if (self.isActive) setActiveTechIdx(i);
           },
@@ -542,19 +532,6 @@ export default function Home() {
             if (i === 0) setActiveTechIdx(0);
           }
         });
-      });
-
-      // Snapping for Tech
-      ScrollTrigger.create({
-        trigger: "#tech-sidebar-container",
-        start: "top 100%",
-        end: "bottom 0%",
-        snap: {
-          snapTo: 1 / (techPanels.length - 1),
-          duration: { min: 0.2, max: 0.6 },
-          delay: 0.1,
-          ease: "power2.inOut"
-        }
       });
     });
 
@@ -565,18 +542,13 @@ export default function Home() {
     };
   }, []);
 
-  // ─── Auto-Scroll Sidebars to keep active item in view (GSAP for smoothness) ───
+  // ─── Auto-Scroll Sidebars to keep active item in view ───
   useEffect(() => {
     const activeItem = document.getElementById(`product-sidebar-item-${activeProductIdx}`);
     const sidebar = document.getElementById('product-sidebar-container');
     if (activeItem && sidebar) {
       const topPos = activeItem.offsetTop - (sidebar.clientHeight / 2) + (activeItem.clientHeight / 2);
-      gsap.to(sidebar, {
-        scrollTop: topPos,
-        duration: 0.8,
-        ease: "power2.out",
-        overwrite: true
-      });
+      sidebar.scrollTo({ top: topPos, behavior: 'smooth' });
     }
   }, [activeProductIdx]);
 
@@ -585,12 +557,7 @@ export default function Home() {
     const sidebar = document.getElementById('tech-sidebar-container');
     if (activeItem && sidebar) {
       const topPos = activeItem.offsetTop - (sidebar.clientHeight / 2) + (activeItem.clientHeight / 2);
-      gsap.to(sidebar, {
-        scrollTop: topPos,
-        duration: 0.8,
-        ease: "power2.out",
-        overwrite: true
-      });
+      sidebar.scrollTo({ top: topPos, behavior: 'smooth' });
     }
   }, [activeTechIdx]);
 
