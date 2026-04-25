@@ -20,10 +20,33 @@ jobs:
         username: ${{ secrets.EC2_USER }}
         key: ${{ secrets.EC2_SSH_KEY }}
         script: |
+          set -e  # 🔥 fail exact line lo stop avvali
+
           export PATH=$PATH:/usr/bin
+
           cd /home/ubuntu/Dilshaj-Infotech-Website
+
+          echo "📥 Pulling latest code..."
+          git reset --hard
           git pull origin master
-          npm install
+
+          echo "🧹 Cleaning old build..."
+          rm -rf .next
+
+          echo "🟢 Node version:"
+          node -v
+          npm -v
+
+          echo "📦 Installing dependencies..."
+          npm install   # ⚠️ temporarily ci vaddu
+
+          echo "🏗️ Building..."
           npm run build
-          pm2 reload nextjs-app || pm2 start npm --name "nextjs-app" -- start
+
+          echo "🚀 Restarting PM2..."
+          pm2 delete nextjs-app || true
+          pm2 start npm --name "nextjs-app" -- start
+
           pm2 save
+
+          echo "✅ Done!"
