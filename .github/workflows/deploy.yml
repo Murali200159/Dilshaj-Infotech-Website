@@ -21,9 +21,27 @@ jobs:
         key: ${{ secrets.EC2_SSH_KEY }}
         script: |
           export PATH=$PATH:/usr/bin
+
           cd /home/ubuntu/Dilshaj-Infotech-Website
+
+          echo "📥 Pulling latest code..."
           git pull origin master
-          npm install
+
+          echo "🧹 Cleaning old build..."
+          rm -rf .next
+
+          echo "📦 Installing dependencies..."
+          npm ci
+
+          echo "🏗️ Building project..."
           npm run build
-          pm2 reload nextjs-app || pm2 start npm --name "nextjs-app" -- start
+
+          echo "🚀 Restarting PM2..."
+          pm2 stop nextjs-app || true
+          pm2 delete nextjs-app || true
+          pm2 start npm --name "nextjs-app" -- start
+
+          echo "💾 Saving PM2 config..."
           pm2 save
+
+          echo "✅ Deployment completed!"
