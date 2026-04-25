@@ -142,7 +142,7 @@ export default function HomeScrollAnimations() {
                 if (h2) animateFrom(h2, { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.9, ease: "power3.out" }, techSection);
             }
 
-            // ─── SLIDER PILL TRANSITION LOGIC (Optimized) ────────────────
+            // ─── SLIDER PILL TRANSITION LOGIC (Weighted & Silky) ────────
             const sections = ['product', 'tech'];
             sections.forEach(sectionType => {
                 const panels = gsap.utils.toArray<Element>(`.${sectionType}-panel`);
@@ -150,31 +150,32 @@ export default function HomeScrollAnimations() {
                     const innerCard = panel.querySelector('.will-change-transform');
                     if (!innerCard) return;
 
-                    // 1. Entrance: Fast & Sharp
+                    // 1. Entrance: Weighted glide from bottom
                     gsap.fromTo(innerCard, 
-                        { y: 150, opacity: 0, scale: 0.95, filter: "blur(6px)" },
+                        { y: 200, opacity: 0, scale: 0.94, filter: "blur(8px)" },
                         {
                             y: 0, opacity: 1, scale: 1, filter: "blur(0px)",
                             ease: "power2.out", force3D: true,
                             scrollTrigger: {
                                 trigger: panel,
                                 start: "top 100%",
-                                end: "top 45%",
-                                scrub: 2.2, // Silkier, weighted movement
+                                end: "top 40%", // Finished by the time it reaches 40% height
+                                scrub: 1.8, // Weighted movement
                             }
                         }
                     );
 
-                    // 2. Hide Card: ONLY when the next card is almost fully covering it
+                    // 2. Exit: Smooth fade and lift as next card approaches
                     const nextPanel = i < panels.length - 1 ? panels[i + 1] : null;
                     if (nextPanel) {
                         gsap.to(innerCard, {
-                            opacity: 0, scale: 0.93, y: -60,
+                            opacity: 0, scale: 0.92, y: -100,
+                            filter: "blur(4px)",
                             scrollTrigger: {
                                 trigger: nextPanel,
-                                start: "top 50%", 
-                                end: "top 0%",    
-                                scrub: 2.2,
+                                start: "top 70%", // Start lifting earlier
+                                end: "top 20%",   // Fully gone before it's covered
+                                scrub: 1.8,
                             }
                         });
                     }

@@ -498,33 +498,43 @@ export default function Home() {
     window.addEventListener("scroll", handleScroll);
 
     // ─── Bi-Directional Scroll Tracking with GSAP ───
-    // Using ScrollTrigger for the sidebars is much more reliable than IntersectionObserver
-    // for sticky/stacking layouts when scrolling both UP and DOWN.
     const ctx = gsap.context(() => {
-      // Products Tracking
-      const productPanels = document.querySelectorAll('.product-panel');
+      // Products Tracking with Snap
+      const productPanels = gsap.utils.toArray<Element>('.product-panel');
       productPanels.forEach((panel, i) => {
         ScrollTrigger.create({
           trigger: panel,
-          start: "top 50%",
-          end: "bottom 50%",
+          start: "top 45%", // Align closer to the entrance transition
+          end: "bottom 45%",
           onToggle: (self) => {
             if (self.isActive) setActiveProductIdx(i);
           },
-          // On leave back (scrolling up), if it's the first card, ensure it stays active
           onLeaveBack: () => {
             if (i === 0) setActiveProductIdx(0);
           }
         });
       });
 
-      // Tech Tracking
-      const techPanels = document.querySelectorAll('.tech-panel');
+      // Snapping for Products
+      ScrollTrigger.create({
+        trigger: ".products-sidebar", // use the sidebar container area as trigger for snapping
+        start: "top 100%",
+        end: "bottom 0%",
+        snap: {
+          snapTo: 1 / (productPanels.length - 1),
+          duration: { min: 0.2, max: 0.6 },
+          delay: 0.1,
+          ease: "power2.inOut"
+        }
+      });
+
+      // Tech Tracking with Snap
+      const techPanels = gsap.utils.toArray<Element>('.tech-panel');
       techPanels.forEach((panel, i) => {
         ScrollTrigger.create({
           trigger: panel,
-          start: "top 50%",
-          end: "bottom 50%",
+          start: "top 45%",
+          end: "bottom 45%",
           onToggle: (self) => {
             if (self.isActive) setActiveTechIdx(i);
           },
@@ -532,6 +542,19 @@ export default function Home() {
             if (i === 0) setActiveTechIdx(0);
           }
         });
+      });
+
+      // Snapping for Tech
+      ScrollTrigger.create({
+        trigger: "#tech-sidebar-container",
+        start: "top 100%",
+        end: "bottom 0%",
+        snap: {
+          snapTo: 1 / (techPanels.length - 1),
+          duration: { min: 0.2, max: 0.6 },
+          delay: 0.1,
+          ease: "power2.inOut"
+        }
       });
     });
 
@@ -542,13 +565,18 @@ export default function Home() {
     };
   }, []);
 
-  // ─── Auto-Scroll Sidebars to keep active item in view ───
+  // ─── Auto-Scroll Sidebars to keep active item in view (GSAP for smoothness) ───
   useEffect(() => {
     const activeItem = document.getElementById(`product-sidebar-item-${activeProductIdx}`);
     const sidebar = document.getElementById('product-sidebar-container');
     if (activeItem && sidebar) {
       const topPos = activeItem.offsetTop - (sidebar.clientHeight / 2) + (activeItem.clientHeight / 2);
-      sidebar.scrollTo({ top: topPos, behavior: 'smooth' });
+      gsap.to(sidebar, {
+        scrollTop: topPos,
+        duration: 0.8,
+        ease: "power2.out",
+        overwrite: true
+      });
     }
   }, [activeProductIdx]);
 
@@ -557,7 +585,12 @@ export default function Home() {
     const sidebar = document.getElementById('tech-sidebar-container');
     if (activeItem && sidebar) {
       const topPos = activeItem.offsetTop - (sidebar.clientHeight / 2) + (activeItem.clientHeight / 2);
-      sidebar.scrollTo({ top: topPos, behavior: 'smooth' });
+      gsap.to(sidebar, {
+        scrollTop: topPos,
+        duration: 0.8,
+        ease: "power2.out",
+        overwrite: true
+      });
     }
   }, [activeTechIdx]);
 
@@ -1145,7 +1178,7 @@ export default function Home() {
                     className="product-panel sticky top-0 min-h-screen flex items-center justify-center py-20"
                     style={{ zIndex: pIdx + 10 }}
                   >
-                    <div className="w-full bg-white rounded-[40px] shadow-[0_20px_80px_rgba(0,0,0,0.05)] border border-gray-100 overflow-hidden p-6 xl:p-10 group transition-shadow duration-500 hover:shadow-[0_30px_100px_rgba(0,0,0,0.08)] transform-gpu backface-hidden">
+                    <div className="w-full bg-white rounded-[40px] shadow-[0_20px_80px_rgba(0,0,0,0.05)] border border-gray-100 overflow-hidden p-6 xl:p-10 group transition-shadow duration-500 hover:shadow-[0_30px_100px_rgba(0,0,0,0.08)] transform-gpu backface-hidden will-change-transform">
 
                       {/* Header Row */}
                       <div className="flex items-start justify-between mb-6 xl:mb-8">
@@ -1455,7 +1488,7 @@ export default function Home() {
                     className="tech-panel sticky top-0 min-h-screen flex items-center justify-center py-20"
                     style={{ zIndex: tIdx + 10 }}
                   >
-                    <div className="w-full bg-white rounded-[40px] shadow-[0_30px_100px_rgba(0,0,0,0.5)] border border-gray-100 overflow-hidden p-6 xl:p-10 group transition-shadow duration-500 hover:shadow-[0_40px_120px_rgba(0,0,0,0.6)] transform-gpu backface-hidden">
+                    <div className="w-full bg-white rounded-[40px] shadow-[0_30px_100px_rgba(0,0,0,0.5)] border border-gray-100 overflow-hidden p-6 xl:p-10 group transition-shadow duration-500 hover:shadow-[0_40px_120px_rgba(0,0,0,0.6)] transform-gpu backface-hidden will-change-transform">
 
                       {/* Header Row */}
                       <div className="flex items-start justify-between mb-6 xl:mb-8">
