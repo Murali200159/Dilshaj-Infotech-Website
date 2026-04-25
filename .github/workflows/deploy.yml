@@ -28,8 +28,6 @@ jobs:
 
           cd /home/ubuntu/Dilshaj-Infotech-Website
 
-          git config --global --add safe.directory /home/ubuntu/Dilshaj-Infotech-Website
-
           git reset --hard
           git pull origin master
 
