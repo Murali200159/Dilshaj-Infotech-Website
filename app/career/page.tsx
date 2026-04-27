@@ -106,20 +106,32 @@ export default function Home() {
   const [activeTab, setActiveTab] = useState<keyof typeof jobsData>("Development");
 
   return (
-    <div className={`min-h-screen bg-[#F8F9FB] flex flex-col overflow-x-hidden w-full ${poppins.className}`}>
+    <div className={`min-h-screen bg-white flex flex-col overflow-x-hidden w-full ${poppins.className}`}>
 
       {/* --- HERO SECTION --- */}
-      <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden shrink-0">
-        {/* Background Image */}
-        <div className="absolute inset-0 z-0 bg-black/10">
+      <section className="relative min-h-dvh md:h-screen w-full flex flex-col items-center justify-center overflow-hidden shrink-0 bg-[#CAD0FF]">
+        <style>{`
+          .hero-video-zoom {
+            transform: scale(2.5);
+            transform-origin: center center;
+          }
+          @media (min-width: 768px) {
+            .hero-video-zoom {
+              transform: scale(1);
+            }
+          }
+        `}</style>
+        <div className="absolute inset-0 z-0 overflow-hidden bg-[#CAD0FF]">
           <video
             src="/career/new building.mp4"
             autoPlay
             loop
             muted
             playsInline
-            className="w-full h-full object-cover absolute inset-0"
+            className="w-full h-full object-cover absolute inset-0 hero-video-zoom"
           />
+          {/* Subtle overlay to ensure text is perfectly readable over the zoomed video */}
+          <div className="absolute inset-0 bg-black/20 md:bg-black/10" />
         </div>
 
         {/* Floating Side Icons */}
@@ -133,7 +145,7 @@ export default function Home() {
         </div>
 
         {/* Hero Content */}
-        <div className="relative z-20 w-full max-w-[1200px] px-6 mx-auto flex flex-col items-center text-center text-white mt-40 md:mt-[160px]">
+        <div className="relative z-20 w-full h-full max-w-[1200px] px-6 py-12 md:py-0 mx-auto flex flex-col items-center justify-center text-center text-white">
           <div className="flex flex-col items-center w-full">
             {/* Desktop Headline */}
             <div className="hidden md:flex flex-col items-center w-full">
@@ -162,9 +174,9 @@ export default function Home() {
             </div>
 
             {/* Mobile Headline */}
-            <div className="flex md:hidden flex-col items-center w-full px-2">
+            <div className="flex md:hidden flex-col items-center w-full px-2 mt-4">
               <h1
-                className="text-white drop-shadow-md text-[38px] sm:text-[45px] leading-[1.2] text-center"
+                className="text-white text-[32px] sm:text-[45px] leading-[1.2] text-center"
                 style={{
                   fontWeight: 700,
                   letterSpacing: "0%",
@@ -175,7 +187,7 @@ export default function Home() {
             </div>
           </div>
 
-          <p className="mt-6 md:mt-8 max-w-4xl text-[16px] xl:text-[20px] font-normal leading-relaxed md:leading-[1.8] px-2 md:px-0 text-white drop-shadow-sm text-center">
+          <p className="hidden md:block mt-6 md:mt-8 max-w-4xl text-[16px] xl:text-[20px] font-normal leading-relaxed md:leading-[1.8] px-2 md:px-0 text-white drop-shadow-sm text-center">
             At Dilshaj Infotech, we&apos;re more than a team — we&apos;re a
             hub of innovation and growth. Driven by creativity,
             powered by collaboration, and supported by strong
@@ -413,8 +425,8 @@ function JobCard({ job, isDesktop }: { job: any; isDesktop: boolean }) {
         </div>
 
         {/* Updated Apply Gradient Button matching Get In Touch design */}
-        <button 
-          suppressHydrationWarning 
+        <button
+          suppressHydrationWarning
           className="group relative h-11 w-full sm:w-fit cursor-pointer overflow-hidden transition-all duration-700 rounded-[28px_28px_0px_28px] hover:rounded-[28px_28px_28px_0px] shadow-lg flex items-center"
         >
           {/* Animated circle toggle */}

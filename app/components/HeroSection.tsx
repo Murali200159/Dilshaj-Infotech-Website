@@ -299,8 +299,8 @@ export default function HeroSection() {
                                     className="object-contain drop-shadow-[0_45px_45px_rgba(0,0,0,0.1)] z-10 animate-float"
                                     priority
                                 />
-                                </div>
                             </div>
+                        </div>
 
                         {/* ZONE 3: Supporting Content */}
                         <div className="w-full lg:w-[35%] flex flex-col gap-3 lg:gap-10 ml-0 lg:ml-6 mt-2 lg:mt-0 pl-0 lg:pl-0">
@@ -317,11 +317,11 @@ export default function HeroSection() {
                                     ].map((item, i) => (
                                         <li key={i} className="hero-bullet flex gap-4 items-center">
                                             <div className="shrink-0 w-8 h-8 relative">
-                                                <Image 
-                                                    src={item.img} 
-                                                    alt="vision icon" 
-                                                    fill 
-                                                    className="object-contain" 
+                                                <Image
+                                                    src={item.img}
+                                                    alt="vision icon"
+                                                    fill
+                                                    className="object-contain"
                                                 />
                                             </div>
                                             <span className="text-[15px] text-gray-600 leading-tight">

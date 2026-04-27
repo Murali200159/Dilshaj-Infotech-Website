@@ -227,7 +227,7 @@ function CarouselCard({ card, index, scrollX, dimensions }: { card: any, index: 
                     <h3 className="text-xl md:text-2xl font-bold text-white mb-4 md:mb-6 drop-shadow-xl">
                         {card.title}
                     </h3>
-                    <div className="max-h-[180px] md:max-h-[280px] overflow-y-auto pr-2 custom-scrollbar md:max-h-none md:overflow-visible">
+                    <div className="max-h-[180px] overflow-y-auto pr-2 custom-scrollbar md:max-h-none md:overflow-visible">
                         <ul className="space-y-4">
                             {card.bullets.map((bullet: string, i: number) => (
                                 <li key={i} className="flex items-center gap-3 text-white text-sm sm:text-base font-semibold">
