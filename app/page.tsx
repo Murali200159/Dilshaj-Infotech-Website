@@ -465,7 +465,11 @@ export default function Home() {
   const [activeProductIdx, setActiveProductIdx] = useState(0);
   const mobileProductScrollRef = useRef<HTMLDivElement>(null);
   const mobilePillScrollRef = useRef<HTMLDivElement>(null);
-  
+
+  const [activeTechIdx, setActiveTechIdx] = useState(0);
+  const mobileTechScrollRef = useRef<HTMLDivElement>(null);
+  const mobileTechPillScrollRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     // Auto scroll the mobile pills container to keep the active pill centered
     const activePill = document.getElementById(`mobile-pill-product-${activeProductIdx}`);
@@ -475,6 +479,16 @@ export default function Home() {
       container.scrollTo({ left: scrollPos, behavior: 'smooth' });
     }
   }, [activeProductIdx]);
+
+  useEffect(() => {
+    // Auto scroll the mobile tech pills container to keep the active pill centered
+    const activePill = document.getElementById(`mobile-pill-tech-${activeTechIdx}`);
+    const container = mobileTechPillScrollRef.current;
+    if (activePill && container) {
+      const scrollPos = activePill.offsetLeft - (container.clientWidth / 2) + (activePill.clientWidth / 2);
+      container.scrollTo({ left: scrollPos, behavior: 'smooth' });
+    }
+  }, [activeTechIdx]);
 
   const handleProductIndexChange = useCallback((idx: number) => {
     setActiveProductIdx(idx);
@@ -487,9 +501,16 @@ export default function Home() {
       });
     }
   }, []);
-  const [activeTechIdx, setActiveTechIdx] = useState(0);
   const handleTechIndexChange = useCallback((idx: number) => {
     setActiveTechIdx(idx);
+    if (mobileTechScrollRef.current) {
+      // Smooth scroll to the specific card index
+      const cardWidth = mobileTechScrollRef.current.clientWidth;
+      mobileTechScrollRef.current.scrollTo({
+        left: idx * cardWidth,
+        behavior: 'smooth'
+      });
+    }
   }, []);
   const [activeFaqIdx, setActiveFaqIdx] = useState(0);
   const handleFaqIndexChange = useCallback((idx: number) => {
@@ -1322,7 +1343,7 @@ export default function Home() {
               </div>
 
               {/* Mobile Detail Cards Slider */}
-              <div 
+              <div
                 ref={mobileProductScrollRef}
                 className="flex w-full overflow-x-auto snap-x snap-mandatory scrollbar-hide"
                 onScroll={(e) => {
@@ -1582,104 +1603,126 @@ export default function Home() {
             {/* --- MOBILE VIEW --- */}
             <div className="flex lg:hidden flex-col items-center w-full pb-8 pt-0">
               {/* Horizontal Scrollable Pills */}
-              <div className="flex w-full overflow-x-auto gap-3 pb-8 mb-4 scrollbar-hide -mx-5 px-5" style={{ width: 'calc(100% + 40px)' }}>
-                {technologies.map((tech, idx) => (
-                  <button
-                    suppressHydrationWarning
-                    key={idx}
-                    onClick={() => setActiveTechIdx(idx)}
-                    className={`px-5 py-2.5 rounded-[20px] font-semibold text-[13px] whitespace-nowrap transition-all shrink-0 border ${activeTechIdx === idx
-                      ? "bg-linear-to-r from-[#31B5FE] to-[#AC52F2] text-white shadow-md border-transparent"
-                      : "bg-[#2A2A2A] text-gray-300 border-white/10"
-                      }`}
-                  >
-                    {tech.name}
-                  </button>
-                ))}
+              <div ref={mobileTechPillScrollRef} className="flex w-full overflow-x-auto gap-3 pb-8 mb-4 scrollbar-hide -mx-5 px-5 relative" style={{ width: 'calc(100% + 40px)' }}>
+                {technologies.map((tech, idx) => {
+                  const isActive = activeTechIdx === idx;
+                  return (
+                    <button
+                      suppressHydrationWarning
+                      key={idx}
+                      id={`mobile-pill-tech-${idx}`}
+                      onClick={() => handleTechIndexChange(idx)}
+                      className={`relative px-5 py-2.5 rounded-[20px] font-semibold text-[13px] whitespace-nowrap transition-colors duration-300 shrink-0 ${isActive ? "text-white" : "bg-[#2A2A2A] text-gray-300 border border-white/10"}`}
+                    >
+                      {isActive && (
+                        <motion.div
+                          layoutId="activePillTech"
+                          className="absolute inset-0 bg-linear-to-r from-[#31B5FE] to-[#AC52F2] rounded-[20px] shadow-md z-0"
+                          transition={{ type: "tween", ease: [0.4, 0.0, 0.2, 1], duration: 0.5 }}
+                        />
+                      )}
+                      <span className="relative z-10">{tech.name}</span>
+                    </button>
+                  );
+                })}
               </div>
 
-              {/* Mobile Detail Card */}
-              <div className="w-full">
-                <div className="w-full bg-white rounded-[24px] shadow-xl p-6 sm:p-8 flex flex-col">
-                  <h3 className="text-[26px] font-bold text-black mb-4 uppercase font-poppins">
-                    {technologies[activeTechIdx].title}
-                  </h3>
-                  <p className="text-[14.5px] text-gray-600 leading-relaxed mb-8 font-medium">
-                    {technologies[activeTechIdx].content}
-                  </p>
+              {/* Mobile Detail Cards Slider */}
+              <div
+                ref={mobileTechScrollRef}
+                className="flex w-full overflow-x-auto snap-x snap-mandatory scrollbar-hide"
+                onScroll={(e) => {
+                  const el = e.currentTarget;
+                  const newIdx = Math.round(el.scrollLeft / el.clientWidth);
+                  if (newIdx !== activeTechIdx) {
+                    setActiveTechIdx(newIdx);
+                  }
+                }}
+              >
+                {technologies.map((tech, tIdx) => (
+                  <div key={tIdx} className="w-full shrink-0 snap-center">
+                    <div className="w-full bg-white rounded-[24px] shadow-xl p-6 sm:p-8 flex flex-col">
+                      <h3 className="text-[26px] font-bold text-black mb-4 uppercase font-poppins">
+                        {tech.title}
+                      </h3>
+                      <p className="text-[14.5px] text-gray-600 leading-relaxed mb-8 font-medium">
+                        {tech.content}
+                      </p>
 
-                  <div className="flex flex-col gap-5 mb-8">
-                    {technologies[activeTechIdx].features.map((feature, fIdx) => (
-                      <div key={fIdx} className="flex items-center gap-4">
-                        <div className="w-[32px] h-[32px] rounded-full bg-[#0E4E8B] flex items-center justify-center shrink-0 shadow-sm [&_svg]:text-white! [&_svg]:w-[15px] [&_svg]:h-[15px]">
-                          {activeTechIdx === 0 ? (
-                            <Image
-                              src={`/Home/mechine learning/ai${fIdx + 1}.png`}
-                              alt="ai icon"
-                              width={20}
-                              height={20}
-                              className="object-contain brightness-0 invert"
-                            />
-                          ) : activeTechIdx === 1 ? (
-                            <Image
-                              src={`/Home/cloud/icon${fIdx + 1}.png`}
-                              alt="cloud icon"
-                              width={20}
-                              height={20}
-                              className="object-contain brightness-0 invert"
-                            />
-                          ) : activeTechIdx === 2 ? (
-                            <Image
-                              src={`/Home/web technology/icon${fIdx + 1}.png`}
-                              alt="web icon"
-                              width={20}
-                              height={20}
-                              className="object-contain brightness-0 invert"
-                            />
-                          ) : activeTechIdx === 3 ? (
-                            <Image
-                              src={`/Home/mobile/icon${fIdx + 1}.png`}
-                              alt="mobile icon"
-                              width={20}
-                              height={20}
-                              className="object-contain brightness-0 invert"
-                            />
-                          ) : activeTechIdx === 4 ? (
-                            <Image
-                              src={`/Home/data and analytics/icon${fIdx + 1}.png`}
-                              alt="analytics icon"
-                              width={20}
-                              height={20}
-                              className="object-contain brightness-0 invert"
-                            />
-                          ) : activeTechIdx === 5 ? (
-                            <Image
-                              src={`/Home/UI/UX Design/icon${fIdx + 1}.png`}
-                              alt="ui/ux icon"
-                              width={20}
-                              height={20}
-                              className="object-contain brightness-0 invert"
-                            />
-                          ) : (
-                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                              {fIdx === 0 ? <path strokeLinecap="round" strokeLinejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
-                                : fIdx === 1 ? <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-                                  : <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />}
-                            </svg>
-                          )}
-                        </div>
-                        <span className="text-[13px] font-semibold text-[#1F2933] leading-tight">
-                          {feature}
-                        </span>
+                      <div className="flex flex-col gap-5 mb-8">
+                        {tech.features.map((feature, fIdx) => (
+                          <div key={fIdx} className="flex items-center gap-4">
+                            <div className="w-[32px] h-[32px] rounded-full bg-[#0E4E8B] flex items-center justify-center shrink-0 shadow-sm [&_svg]:text-white! [&_svg]:w-[15px] [&_svg]:h-[15px]">
+                              {tIdx === 0 ? (
+                                <Image
+                                  src={`/Home/mechine learning/ai${fIdx + 1}.png`}
+                                  alt="ai icon"
+                                  width={20}
+                                  height={20}
+                                  className="object-contain brightness-0 invert"
+                                />
+                              ) : tIdx === 1 ? (
+                                <Image
+                                  src={`/Home/cloud/icon${fIdx + 1}.png`}
+                                  alt="cloud icon"
+                                  width={20}
+                                  height={20}
+                                  className="object-contain brightness-0 invert"
+                                />
+                              ) : tIdx === 2 ? (
+                                <Image
+                                  src={`/Home/web technology/icon${fIdx + 1}.png`}
+                                  alt="web icon"
+                                  width={20}
+                                  height={20}
+                                  className="object-contain brightness-0 invert"
+                                />
+                              ) : tIdx === 3 ? (
+                                <Image
+                                  src={`/Home/mobile/icon${fIdx + 1}.png`}
+                                  alt="mobile icon"
+                                  width={20}
+                                  height={20}
+                                  className="object-contain brightness-0 invert"
+                                />
+                              ) : tIdx === 4 ? (
+                                <Image
+                                  src={`/Home/data and analytics/icon${fIdx + 1}.png`}
+                                  alt="analytics icon"
+                                  width={20}
+                                  height={20}
+                                  className="object-contain brightness-0 invert"
+                                />
+                              ) : tIdx === 5 ? (
+                                <Image
+                                  src={`/Home/UI/UX Design/icon${fIdx + 1}.png`}
+                                  alt="ui/ux icon"
+                                  width={20}
+                                  height={20}
+                                  className="object-contain brightness-0 invert"
+                                />
+                              ) : (
+                                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                                  {fIdx === 0 ? <path strokeLinecap="round" strokeLinejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                                    : fIdx === 1 ? <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                                      : <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />}
+                                </svg>
+                              )}
+                            </div>
+                            <span className="text-[13px] font-semibold text-[#1F2933] leading-tight">
+                              {feature}
+                            </span>
+                          </div>
+                        ))}
                       </div>
-                    ))}
-                  </div>
 
-                  {/* Image */}
-                  <div className="w-full rounded-[16px] overflow-hidden relative h-[250px] shadow-sm">
-                    <Image src={technologies[activeTechIdx].image} alt={technologies[activeTechIdx].title} fill className="object-cover" />
+                      {/* Image */}
+                      <div className="w-full rounded-[16px] overflow-hidden relative h-[250px] shadow-sm">
+                        <Image src={tech.image} alt={tech.title} fill className="object-cover" />
+                      </div>
+                    </div>
                   </div>
-                </div>
+                ))}
               </div>
             </div>
           </div>
@@ -2043,7 +2086,7 @@ export default function Home() {
           </div>
         </section>
 
-{/* 
+        {/* 
         <section id="testimonials" data-section="testimonials" className="w-full bg-[#0a0a0a] flex flex-col items-center relative overflow-hidden h-[896px] py-20">
           <div className="absolute inset-0 z-0">
             <Image
