@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { FaReact, FaNodeJs, FaAws, FaFigma, FaFlutter, FaChartBar, FaJava, FaPython, FaDocker, FaHtml5, FaCss3Alt, FaGraduationCap, FaBriefcase, FaUsers, FaMobileScreenButton, FaAward, FaChalkboardUser, FaLightbulb, FaShieldHalved, FaClock, FaCirclePlay, FaStar, FaPhone, FaWhatsapp, FaPlus, FaMinus, FaCar, FaMotorcycle, FaMapLocationDot, FaCreditCard, FaStore, FaBox, FaCartShopping, FaNewspaper, FaBell, FaGear, FaMagnifyingGlassChart, FaChevronRight } from "react-icons/fa6";
@@ -13,6 +13,7 @@ import HomeScrollAnimations from "./components/HomeScrollAnimations";
 import HeroSection from "./components/HeroSection";
 import ScrollStack, { ScrollStackItem } from "./components/ScrollStack";
 import Carousel from "./components/Carousel";
+import { motion } from "framer-motion";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -462,8 +463,29 @@ export default function Home() {
     setActiveServiceIdx(idx);
   }, []);
   const [activeProductIdx, setActiveProductIdx] = useState(0);
+  const mobileProductScrollRef = useRef<HTMLDivElement>(null);
+  const mobilePillScrollRef = useRef<HTMLDivElement>(null);
+  
+  useEffect(() => {
+    // Auto scroll the mobile pills container to keep the active pill centered
+    const activePill = document.getElementById(`mobile-pill-product-${activeProductIdx}`);
+    const container = mobilePillScrollRef.current;
+    if (activePill && container) {
+      const scrollPos = activePill.offsetLeft - (container.clientWidth / 2) + (activePill.clientWidth / 2);
+      container.scrollTo({ left: scrollPos, behavior: 'smooth' });
+    }
+  }, [activeProductIdx]);
+
   const handleProductIndexChange = useCallback((idx: number) => {
     setActiveProductIdx(idx);
+    if (mobileProductScrollRef.current) {
+      // Smooth scroll to the specific card index
+      const cardWidth = mobileProductScrollRef.current.clientWidth;
+      mobileProductScrollRef.current.scrollTo({
+        left: idx * cardWidth,
+        behavior: 'smooth'
+      });
+    }
   }, []);
   const [activeTechIdx, setActiveTechIdx] = useState(0);
   const handleTechIndexChange = useCallback((idx: number) => {
@@ -1275,93 +1297,115 @@ export default function Home() {
               </div>
 
               {/* Horizontal Scrollable Pills */}
-              <div className="flex w-full overflow-x-auto gap-3 px-5 pb-6 mb-2 scrollbar-hide">
-                {products.map((product, idx) => (
-                  <button
-                    suppressHydrationWarning
-                    key={idx}
-                    onClick={() => setActiveProductIdx(idx)}
-                    className={`px-6 py-2.5 rounded-[20px] font-semibold font-poppins text-[14px] whitespace-nowrap transition-all shrink-0 ${activeProductIdx === idx
-                      ? "bg-linear-to-r from-[#31B5FE] to-[#AC52F2] text-white shadow-md"
-                      : "bg-[#EAECEF] text-black"
-                      }`}
-                  >
-                    {product.name}
-                  </button>
-                ))}
+              <div ref={mobilePillScrollRef} className="flex w-full overflow-x-auto gap-3 px-5 pb-6 mb-2 scrollbar-hide relative">
+                {products.map((product, idx) => {
+                  const isActive = activeProductIdx === idx;
+                  return (
+                    <button
+                      suppressHydrationWarning
+                      key={idx}
+                      id={`mobile-pill-product-${idx}`}
+                      onClick={() => handleProductIndexChange(idx)}
+                      className={`relative px-6 py-2.5 rounded-[20px] font-semibold font-poppins text-[14px] whitespace-nowrap transition-colors duration-300 shrink-0 ${isActive ? "text-white" : "bg-[#EAECEF] text-black"}`}
+                    >
+                      {isActive && (
+                        <motion.div
+                          layoutId="activePillProduct"
+                          className="absolute inset-0 bg-linear-to-r from-[#31B5FE] to-[#AC52F2] rounded-[20px] shadow-md z-0"
+                          transition={{ type: "tween", ease: [0.4, 0.0, 0.2, 1], duration: 0.5 }}
+                        />
+                      )}
+                      <span className="relative z-10">{product.name}</span>
+                    </button>
+                  );
+                })}
               </div>
 
-              {/* Mobile Detail Card */}
-              <div className="w-full px-5">
-                <div className="w-full bg-white rounded-[16px] shadow-[0_5px_15px_rgba(0,0,0,0.05)] border border-gray-100 p-6 sm:p-8 relative flex flex-col">
-                  {/* Top Right Background Icon */}
-                  <div className="absolute top-6 right-6 w-10 h-10 rounded-full flex items-center justify-center shadow-md bg-linear-to-br from-[#31B5FE] to-[#AC52F2]">
-                    <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M7 17L17 7M17 7H7M17 7v10" />
-                    </svg>
-                  </div>
-
-                  <h2 className="text-[24px] font-bold text-black leading-[1.2] mb-4 font-poppins pr-12">
-                    {products[activeProductIdx].title}
-                  </h2>
-
-                  <p className="text-[13px] font-medium text-[#4B5563] leading-[1.6] mb-6 font-poppins pr-2">
-                    {products[activeProductIdx].subtitle}
-                  </p>
-
-                  {/* Highlights List */}
-                  <div className="flex flex-col gap-4 mb-8">
-                    {products[activeProductIdx].highlights.map((item, i) => (
-                      <div key={i} className="flex gap-4 items-center">
-                        <div className="w-[28px] h-[28px] rounded-full bg-[#31B5FE] flex items-center justify-center shrink-0 shadow-sm [&_svg]:text-white! [&_svg]:w-[14px] [&_svg]:h-[14px]">
-                          {item.icon}
-                        </div>
-                        <span className="text-[12.5px] font-semibold text-black font-poppins leading-[1.3] flex-1">
-                          {item.label}
-                        </span>
+              {/* Mobile Detail Cards Slider */}
+              <div 
+                ref={mobileProductScrollRef}
+                className="flex w-full overflow-x-auto snap-x snap-mandatory scrollbar-hide"
+                onScroll={(e) => {
+                  const el = e.currentTarget;
+                  const newIdx = Math.round(el.scrollLeft / el.clientWidth);
+                  if (newIdx !== activeProductIdx) {
+                    setActiveProductIdx(newIdx);
+                  }
+                }}
+              >
+                {products.map((product, pIdx) => (
+                  <div key={pIdx} className="w-full shrink-0 px-5 snap-center">
+                    <div className="w-full bg-white rounded-[16px] shadow-[0_5px_15px_rgba(0,0,0,0.05)] border border-gray-100 p-6 sm:p-8 relative flex flex-col">
+                      {/* Top Right Background Icon */}
+                      <div className="absolute top-6 right-6 w-10 h-10 rounded-full flex items-center justify-center shadow-md bg-linear-to-br from-[#31B5FE] to-[#AC52F2]">
+                        <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M7 17L17 7M17 7H7M17 7v10" />
+                        </svg>
                       </div>
-                    ))}
-                  </div>
 
-                  {/* Features Footer Grid */}
-                  <div className="flex flex-col border border-gray-100 rounded-[12px] bg-white mt-6">
-                    {/* Top Row: First 3 features */}
-                    <div className="grid grid-cols-3 border-b border-gray-100">
-                      {products[activeProductIdx].features.slice(0, 3).map((feature, i) => (
-                        <div
-                          key={i}
-                          className={`flex flex-col items-center justify-start text-center gap-3 px-1.5 py-5 ${i !== 2 ? 'border-r border-gray-100' : ''}`}
-                        >
-                          <div className="text-[#31B5FE] [&_svg]:w-6 [&_svg]:h-6 flex items-center justify-center">
-                            {feature.icon}
-                          </div>
-                          <span className="text-[10px] sm:text-[10.5px] font-semibold text-black leading-[1.3] font-poppins px-0.5 mt-auto">
-                            {feature.name}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
+                      <h2 className="text-[24px] font-bold text-black leading-[1.2] mb-4 font-poppins pr-12">
+                        {product.title}
+                      </h2>
 
-                    {/* Bottom Row: Remaining features (up to 2) */}
-                    {products[activeProductIdx].features.length > 3 && (
-                      <div className="grid grid-cols-2 w-full">
-                        {products[activeProductIdx].features.slice(3, 5).map((feature, i) => (
-                          <div
-                            key={i + 3}
-                            className={`flex flex-col items-center justify-start text-center gap-3 px-1.5 py-5 ${i === 0 ? 'border-r border-gray-100' : ''}`}
-                          >
-                            <div className="text-[#31B5FE] [&_svg]:w-6 [&_svg]:h-6 flex items-center justify-center">
-                              {feature.icon}
+                      <p className="text-[13px] font-medium text-[#4B5563] leading-[1.6] mb-6 font-poppins pr-2">
+                        {product.subtitle}
+                      </p>
+
+                      {/* Highlights List */}
+                      <div className="flex flex-col gap-4 mb-8">
+                        {product.highlights.map((item, i) => (
+                          <div key={i} className="flex gap-4 items-center">
+                            <div className="w-[28px] h-[28px] rounded-full bg-[#31B5FE] flex items-center justify-center shrink-0 shadow-sm [&_svg]:text-white! [&_svg]:w-[14px] [&_svg]:h-[14px]">
+                              {item.icon}
                             </div>
-                            <span className="text-[10px] sm:text-[10.5px] font-semibold text-black leading-[1.3] font-poppins px-0.5 mt-auto">
-                              {feature.name}
+                            <span className="text-[12.5px] font-semibold text-black font-poppins leading-[1.3] flex-1">
+                              {item.label}
                             </span>
                           </div>
                         ))}
                       </div>
-                    )}
+
+                      {/* Features Footer Grid */}
+                      <div className="flex flex-col border border-gray-100 rounded-[12px] bg-white mt-6">
+                        {/* Top Row: First 3 features */}
+                        <div className="grid grid-cols-3 border-b border-gray-100">
+                          {product.features.slice(0, 3).map((feature, i) => (
+                            <div
+                              key={i}
+                              className={`flex flex-col items-center justify-start text-center gap-3 px-1.5 py-5 ${i !== 2 ? 'border-r border-gray-100' : ''}`}
+                            >
+                              <div className="text-[#31B5FE] [&_svg]:w-6 [&_svg]:h-6 flex items-center justify-center">
+                                {feature.icon}
+                              </div>
+                              <span className="text-[10px] sm:text-[10.5px] font-semibold text-black leading-[1.3] font-poppins px-0.5 mt-auto">
+                                {feature.name}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+
+                        {/* Bottom Row: Remaining features (up to 2) */}
+                        {product.features.length > 3 && (
+                          <div className="grid grid-cols-2 w-full">
+                            {product.features.slice(3, 5).map((feature, i) => (
+                              <div
+                                key={i + 3}
+                                className={`flex flex-col items-center justify-start text-center gap-3 px-1.5 py-5 ${i === 0 ? 'border-r border-gray-100' : ''}`}
+                              >
+                                <div className="text-[#31B5FE] [&_svg]:w-6 [&_svg]:h-6 flex items-center justify-center">
+                                  {feature.icon}
+                                </div>
+                                <span className="text-[10px] sm:text-[10.5px] font-semibold text-black leading-[1.3] font-poppins px-0.5 mt-auto">
+                                  {feature.name}
+                                </span>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    </div>
                   </div>
-                </div>
+                ))}
               </div>
             </div>
           </div>

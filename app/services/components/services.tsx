@@ -23,7 +23,7 @@ const allCards = [
         num: "02",
         title: "Web & App Development",
         desc: "We build high-performance, scalable web and mobile applications tailored to your business needs. Our solutions focus on speed, security, and user experience, ensuring reliable digital products that grow with your business.",
-        img: "/Home/technologies/web.png"
+        img: "/services/service_web_dev.png"
     },
     {
         num: "03",
@@ -35,7 +35,7 @@ const allCards = [
         num: "04",
         title: "Cloud & Digital Solutions",
         desc: "We deliver cloud-based and digital transformation solutions that improve agility, scalability, and operational efficiency. From cloud migration to system optimization, we help businesses embrace modern digital infrastructure.",
-        img: "/Home/technologies/devops.png",
+        img: "/services/service_cloud.png",
         imgPos: "object-top"
     },
     {

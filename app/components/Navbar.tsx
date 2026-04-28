@@ -94,6 +94,7 @@ export default function Navbar() {
 
                         {/* Hamburger Button */}
                         <button
+                            suppressHydrationWarning
                             onClick={() => setIsMenuOpen(true)}
                             className="lg:hidden p-2 transition-colors text-gray-800"
                             aria-label="Open Menu"
