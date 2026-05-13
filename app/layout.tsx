@@ -13,6 +13,11 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "Dilshaj Infotech",
   description: "Next-Generation Digital Solutions",
+  icons: {
+    icon: "/icon.png",
+    shortcut: "/icon.png",
+    apple: "/icon.png",
+  },
 };
 
 export default function RootLayout({
